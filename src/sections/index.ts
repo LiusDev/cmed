@@ -1,3 +1,5 @@
-export { default as Banner } from "@/sections/Banner"
+export { default as Banner } from "@/sections/banner/Banner"
 export { default as Service } from "@/sections/service/Service"
 export { default as Project } from "@/sections/project/Project"
+export { default as About } from "@/sections/about/About"
+export { default as Group } from "@/sections/group/Group"

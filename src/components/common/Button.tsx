@@ -1,19 +1,25 @@
 import Link from "next/link"
+import { twMerge } from "tailwind-merge"
 
-export enum Color {
-    Primary = "bg-primary text-secondary font-semibold hover:bg-tertiary",
-    Outline = "bg-secondary text-primary font-semibold hover:bg-primary hover:text-secondary border border-primary",
+type ButtonVariants = "primary" | "outline"
+
+const buttonVariants: Record<ButtonVariants, string> = {
+    primary: "bg-primary text-secondary font-semibold hover:bg-tertiary",
+    outline:
+        "bg-secondary text-primary font-semibold hover:bg-primary hover:text-secondary border border-primary",
 }
 
-export enum Size {
-    Small = "px-4 py-2",
-    Medium = "px-6 py-3",
-    Large = "px-8 py-4",
+type ButtonSizes = "small" | "medium" | "large"
+
+const buttonSizes: Record<ButtonSizes, string> = {
+    small: "px-4 py-2",
+    medium: "px-6 py-3",
+    large: "px-8 py-4",
 }
 
 interface ButtonProps {
-    color?: Color
-    size?: Size
+    variant?: ButtonVariants
+    size?: ButtonSizes
     href?: string
     newTab?: boolean
     className?: string
@@ -22,8 +28,8 @@ interface ButtonProps {
 }
 
 const Button = ({
-    color = Color.Primary,
-    size = Size.Medium,
+    variant = "primary",
+    size = "medium",
     href,
     newTab = false,
     className = "",
@@ -39,7 +45,9 @@ const Button = ({
             <Link
                 href={href}
                 target={target}
-                className={`${color} ${size} ${className} rounded-sm transition-all duration-500`}
+                className={twMerge(
+                    `${buttonVariants[variant]} ${buttonSizes[size]} ${className} rounded-sm transition-all duration-500`
+                )}
             >
                 {children}
             </Link>
@@ -48,7 +56,9 @@ const Button = ({
     return (
         <button
             onClick={onClick}
-            className={`${color} ${size} ${className} rounded-sm transition-all`}
+            className={twMerge(
+                `${buttonVariants[variant]} ${buttonSizes[size]} ${className} rounded-sm transition-all`
+            )}
         >
             {children}
         </button>

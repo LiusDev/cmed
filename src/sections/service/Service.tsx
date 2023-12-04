@@ -4,7 +4,6 @@ import Autoplay from "embla-carousel-autoplay"
 import style from "./style.module.css"
 import { useTranslation } from "react-i18next"
 import { Button, SectionHeader } from "@/components/common"
-import { Color } from "@/components/common/Button"
 
 const serviceList = [
     {
@@ -79,7 +78,7 @@ const Service = () => {
                                         {t(item.i18nTitle)}
                                     </h4>
                                 </div>
-                                <Button color={Color.Outline} href={item.href}>
+                                <Button variant="outline" href={item.href}>
                                     {t("common.viewMore")}
                                 </Button>
                             </div>

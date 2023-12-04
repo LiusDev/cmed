@@ -1,5 +1,5 @@
 import { MainLayout } from "@/components/layout"
-import { Banner, Project, Service } from "@/sections"
+import { About, Banner, Group, Project, Service } from "@/sections"
 
 export default function Home() {
     return (
@@ -8,6 +8,8 @@ export default function Home() {
                 <Banner />
                 <Service />
                 <Project />
+                <About />
+                <Group />
             </main>
         </MainLayout>
     )

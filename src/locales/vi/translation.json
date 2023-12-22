@@ -62,5 +62,7 @@
             "description": "Đối tác của chúng tôi"
         }
     },
-    "about": {}
+    "about": {
+        "title": "Kiến tạo giải pháp quản lý phòng khám"
+    }
 }

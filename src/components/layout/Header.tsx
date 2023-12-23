@@ -37,7 +37,7 @@ const Logo = () => {
             <img
                 src="logo.png"
                 alt="Logo"
-                className="h-[50px] max-w-full align-middle object-cover"
+                className="h-[32px] max-w-full align-middle object-cover"
             />
         </Link>
     );
@@ -118,7 +118,7 @@ const Header = () => {
     return (
         <header className="w-full flex items-center justify-center fixed top-1 left-0 right-0 z-40">
             <div className="w-full container px-4">
-                <div className="bg-secondary flex items-center justify-between px-4 py-2 rounded-md">
+                <div className="bg-secondary flex items-center justify-between p-4 rounded-md">
                     <Logo />
                     <NavItem />
                     <SwitchLanguage />

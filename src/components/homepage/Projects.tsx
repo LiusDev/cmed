@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MdOutlineArrowBack, MdOutlineArrowForward } from "react-icons/md";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 const defaultProject: Project = {
     id: 1,
@@ -34,7 +35,11 @@ const SliderItem = ({
                 <h3 className="text-2xl font-semibold text-primary capitalize">
                     {project.name}
                 </h3>
-                <p>{project.description}</p>
+                <div className="flex flex-col gap-2">
+                    <FaQuoteLeft />
+                    <p>{project.description}</p>
+                    <FaQuoteRight className="self-end" />
+                </div>
                 <Link
                     href={` /projects/${project.id} `}
                     className="flex items-center justify-end gap-2 text-primary"
@@ -74,7 +79,7 @@ const Projects = ({ projects }: ProjectsProps) => {
 
     const handleChangeProject = (dir: Direction) => {
         setAnimationClass("opacity-0");
-        const animation = setTimeout(() => {
+        setTimeout(() => {
             if (dir === Direction.Left) {
                 const prevProject =
                     projects[
@@ -82,7 +87,11 @@ const Projects = ({ projects }: ProjectsProps) => {
                             (project) => project.id === currProject.id
                         ) - 1
                     ];
-                setCurrProject(prevProject || projects[projects.length - 1]);
+                setCurrProject(
+                    prevProject ||
+                        projects[projects.length - 1] ||
+                        defaultProject
+                );
             } else {
                 const nextProject =
                     projects[
@@ -90,11 +99,10 @@ const Projects = ({ projects }: ProjectsProps) => {
                             (project) => project.id === currProject.id
                         ) + 1
                     ];
-                setCurrProject(nextProject || projects[0]);
+                setCurrProject(nextProject || projects[0] || defaultProject);
             }
-            setAnimationClass("opacity-1");
+            setAnimationClass("opacity-100");
         }, 500);
-        return () => clearTimeout(animation);
     };
     return (
         <section className="bg-secondary">

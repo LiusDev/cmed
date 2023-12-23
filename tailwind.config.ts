@@ -12,7 +12,7 @@ const config: Config = {
             primary: {
                 DEFAULT: "#2075BA",
                 dark: "#2575B9",
-                light: "#2E6CC1",
+                light: "#D9E6F5",
             },
             secondary: {
                 DEFAULT: "#fafafa",
@@ -32,6 +32,8 @@ const config: Config = {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                intro: "url('/intro.png')",
+                intro1: "url('/intro1.png')",
             },
             aspectRatio: {
                 "4/3": "4 / 3",

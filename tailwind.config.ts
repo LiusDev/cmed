@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
     content: [
@@ -10,13 +10,13 @@ const config: Config = {
     theme: {
         colors: {
             primary: {
-                DEFAULT: "#2490eb",
-                dark: "#14457b",
-                light: "#d3e9fb",
+                DEFAULT: "#2075BA",
+                dark: "#2575B9",
+                light: "#2E6CC1",
             },
             secondary: {
                 DEFAULT: "#fafafa",
-                dark: "#f4f6f9",
+                dark: "#E9EAEC",
             },
             tertiary: {
                 DEFAULT: "#10101a",
@@ -35,6 +35,7 @@ const config: Config = {
             },
             aspectRatio: {
                 "4/3": "4 / 3",
+                "21/9": "21 / 9",
             },
         },
     },
@@ -59,8 +60,8 @@ const config: Config = {
                         maxWidth: "1400px",
                     },
                 },
-            })
+            });
         },
     ],
-}
-export default config
+};
+export default config;

@@ -13,8 +13,7 @@
     },
     "home": {
         "service": {
-            "title": "Dịch vụ",
-            "description": "Chúng tôi cung cấp các dịch vụ",
+            "title": "Dịch vụ của chúng tôi",
             "service1": {
                 "title": "Dịch vụ 1",
                 "description": "Mô tả dịch vụ 1"
@@ -37,8 +36,7 @@
             }
         },
         "project": {
-            "title": "Dự án",
-            "description": "Dự án của chúng tôi",
+            "title": "Dự án của chúng tôi",
             "project1": {
                 "title": "Dự án 1",
                 "description": "Mô tả dự án 1"

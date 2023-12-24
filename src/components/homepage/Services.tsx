@@ -9,9 +9,9 @@ interface ServicesProps {
 const Services = ({ services }: ServicesProps) => {
     return (
         <section className="bg-secondary-dark">
-            <div className="container px-4 py-32 m-auto">
-                <div className="flex items-center justify-between mb-20">
-                    <h1 className="text-4xl uppercase font-bold">
+            <div className="container px-4 py-20 pt-32 lg:py-32 m-auto">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-10 lg:mb-20">
+                    <h1 className="text-2xl lg:text-4xl uppercase font-bold">
                         <Trans text="home.service.title" />
                     </h1>
                     <Button
@@ -23,7 +23,7 @@ const Services = ({ services }: ServicesProps) => {
                         <MdOutlineArrowForward className="text-xl" />
                     </Button>
                 </div>
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-2">
                     {services.map(
                         ({ id, name, description, featuredImage }) => (
                             <Card

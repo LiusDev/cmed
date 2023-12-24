@@ -17,8 +17,8 @@ const Footer = () => {
 
     return (
         <footer className="bg-primary-light">
-            <div className="container m-auto px-4 py-8 border-b-4 border-primary-dark flex items-center justify-between gap-4">
-                <div className="flex flex-col items-center gap-4 px-4 w-3/12">
+            <div className="container m-auto px-4 py-8 border-b-4 border-primary-dark flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-4">
+                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-3/12">
                     <Link href="/">
                         <img
                             src="logo.png"
@@ -95,7 +95,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col items-center gap-4 px-4 w-2/12">
+                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-2/12">
                     <h4 className="font-semibold capitalize text-xl text-primary">
                         Công ty
                     </h4>
@@ -114,7 +114,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col items-center gap-4 px-4 w-2/12">
+                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-2/12">
                     <h4 className="font-semibold capitalize text-xl text-primary">
                         Công ty
                     </h4>
@@ -133,8 +133,8 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col items-center gap-4 px-4 w-5/12">
-                    <h4 className="font-semibold capitalize text-xl text-primary">
+                <div className="flex flex-col items-center gap-4 px-4 lg:w-5/12">
+                    <h4 className="font-semibold capitalize text-xl text-primary text-center">
                         Nhận thông báo mới nhất từ chúng tôi
                     </h4>
                     <div className="flex items-center justify-center gap-1 content-stretch">
@@ -151,8 +151,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="container m-auto px-4 py-8">
-                <div className="px-4 flex items-center justify-between">
-                    <h2 className="uppercase font-semibold text-primary">
+                <div className="px-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+                    <h2 className="uppercase font-semibold text-primary text-center">
                         <Trans text="footer.title" />
                     </h2>
                     <ul className="flex items-center justify-center gap-2">

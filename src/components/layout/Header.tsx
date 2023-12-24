@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import React from "react";
-// import SwitchLanguage from "./SwitchLanguage";
 import { useTranslation } from "react-i18next";
+import { MdMenu, MdOutlineArrowBack } from "react-icons/md";
+import { twMerge } from "tailwind-merge";
 
 const headerNav = [
     {
@@ -31,6 +32,84 @@ const headerNav = [
     },
 ];
 
+const HamburgerMenu = () => {
+    const [isShowMenu, setIsShowMenu] = React.useState(false);
+
+    const menuRef = React.useRef<HTMLDivElement>(null);
+    const closeMenuBtnRef = React.useRef<HTMLButtonElement>(null);
+
+    React.useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node) &&
+                !closeMenuBtnRef.current?.contains(event.target as Node)
+            ) {
+                setIsShowMenu(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
+
+    const { t } = useTranslation();
+    const router = useRouter();
+
+    return (
+        <>
+            <button
+                onClick={() => setIsShowMenu(true)}
+                className="flex items-center justify-center lg:hidden"
+            >
+                <MdMenu className="text-4xl" />
+            </button>
+            <aside
+                ref={menuRef}
+                className={` fixed top-0 left-0 bottom-0 bg-secondary-dark p-6 w-2/3 ${
+                    isShowMenu ? "translate-x-0" : "-translate-x-full"
+                } lg:-translate-x-full transition-all z-40`}
+            >
+                <div className="flex items-center justify-between mb-10">
+                    <Link href="/">
+                        <img
+                            src="logo.png"
+                            alt="Logo"
+                            className="h-[36px] max-w-full align-middle object-cover"
+                        />
+                    </Link>
+                    <button
+                        ref={closeMenuBtnRef}
+                        onClick={() => setIsShowMenu(false)}
+                    >
+                        <MdOutlineArrowBack className="text-4xl" />
+                    </button>
+                </div>
+                <ul className="flex flex-col gap-3 mb-10">
+                    {headerNav.map((item) => (
+                        <li key={item.i18nTitle}>
+                            <Link
+                                href={item.href}
+                                className={` ${
+                                    router.asPath === item.href
+                                        ? "text-primary"
+                                        : "text-tertiary"
+                                } hover:text-primary transition-all capitalize font-semibold text-lg`}
+                            >
+                                {t(item.i18nTitle)}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                <SwitchLanguage className="justify-start" />
+            </aside>
+        </>
+    );
+};
+
 const Logo = () => {
     return (
         <Link href="/">
@@ -48,7 +127,7 @@ const NavItem = () => {
     const router = useRouter();
 
     return (
-        <ul className="flex items-center justify-center gap-12">
+        <ul className="hidden lg:flex items-center justify-center gap-12">
             {headerNav.map((item) => (
                 <li key={item.i18nTitle}>
                     <Link
@@ -79,7 +158,7 @@ const languageLabel: Record<Language, string> = {
     [Language.JP]: "JP",
 };
 
-const SwitchLanguage = () => {
+const SwitchLanguage = ({ className }: { className?: string }) => {
     const { i18n } = useTranslation();
 
     const handleChangeLanguage = (language: Language) => {
@@ -91,22 +170,26 @@ const SwitchLanguage = () => {
     };
 
     return (
-        <div className="flex items-center justify-center gap-4">
+        <div
+            className={twMerge(
+                ` flex items-center justify-center gap-4 ${className}`
+            )}
+        >
             <button
                 onClick={() => handleChangeLanguage(Language.VI)}
-                className="text-primary text-sm font-medium"
+                className="text-primary text-base lg:text-sm font-medium"
             >
                 {languageLabel[Language.VI]}
             </button>
             <button
                 onClick={() => handleChangeLanguage(Language.EN)}
-                className="text-primary text-sm font-medium"
+                className="text-primary text-base lg:text-sm font-medium"
             >
                 {languageLabel[Language.EN]}
             </button>
             <button
                 onClick={() => handleChangeLanguage(Language.JP)}
-                className="text-primary text-sm font-medium"
+                className="text-primary text-base lg:text-sm font-medium"
             >
                 {languageLabel[Language.JP]}
             </button>
@@ -116,12 +199,14 @@ const SwitchLanguage = () => {
 
 const Header = () => {
     return (
-        <header className="w-full flex items-center justify-center fixed top-1 left-0 right-0 z-40">
-            <div className="w-full container px-4">
+        <header className="w-full flex items-center justify-center fixed top:0 lg:top-1 left-0 right-0 z-40">
+            <div className="w-full container lg:px-4">
                 <div className="bg-secondary flex items-center justify-between p-4 rounded-md">
+                    <HamburgerMenu />
                     <Logo />
                     <NavItem />
-                    <SwitchLanguage />
+                    <SwitchLanguage className="hidden lg:flex" />
+                    <div className="lg:hidden w-5" />
                 </div>
             </div>
         </header>

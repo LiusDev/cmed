@@ -18,6 +18,47 @@ const defaultProject: Project = {
     modifiedAt: "2021-09-24T08:40:51.620Z",
 };
 
+const SliderItemMobile = ({
+    project,
+    className,
+}: {
+    project: Project;
+    className?: string;
+}) => {
+    return (
+        <div
+            className={twMerge(
+                `m-auto mb-10 transition-all duration-500 ${className} block lg:hidden`
+            )}
+        >
+            <div className="rounded-lg drop-shadow-md p-4 bg-secondary flex flex-col justify-center gap-4">
+                <h3 className="text-lg font-semibold text-primary capitalize text-center">
+                    {project.name}
+                </h3>
+                <div className="flex flex-col gap-2">
+                    <FaQuoteLeft />
+                    <p>{project.description}</p>
+                    <FaQuoteRight className="self-end" />
+                </div>
+                <Link
+                    href={` /projects/${project.id} `}
+                    className="flex items-center justify-end gap-2 text-primary"
+                >
+                    <Trans text="common.viewMore" />
+                    <MdOutlineArrowForward className="text-xl" />
+                </Link>
+                <Link href={`/projects/${project.id}`}>
+                    <img
+                        src={project.featuredImage}
+                        alt={project.name}
+                        className="w-full object-cover object-center rounded-md"
+                    />
+                </Link>
+            </div>
+        </div>
+    );
+};
+
 const SliderItem = ({
     project,
     className,
@@ -28,7 +69,7 @@ const SliderItem = ({
     return (
         <div
             className={twMerge(
-                ` relative m-auto mb-10 transition-all duration-500 ${className}`
+                ` relative m-auto mb-10 transition-all duration-500 ${className} hidden lg:block`
             )}
         >
             <div className="rounded-lg drop-shadow-md p-8 pr-36 bg-secondary flex flex-col justify-center w-6/12 gap-10">
@@ -106,12 +147,16 @@ const Projects = ({ projects }: ProjectsProps) => {
     };
     return (
         <section className="bg-secondary">
-            <div className="container px-4 pt-32 pb-52 m-auto">
-                <h1 className="text-4xl uppercase font-bold text-primary flex items-center justify-end pr-16">
+            <div className="container px-4 py-20 lg:pt-32 lg:pb-52 m-auto">
+                <h1 className="text-2xl lg:text-4xl uppercase font-bold text-primary flex items-center justify-center lg:justify-end lg:pr-16 mb-10 lg:mb-0">
                     <Trans text="home.project.title" />
                 </h1>
+                <SliderItemMobile
+                    project={currProject}
+                    className={animationClass}
+                />
                 <SliderItem project={currProject} className={animationClass} />
-                <div className="w-6/12 pr-28 flex items-center justify-center gap-6">
+                <div className="lg:w-6/12 lg:pr-28 flex items-center justify-center gap-6">
                     <Button
                         variant="rounded-full"
                         className="p-0 w-10 h-10"

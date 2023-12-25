@@ -74,5 +74,24 @@
     },
     "about": {
         "title": "Kiến tạo giải pháp quản lý phòng khám"
+    },
+    "contact": {
+        "title": "Liên hệ với chúng tôi",
+        "description": "Rất vui được hỗ trợ bạn. Để liên hệ với chúng tôi, bạn có thể sử dụng các thông tin liên lạc sau đây",
+        "info": "Nếu bạn có bất kỳ câu hỏi, góp ý hoặc yêu cầu cụ thể, vui lòng gửi tin nhắn cho chúng tôi qua email hoặc điện thoại. Chúng tôi sẽ cố gắng phản hồi lại bạn trong thời gian sớm nhất có thể.",
+        "contactInfo": "Thông tin liên hệ",
+        "form": {
+            "name": "Họ và tên",
+            "phone": "Số điện thoại",
+            "email": "Email",
+            "type": {
+                "personal": "Cá nhân",
+                "company": "Công ty"
+            },
+            "compannyName": "Công ty",
+            "message": "Nội dung",
+            "note": "Bạn cũng có thể liên hệ với chúng tôi qua email:"
+        },
+        "map": "Bản đồ"
     }
 }

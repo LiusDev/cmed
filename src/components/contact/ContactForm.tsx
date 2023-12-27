@@ -3,13 +3,53 @@ import { IoMailOpenOutline } from "react-icons/io5";
 import { Button, Trans } from "../common";
 import { Metadata } from "@/types";
 import { useTranslation } from "react-i18next";
+import { useForm } from "@mantine/form";
+import { instance } from "@/utils";
 
 const ContactForm = ({ metadata }: { metadata: Metadata }) => {
     const { t } = useTranslation();
+
+    const form = useForm({
+        initialValues: {
+            name: "",
+            phone: "",
+            email: "",
+            company: "",
+            isPersonal: true,
+            content: "",
+        },
+        validate: {
+            name: (value) => value.trim().length > 0,
+            // check phone is phone number
+            phone: (value) => value.trim().length > 0 && !isNaN(+value),
+            email: (value) => value.trim().length > 0,
+            company: (value) => value.trim().length > 0,
+            isPersonal: (value) => value,
+            content: (value) => value.trim().length > 0,
+        },
+    });
+
+    const handleSendContact = () => {
+        console.log(form.values);
+
+        instance
+            .post("/contacts", form.values)
+            .then((res) => {
+                if (res.data) {
+                    alert("Gửi liên hệ thành công");
+                } else {
+                    alert("Gửi liên hệ thất bại");
+                }
+            })
+            .catch((err) => {
+                alert("Gửi liên hệ thất bại");
+                console.log(err);
+            });
+    };
     return (
         <section className="bg-secondary-dark">
             <div className="m-auto container px-4 grid grid-cols-12 lg:gap-8">
-                <div className="col-span-12 lg:col-span-5 pt-8 order-2 mb-10 lg:mb-0">
+                <div className="col-span-12 lg:col-span-5 pt-8 order-2 lg:order-1 mb-10 lg:mb-0">
                     <div className="bg-secondary rounded-xl p-12">
                         <h3 className="text-center lg:text-left text-xl lg:text-3xl text-primary font-bold mb-6">
                             <Trans text="contact.contactInfo" />
@@ -78,7 +118,7 @@ const ContactForm = ({ metadata }: { metadata: Metadata }) => {
                         </ul>
                     </div>
                 </div>
-                <div className="order-1 col-span-12 lg:col-span-7 relative lg:mb-10">
+                <div className="order-1 lg:order-2 col-span-12 lg:col-span-7 relative lg:mb-10">
                     <div className="absolute -top-40 h-40 left-0 right-0 bg-secondary-dark z-30 hidden lg:flex items-center justify-center gap-4 p-8 rounded-t-xl">
                         <div className="bg-primary-dark p-2 rounded-md">
                             <IoMailOpenOutline className="text-secondary text-8xl" />
@@ -92,21 +132,25 @@ const ContactForm = ({ metadata }: { metadata: Metadata }) => {
                             <input
                                 placeholder={t("contact.form.name")}
                                 type="text"
+                                {...form.getInputProps("name")}
                                 className="col-span-2 lg:col-span-1 w-full bg-secondary-dark rounded-md px-4 py-2"
                             />
                             <input
                                 placeholder={t("contact.form.phone")}
                                 type="text"
+                                {...form.getInputProps("phone")}
                                 className="col-span-2 lg:col-span-1 w-full bg-secondary-dark rounded-md px-4 py-2"
                             />
                             <input
                                 placeholder={t("contact.form.email")}
                                 type="text"
+                                {...form.getInputProps("email")}
                                 className="col-span-2 lg:col-span-1 w-full bg-secondary-dark rounded-md px-4 py-2"
                             />
                             <select
-                                name="userType"
-                                id="userType"
+                                name="isPersonal"
+                                id="isPersonal"
+                                {...form.getInputProps("isPersonal")}
                                 className="col-span-2 lg:col-span-1 w-full bg-secondary-dark rounded-md px-4 py-2"
                             >
                                 <option value="true">
@@ -116,16 +160,26 @@ const ContactForm = ({ metadata }: { metadata: Metadata }) => {
                                     {t("contact.form.type.company")}
                                 </option>
                             </select>
+                            <input
+                                placeholder={t("contact.form.company")}
+                                type="text"
+                                {...form.getInputProps("company")}
+                                className="col-span-2 w-full bg-secondary-dark rounded-md px-4 py-2"
+                            />
                             <textarea
                                 placeholder={t("contact.form.message")}
                                 name=""
                                 id=""
                                 rows={8}
+                                {...form.getInputProps("content")}
                                 className="w-full bg-secondary-dark rounded-md px-4 py-2 col-span-2 focus:outline-none"
                             ></textarea>
                         </div>
                         <div className="mb-6 lg:mb-10">
-                            <Button className="px-4 py-2 lg:px-2 lg:py-1 flex items-center justify-center gap-1 m-auto">
+                            <Button
+                                onClick={handleSendContact}
+                                className="px-4 py-2 lg:px-2 lg:py-1 flex items-center justify-center gap-1 m-auto"
+                            >
                                 <Trans text="common.send" />
                                 <FiSend />
                             </Button>

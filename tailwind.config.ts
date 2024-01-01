@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config: Config = {
     content: [
@@ -10,17 +10,18 @@ const config: Config = {
     theme: {
         colors: {
             primary: {
-                DEFAULT: "#2075BA",
-                dark: "#2575B9",
-                light: "#D9E6F5",
+                DEFAULT: "#3284c2",
+                dark: "#1b76bb",
+                light: "#7493bc",
             },
             secondary: {
-                DEFAULT: "#fafafa",
-                dark: "#E9EAEC",
+                DEFAULT: "#ffffff",
+                dark: "#f3faff",
             },
             tertiary: {
-                DEFAULT: "#10101a",
-                dark: "#0b0b13",
+                DEFAULT: "#3e4756",
+                dark: "#000000",
+                light: "#808080",
             },
         },
         fontFamily: {
@@ -28,6 +29,9 @@ const config: Config = {
             body: ["Montserrat", "sans-serif"],
         },
         extend: {
+            fontFamily: {
+                primary: ["Noto Sans", "sans-serif"],
+            },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
@@ -62,8 +66,8 @@ const config: Config = {
                         maxWidth: "1400px",
                     },
                 },
-            });
+            })
         },
     ],
-};
-export default config;
+}
+export default config

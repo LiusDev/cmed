@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { MdMenu, MdOutlineArrowBack } from "react-icons/md";
-import { twMerge } from "tailwind-merge";
+import { useRouter } from "next/router"
+import Link from "next/link"
+import React from "react"
+import { useTranslation } from "react-i18next"
+import { MdMenu, MdOutlineArrowBack } from "react-icons/md"
+import { twMerge } from "tailwind-merge"
 
 const headerNav = [
     {
@@ -27,16 +27,20 @@ const headerNav = [
         href: "/document",
     },
     {
+        i18nTitle: "header.news",
+        href: "/news",
+    },
+    {
         i18nTitle: "header.contact",
         href: "/contact",
     },
-];
+]
 
 const HamburgerMenu = () => {
-    const [isShowMenu, setIsShowMenu] = React.useState(false);
+    const [isShowMenu, setIsShowMenu] = React.useState(false)
 
-    const menuRef = React.useRef<HTMLDivElement>(null);
-    const closeMenuBtnRef = React.useRef<HTMLButtonElement>(null);
+    const menuRef = React.useRef<HTMLDivElement>(null)
+    const closeMenuBtnRef = React.useRef<HTMLButtonElement>(null)
 
     React.useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
@@ -45,19 +49,19 @@ const HamburgerMenu = () => {
                 !menuRef.current.contains(event.target as Node) &&
                 !closeMenuBtnRef.current?.contains(event.target as Node)
             ) {
-                setIsShowMenu(false);
+                setIsShowMenu(false)
             }
-        };
+        }
 
-        document.addEventListener("mousedown", handleOutsideClick);
+        document.addEventListener("mousedown", handleOutsideClick)
 
         return () => {
-            document.removeEventListener("mousedown", handleOutsideClick);
-        };
-    }, []);
+            document.removeEventListener("mousedown", handleOutsideClick)
+        }
+    }, [])
 
-    const { t } = useTranslation();
-    const router = useRouter();
+    const { t } = useTranslation()
+    const router = useRouter()
 
     return (
         <>
@@ -107,8 +111,8 @@ const HamburgerMenu = () => {
                 <SwitchLanguage className="justify-start" />
             </aside>
         </>
-    );
-};
+    )
+}
 
 const Logo = () => {
     return (
@@ -119,12 +123,12 @@ const Logo = () => {
                 className="h-[32px] max-w-full align-middle object-cover"
             />
         </Link>
-    );
-};
+    )
+}
 
 const NavItem = () => {
-    const { t } = useTranslation();
-    const router = useRouter();
+    const { t } = useTranslation()
+    const router = useRouter()
 
     return (
         <ul className="hidden lg:flex items-center justify-center gap-12">
@@ -136,15 +140,15 @@ const NavItem = () => {
                             router.asPath === item.href
                                 ? "text-primary"
                                 : "text-tertiary"
-                        } hover:text-primary transition-all capitalize font-semibold`}
+                        } hover:text-primary transition-all uppercase font-semibold`}
                     >
                         {t(item.i18nTitle)}
                     </Link>
                 </li>
             ))}
         </ul>
-    );
-};
+    )
+}
 
 enum Language {
     VI = "vi",
@@ -156,18 +160,18 @@ const languageLabel: Record<Language, string> = {
     [Language.VI]: "VN",
     [Language.EN]: "ENG",
     [Language.JP]: "JP",
-};
+}
 
 const SwitchLanguage = ({ className }: { className?: string }) => {
-    const { i18n } = useTranslation();
+    const { i18n } = useTranslation()
 
     const handleChangeLanguage = (language: Language) => {
         if (!language) {
-            i18n.changeLanguage(Language.VI);
-            return;
+            i18n.changeLanguage(Language.VI)
+            return
         }
-        i18n.changeLanguage(language);
-    };
+        i18n.changeLanguage(language)
+    }
 
     return (
         <div
@@ -177,40 +181,47 @@ const SwitchLanguage = ({ className }: { className?: string }) => {
         >
             <button
                 onClick={() => handleChangeLanguage(Language.VI)}
-                className="text-primary text-base lg:text-sm font-medium"
+                className={`${
+                    i18n.language === Language.VI &&
+                    "text-primary font-semibold"
+                } text-base lg:text-sm`}
             >
                 {languageLabel[Language.VI]}
             </button>
             <button
                 onClick={() => handleChangeLanguage(Language.EN)}
-                className="text-primary text-base lg:text-sm font-medium"
+                className={`${
+                    i18n.language === Language.EN &&
+                    "text-primary font-semibold"
+                }  text-base lg:text-sm`}
             >
                 {languageLabel[Language.EN]}
             </button>
             <button
                 onClick={() => handleChangeLanguage(Language.JP)}
-                className="text-primary text-base lg:text-sm font-medium"
+                className={`${
+                    i18n.language === Language.JP &&
+                    "text-primary font-semibold"
+                }  text-base lg:text-sm`}
             >
                 {languageLabel[Language.JP]}
             </button>
         </div>
-    );
-};
+    )
+}
 
 const Header = () => {
     return (
-        <header className="w-full flex items-center justify-center fixed top:0 lg:top-1 left-0 right-0 z-40">
-            <div className="w-full container lg:px-4">
-                <div className="bg-secondary flex items-center justify-between p-4 rounded-md">
-                    <HamburgerMenu />
-                    <Logo />
-                    <NavItem />
-                    <SwitchLanguage className="hidden lg:flex" />
-                    <div className="lg:hidden w-5" />
-                </div>
+        <header className="w-full flex items-center justify-center fixed top-0 left-0 right-0 bg-secondary h-16 z-40">
+            <div className="container px-4 flex items-center justify-between w-full">
+                <HamburgerMenu />
+                <Logo />
+                <NavItem />
+                <SwitchLanguage className="hidden lg:flex" />
+                <div className="lg:hidden w-5" />
             </div>
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

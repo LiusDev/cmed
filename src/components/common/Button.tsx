@@ -1,73 +1,67 @@
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import Link from "next/link"
+import { twMerge } from "tailwind-merge"
 
-type Color = "primary" | "secondary";
-
-const buttonColors: Record<Color, string> = {
-    primary: "bg-primary text-secondary font-semibold hover:bg-tertiary",
-    secondary:
-        "bg-secondary text-primary font-semibold hover:bg-secondary-dark",
-};
-
-type Variant = "default" | "rounded-full";
+type Variant = "primary" | "secondary" | "outline" | "dark"
 
 const buttonVariants: Record<Variant, string> = {
-    default: "rounded-md",
-    "rounded-full": "rounded-full",
-};
+    primary: "bg-primary-dark text-secondary hover:bg-primary-light",
+    secondary: "bg-primary text-secondary hover:bg-primary-light",
+    outline:
+        "border border-primary text-primary hover:bg-primary hover:text-secondary",
+    dark: "bg-tertiary-light text-secondary hover:bg-tertiary",
+}
 
-type ButtonSizes = "small" | "medium" | "large";
+type Type = "default" | "thin" | "square" | "circle"
 
-const buttonSizes: Record<ButtonSizes, string> = {
-    small: "px-4 py-2",
-    medium: "px-6 py-3",
-    large: "px-8 py-4",
-};
+const buttonTypes: Record<Type, string> = {
+    default: "px-8 py-4",
+    thin: "px-4 py-2",
+    square: "px-4 py-4 rounded-none",
+    circle: "px-4 py-4 rounded-full",
+}
 
 interface ButtonProps {
-    color?: Color;
-    variant?: Variant;
-    size?: ButtonSizes;
-    href?: string;
-    newTab?: boolean;
-    className?: string;
-    onClick?: () => void;
-    children: React.ReactNode;
+    variant?: Variant
+    type?: Type
+    href?: string
+    newTab?: boolean
+    className?: string
+    onClick?: () => void
+    children?: React.ReactNode
 }
 
 const Button = ({
-    color = "primary",
-    variant = "default",
-    size = "medium",
+    variant = "primary",
+    type = "default",
     href,
     newTab = false,
     className = "",
     onClick,
     children,
 }: ButtonProps) => {
-    let target;
+    let target
     if (newTab) {
-        target = "_blank";
+        target = "_blank"
     }
 
-    let ComponentType: any = "button";
-    let linkProps = {};
+    let ComponentType: any = "button"
+    let linkProps = {}
     if (href) {
-        ComponentType = Link;
-        linkProps = { href, target };
+        ComponentType = Link
+        linkProps = { href, target }
     }
 
     return (
         <ComponentType
             onClick={onClick}
             className={twMerge(
-                `${buttonColors[color]} ${buttonVariants[variant]} ${buttonSizes[size]} ${className} flex items-center justify-center shadow-md transition-all`
+                ` ${buttonVariants[variant]} ${buttonTypes[type]} ${className} flex items-center justify-center transition-all`
             )}
             {...linkProps}
         >
             {children}
         </ComponentType>
-    );
-};
+    )
+}
 
-export default Button;
+export default Button

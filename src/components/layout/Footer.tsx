@@ -1,187 +1,82 @@
-import useSWR from "swr";
-import { instance } from "@/utils";
-import { Metadata } from "@/types";
-import Link from "next/link";
-import { FiGlobe, FiMail, FiMapPin, FiPhone, FiSend } from "react-icons/fi";
-import { Button, Trans } from "../common";
-import {
-    RiFacebookCircleLine,
-    RiInstagramLine,
-    RiMailLine,
-} from "react-icons/ri";
+import useSWR from "swr"
+import { instance } from "@/utils"
+import { Metadata } from "@/types"
+import Link from "next/link"
+import { FiPhone } from "react-icons/fi"
+import { Trans } from "../common"
 
-const fetcher = (url: string) => instance.get(url).then((res) => res.data);
+const fetcher = (url: string) => instance.get(url).then((res) => res.data)
 
 const Footer = () => {
-    const { data: metadata }: { data: Metadata } = useSWR("/metadata", fetcher);
+    const { data: metadata }: { data: Metadata } = useSWR("/metadata", fetcher)
 
     return (
-        <footer className="bg-primary-light">
-            <div className="container m-auto px-4 py-8 border-b-4 border-primary-dark flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-4">
-                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-3/12">
-                    <Link href="/">
-                        <img
-                            src="logo.png"
-                            alt="Logo"
-                            className="h-[32px] max-w-full align-middle object-cover"
-                        />
-                    </Link>
-                    <h3 className="text-xl font-semibold text-primary">
-                        {metadata?.companyName || "CMED MEDICAL"}
-                    </h3>
-                    <p className="text-xs mb-4">
-                        Cmed Medical là công ty dẫn đầu, tiên phong trong lĩnh
-                        vực y tế, hợp tác với nhiều đối tác lớn trong và ngoài
-                        nước
-                    </p>
-                    <ul className="flex-col flex gap-4">
-                        <li className="flex items-center gap-2">
-                            <div className="bg-primary-dark w-6 h-6 rounded-full flex items-center justify-center">
-                                <FiPhone className="text-secondary" />
-                            </div>
-                            <p className="text-primary">
-                                <span className="mr-1">
-                                    <Trans text="common.sitePhoneLabel" />:
-                                </span>
-                                <a
-                                    href={`phone:${metadata?.companyPhone}`}
-                                    className="text-sm"
-                                >
-                                    {metadata?.companyPhone || "1900 0000"}
-                                </a>
-                            </p>
+        <footer className="bg-tertiary flex items-center justify-center text-secondary py-10 lg:py-20">
+            <div className="w-full container px-4 grid grid-cols-12">
+                <div className="col-span-12 lg:col-span-8 flex flex-col">
+                    <ul className="flex flex-col lg:flex-row lg:divide-x divide-tertiary-light mb-12 gap-4 lg:gap-0 order-2 lg:order-1">
+                        <li className="lg:pr-6">
+                            <Link href="#">
+                                <Trans text="footer.link.about" />
+                            </Link>
                         </li>
-                        <li className="flex items-center gap-2">
-                            <div className="bg-primary-dark w-6 h-6 rounded-full flex items-center justify-center">
-                                <FiGlobe className="text-secondary" />
-                            </div>
-                            <p className="text-primary">
-                                <span className="mr-1">
-                                    <Trans text="common.siteWebLabel" />:
-                                </span>
-                                <a href="#" className="text-sm">
-                                    {"cmed.com.vn"}
-                                </a>
-                            </p>
+                        <li className="lg:px-6">
+                            <Link href="#">
+                                <Trans text="footer.link.recruitment" />
+                            </Link>
                         </li>
-                        <li className="flex items-center gap-2">
-                            <div className="bg-primary-dark w-6 h-6 rounded-full flex items-center justify-center">
-                                <FiMail className="text-secondary" />
-                            </div>
-                            <p className="text-primary">
-                                <span className="mr-1">
-                                    <Trans text="common.siteEmailLabel" />:
-                                </span>
-                                <a
-                                    href={`mailto:${metadata?.companyEmail}`}
-                                    className="text-sm"
-                                >
-                                    {metadata?.companyEmail || "email@abc.xyz"}
-                                </a>
-                            </p>
+                        <li className="lg:px-6">
+                            <Link href="#">
+                                <Trans text="footer.link.contact" />
+                            </Link>
                         </li>
-                        <li className="flex items-center gap-2">
-                            <div className="bg-primary-dark w-6 h-6 px-1 rounded-full flex items-center justify-center">
-                                <FiMapPin className="text-secondary" />
-                            </div>
-                            <p className="text-primary">
-                                <span className="mr-1">
-                                    <Trans text="common.siteAddressLabel" />:
-                                </span>
-                                <span className="text-sm text-justify">
-                                    {metadata?.companyAddress || "Hanoi"}
-                                </span>
-                            </p>
+                        <li className="lg:pl-6">
+                            <Link href="#">
+                                <Trans text="footer.link.terms" />
+                            </Link>
                         </li>
                     </ul>
-                </div>
-                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-2/12">
-                    <h4 className="font-semibold capitalize text-xl text-primary">
-                        Công ty
-                    </h4>
-                    <ul className="flex flex-col gap-4 text-primary">
-                        <li>
-                            <Link href="#">Về chúng tôi</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Tuyển dụng</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Liên hệ</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Điều khoản sử dụng</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col lg:items-center gap-4 px-4 lg:w-2/12">
-                    <h4 className="font-semibold capitalize text-xl text-primary">
-                        Công ty
-                    </h4>
-                    <ul className="flex flex-col gap-4 text-primary">
-                        <li>
-                            <Link href="#">Về chúng tôi</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Tuyển dụng</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Liên hệ</Link>
-                        </li>
-                        <li>
-                            <Link href="#">Điều khoản sử dụng</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col items-center gap-4 px-4 lg:w-5/12">
-                    <h4 className="font-semibold capitalize text-xl text-primary text-center">
-                        Nhận thông báo mới nhất từ chúng tôi
-                    </h4>
-                    <div className="flex items-center justify-center gap-1 content-stretch">
-                        <input
-                            type="text"
-                            placeholder="E-mail"
-                            className="w-full grow rounded-md border-[1.5px] border-primary border-stroke bg-transparent py-1 px-2 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                        />
-                        <Button className="px-2 py-1 flex items-center justify-center gap-1">
-                            <Trans text="common.send" />
-                            <FiSend />
-                        </Button>
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8 order-1 lg:order-2 mb-8 lg:mb-0">
+                        <Link href="#">
+                            <img
+                                src="logo-bw.png"
+                                alt="logo"
+                                className="object-contain h-10"
+                            />
+                        </Link>
+                        <div>
+                            <h5 className="uppercase mb-4 lg:mb-6">
+                                {metadata?.companyName ||
+                                    "CÔNG TY CỔ PHẦN TƯ VẤN VẬN HÀNH VÀ KINH DOANH Y TẾ CMED"}
+                            </h5>
+                            <p className="text-sm font-light">
+                                {metadata?.companyAddress ||
+                                    "Tầng 12, Tòa nhà Diamond Flower, Số 48 Đường Lê Văn Lương, Phường Nhân Chính, Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam"}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="container m-auto px-4 py-8">
-                <div className="px-4 flex flex-col lg:flex-row items-center justify-between gap-4">
-                    <h2 className="uppercase font-semibold text-primary text-center">
-                        <Trans text="footer.title" />
-                    </h2>
-                    <ul className="flex items-center justify-center gap-2">
-                        <li>
-                            <Link href="#">
-                                <div className="bg-primary-dark w-8 h-8 rounded-full flex items-center justify-center">
-                                    <RiFacebookCircleLine className="text-secondary text-xl" />
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <div className="bg-primary-dark w-8 h-8 rounded-full flex items-center justify-center">
-                                    <RiInstagramLine className="text-secondary text-xl" />
-                                </div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <div className="bg-primary-dark w-8 h-8 rounded-full flex items-center justify-center">
-                                    <RiMailLine className="text-secondary text-xl" />
-                                </div>
-                            </Link>
-                        </li>
-                    </ul>
+                <div className="col-span-12 lg:col-span-4">
+                    <h4 className="lg:text-right text-2xl mb-8 lg:mb-12">
+                        <FiPhone className="inline-block mr-2" />
+                        {metadata?.companyPhone || "0898 099 886"}
+                    </h4>
+                    <p className="lg:text-right mb-6">
+                        <span className="capitalize">
+                            <Trans text="footer.email" />
+                        </span>
+                        : {metadata?.companyEmail || "info@cmed.vn"}
+                    </p>
+                    <p className="lg:text-right">
+                        <span className="capitalize">
+                            <Trans text="footer.website" />
+                        </span>
+                        : {"cmed.vn"}
+                    </p>
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer

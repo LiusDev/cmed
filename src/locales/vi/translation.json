@@ -32,6 +32,10 @@
             "title": "Cmed",
             "description": "Giải pháp kiến tạo và phát triển phòng khám - chuỗi phòng khám",
             "buttonContent": "1K +  HAPPY COSTUMERS"
+        },
+        "service": {
+            "title": "Dịch vụ",
+            "viewMore": "Xem tất cả dịch vụ"
         }
     }
 }

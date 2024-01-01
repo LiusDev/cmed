@@ -14,7 +14,7 @@ const buttonVariants: Record<Variant, string> = {
 type Type = "default" | "thin" | "square" | "circle"
 
 const buttonTypes: Record<Type, string> = {
-    default: "px-8 py-4",
+    default: "px-8 py-2",
     thin: "px-4 py-2",
     square: "px-4 py-4 rounded-none",
     circle: "px-4 py-4 rounded-full",

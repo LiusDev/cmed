@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button, Trans } from "../common"
-import { MdArrowBack, MdArrowForwardIos } from "react-icons/md"
+import { MdArrowForwardIos } from "react-icons/md"
 import type { Service } from "@/types"
 import { twMerge } from "tailwind-merge"
 
@@ -37,11 +37,11 @@ interface ServiceProps {
     className?: string
 }
 
-const Service = ({ services, className = "" }: ServiceProps) => {
+const Services = ({ services, className = "" }: ServiceProps) => {
     return (
-        <section className={twMerge(` py-20 ${className}`)}>
+        <section className={twMerge(` my-20 ${className}`)}>
             <div className="container px-4 m-auto">
-                <h2 className="capitalize font-semibold text-4xl text-center">
+                <h2 className="capitalize font-semibold text-4xl text-center mb-4">
                     <Trans text="home.service.title" />
                 </h2>
                 <div className="flex items-center justify-end mb-8">
@@ -64,4 +64,4 @@ const Service = ({ services, className = "" }: ServiceProps) => {
     )
 }
 
-export default Service
+export default Services

@@ -36,6 +36,19 @@
         "service": {
             "title": "Dịch vụ",
             "viewMore": "Xem tất cả dịch vụ"
+        },
+        "project": {
+            "title": "Dự án"
+        },
+        "about": {
+            "title": "Giấc mơ khát vọng việt",
+            "description": "“CMED là dự án khởi nghiệp theo đuổi sứ mệnh cung cấp giải pháp kiến tạo và phát triển các mô hình y tế tư nhân giúp tối ưu thời gian và nguồn nhân lực cho doanh nghiệp. Hơn ai hết, chúng tôi hiểu rõ những khó khăn khi đặt những viên gạch đầu tiên xây dựng doanh nghiệp y tế tư nhân và những bất cập mà hệ thống y tế ở Việt Nam gặp phải. CMED mong muốn góp một cánh tay đồng hành cùng doanh nghiệp xây dựng doanh nghiệp với những giải pháp về vận hành, nhân sự, công nghệ và xây dựng, thực thi các chiến lược truyền thông.”"
+        },
+        "partner": {
+            "title": "Đối tác"
+        },
+        "customer": {
+            "title": "Khách hàng"
         }
     }
 }

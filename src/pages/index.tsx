@@ -1,9 +1,15 @@
-import { Banner, Services } from "@/components/homepage"
+import {
+    Banner,
+    Customers,
+    Partners,
+    Projects,
+    Services,
+} from "@/components/homepage"
+import About from "@/components/homepage/About"
 import { MainLayout } from "@/components/layout"
 import type { Customer, Partner, Project, Service } from "@/types"
 import { instance } from "@/utils"
 import { InferGetStaticPropsType } from "next"
-import React from "react"
 
 interface HomeProps {
     services: InferGetStaticPropsType<typeof getStaticProps>["services"]
@@ -12,11 +18,15 @@ interface HomeProps {
     customers: InferGetStaticPropsType<typeof getStaticProps>["customers"]
 }
 
-const Home = ({ services }: HomeProps) => {
+const Home = ({ services, projects, partners, customers }: HomeProps) => {
     return (
         <MainLayout>
             <Banner />
             <Services services={services} />
+            <Projects projects={projects} />
+            <About />
+            <Partners partners={partners} />
+            <Customers customers={customers} />
         </MainLayout>
     )
 }
@@ -26,7 +36,7 @@ export const getStaticProps = async () => {
         (await instance.get("/services?perPage=3")).data || []
 
     const projects: Project[] =
-        (await instance.get("/projects?perPage=10")).data || []
+        (await instance.get("/projects?perPage=4")).data || []
 
     const partners: Partner[] = (await instance.get("/partners")).data || []
 

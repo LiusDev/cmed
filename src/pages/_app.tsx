@@ -2,8 +2,8 @@ import type { AppProps } from "next/app"
 import { I18nextProvider } from "react-i18next"
 import i18n from "@/translation/i18n"
 import "@mantine/core/styles.css"
-import "@mantine/carousel/styles.css"
 import "@/styles/globals.css"
+import "@mantine/carousel/styles.css"
 
 import { MantineProvider, createTheme } from "@mantine/core"
 

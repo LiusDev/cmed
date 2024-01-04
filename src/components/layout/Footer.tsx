@@ -1,14 +1,11 @@
-import useSWR from "swr"
-import { instance } from "@/utils"
+import { doGet, instance } from "@/utils"
 import { Metadata } from "@/types"
 import Link from "next/link"
 import { FiPhone } from "react-icons/fi"
 import { Trans } from "../common"
 
-const fetcher = (url: string) => instance.get(url).then((res) => res.data)
-
 const Footer = () => {
-    const { data: metadata }: { data: Metadata } = useSWR("/metadata", fetcher)
+    const { data: metadata }: { data: Metadata } = doGet("/metadata")
 
     return (
         <footer className="bg-tertiary flex items-center justify-center text-secondary py-10 lg:py-20">
@@ -39,7 +36,7 @@ const Footer = () => {
                     <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8 order-1 lg:order-2 mb-8 lg:mb-0">
                         <Link href="#">
                             <img
-                                src="logo-bw.png"
+                                src="/logo-bw.png"
                                 alt="logo"
                                 className="object-contain h-10"
                             />

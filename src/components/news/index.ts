@@ -1,0 +1,5 @@
+export { default as Title } from "./Title"
+export { default as CategoriesNav } from "./CategoriesNav"
+export { default as NewsList } from "./NewsList"
+export { default as Pagination } from "./Pagination"
+export { default as NewsItem } from "./NewsItem"

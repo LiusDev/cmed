@@ -6,7 +6,8 @@
         "siteEmailLabel": "Email",
         "siteAddressLabel": "Địa chỉ",
         "viewMore": "Xem thêm",
-        "send": "Gửi"
+        "send": "Gửi",
+        "noData": "Không có dữ liệu"
     },
     "header": {
         "home": "Trang chủ",
@@ -49,6 +50,12 @@
         },
         "customer": {
             "title": "Khách hàng"
+        }
+    },
+    "news": {
+        "title": "Tin tức sự kiện",
+        "detail": {
+            "related": "Tin tức khác"
         }
     }
 }

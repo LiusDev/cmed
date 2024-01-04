@@ -118,7 +118,7 @@ const Logo = () => {
     return (
         <Link href="/">
             <img
-                src="logo.png"
+                src="/logo.png"
                 alt="Logo"
                 className="h-[32px] max-w-full align-middle object-cover"
             />

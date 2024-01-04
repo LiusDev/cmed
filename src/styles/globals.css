@@ -8,3 +8,11 @@ body {
     @apply font-primary;
     @apply text-tertiary;
 }
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    @apply font-primary;
+    @apply text-tertiary;
+}

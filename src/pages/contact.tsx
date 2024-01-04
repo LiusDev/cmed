@@ -83,16 +83,16 @@ const Contact = () => {
     return (
         <MainLayout>
             <div className="container m-auto px-4 mt-28">
-                <h1 className="pb-8 mb-20 text-center border-b border-tertiary/50 text-4xl uppercase">
+                <h1 className="pb-8 mb-20 text-center border-b border-tertiary/50 text-2xl md:text-4xl uppercase">
                     <Trans text="contact.title" />
                 </h1>
                 <img src="/contact/map.png" alt="Map" className="my-20" />
-                <h2 className="text-center mb-8 text-2xl">
+                <h2 className="text-center mb-8 text-lg md:text-2xl">
                     <Trans text="contact.description" />
                 </h2>
                 <div className="grid grid-cols-2 gap-x-16 gap-y-8 w-full max-w-3xl m-auto mb-20">
                     <div className="col-span-2 grid grid-cols-2 gap-x-16">
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                             <label htmlFor="" className="font-medium">
                                 <Trans text="contact.form.userType.label" />
                             </label>
@@ -109,7 +109,7 @@ const Contact = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                         <label htmlFor="" className="font-medium">
                             <Trans text="contact.form.name" />
                         </label>
@@ -119,7 +119,7 @@ const Contact = () => {
                             {...form.getInputProps("name")}
                         />
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                         <label htmlFor="" className="font-medium">
                             <Trans text="contact.form.phone" />
                         </label>
@@ -129,7 +129,7 @@ const Contact = () => {
                             {...form.getInputProps("phone")}
                         />
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                         <label htmlFor="" className="font-medium">
                             <Trans text="contact.form.company" />
                         </label>
@@ -139,7 +139,7 @@ const Contact = () => {
                             {...form.getInputProps("company")}
                         />
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                         <label htmlFor="" className="font-medium">
                             <Trans text="contact.form.email" />
                         </label>

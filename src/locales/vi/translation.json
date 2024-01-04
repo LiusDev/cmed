@@ -57,5 +57,24 @@
         "detail": {
             "related": "Tin tức khác"
         }
+    },
+    "contact": {
+        "title": "Liên hệ với chúng tôi",
+        "description": "Hãy để chúng tôi góp phần vào câu chuyện thành công của bạn",
+        "form": {
+            "userType": {
+                "label": "Bạn là",
+                "options": {
+                    "personal": "Cá nhân",
+                    "hospital": "Bệnh viện"
+                }
+            },
+            "name": "Họ và tên",
+            "phone": "Số điện thoại",
+            "company": "Công ty",
+            "email": "Email",
+            "message": "Nội dung",
+            "send": "Gửi nội dung"
+        }
     }
 }

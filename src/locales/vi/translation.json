@@ -7,7 +7,8 @@
         "siteAddressLabel": "Địa chỉ",
         "viewMore": "Xem thêm",
         "send": "Gửi",
-        "noData": "Không có dữ liệu"
+        "noData": "Không có dữ liệu",
+        "search": "Tìm kiếm"
     },
     "header": {
         "home": "Trang chủ",
@@ -51,6 +52,11 @@
         "customer": {
             "title": "Khách hàng"
         }
+    },
+    "project": {
+        "title": "Tất cả dự án",
+        "other": "Dự án khác",
+        "featured": "Dự án nổi bật"
     },
     "news": {
         "title": "Tin tức sự kiện",

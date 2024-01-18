@@ -42,6 +42,7 @@ const config: Config = {
             aspectRatio: {
                 "4/3": "4 / 3",
                 "21/9": "21 / 9",
+                "4/1": "4 / 1",
             },
         },
     },

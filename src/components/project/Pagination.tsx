@@ -9,20 +9,22 @@ interface PaginationProps {
 
 const Pagination = ({ pageSize }: PaginationProps) => {
     const router = useRouter()
-    const { page, c } = router.query
+    const { keyword, page } = router.query
 
-    const { data } = doGet(`/news/count${c ? `?category=${c}` : ""} `)
+    const { data } = doGet(
+        `/projects/count?${keyword && `keyword=${keyword}&`}`
+    )
 
-    const [totalNews, setTotalNews] = useState(0)
+    const [totalProjects, setTotalProjects] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
-        !data ? setTotalNews(0) : setTotalNews(data)
+        !data ? setTotalProjects(0) : setTotalProjects(data)
         !Number(page) ? setCurrentPage(1) : setCurrentPage(Number(page))
-    }, [data, page])
+    }, [data, page, keyword])
 
     const handlePageChange = (page: number) => {
-        router.push(`/news?${c ? `c=${c}&` : ""}page=${page}`)
+        router.push(`/projects?${keyword && `keyword=${keyword}&`}page=${page}`)
     }
 
     const getTotalPages = (items: number) => {
@@ -32,7 +34,7 @@ const Pagination = ({ pageSize }: PaginationProps) => {
         <div className="flex w-full items-center justify-center mb-16">
             <MantinePage
                 value={currentPage}
-                total={getTotalPages(totalNews)}
+                total={getTotalPages(totalProjects)}
                 onChange={(page) => handlePageChange(page)}
                 color="blue"
                 radius="xl"

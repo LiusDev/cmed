@@ -7,7 +7,7 @@ import { doPost } from "@/utils"
 import { notifications } from "@mantine/notifications"
 import { CreateContactDto } from "@/types"
 
-const Contact = () => {
+const ContactPage = () => {
     const form = useForm({
         initialValues: {
             isPersonal: true,
@@ -171,4 +171,4 @@ const Contact = () => {
     )
 }
 
-export default Contact
+export default ContactPage

@@ -18,7 +18,7 @@ const News = ({ news, categories }: NewsProps) => {
                 <Title />
                 <CategoriesNav categories={categories} />
                 <NewsList pageSize={PAGE_SIZE} news={news} />
-                <Pagination />
+                <Pagination pageSize={PAGE_SIZE} />
             </div>
         </MainLayout>
     )

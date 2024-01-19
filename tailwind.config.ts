@@ -22,7 +22,7 @@ const config: Config = {
                 DEFAULT: "#3e4756",
                 dark: "#000000",
                 light: "#808080",
-            },
+            }
         },
         fontFamily: {
             header: ["Quicksand"],
@@ -43,7 +43,7 @@ const config: Config = {
                 "4/3": "4 / 3",
                 "21/9": "21 / 9",
                 "4/1": "4 / 1",
-            },
+            }
         },
     },
     corePlugins: {

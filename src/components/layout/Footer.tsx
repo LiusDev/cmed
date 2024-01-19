@@ -28,7 +28,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li className="lg:pl-6">
-                            <Link href="#">
+                            <Link href="/terms">
                                 <Trans text="footer.link.terms" />
                             </Link>
                         </li>

@@ -18,7 +18,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li className="lg:px-6">
-                            <Link href="#">
+                            <Link href="/recruitment">
                                 <Trans text="footer.link.recruitment" />
                             </Link>
                         </li>

@@ -53,6 +53,30 @@
             "title": "Khách hàng"
         }
     },
+    "about": {
+        "article": {
+            "title": "Khát vọng vươn mình ra biển lớn",
+            "tabbar": {
+                "story": "Câu chuyện thương hiệu",
+                "vision": "Tầm nhìn, sứ mệnh",
+                "personnel": "Đội ngũ nhân sự"
+            },
+            "article1": "Kiến tạo giải pháp quản lý phòng khám",
+            "article2": "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating",
+            "article3": "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating"
+        },
+        "testimonials": {
+            "content": "Hơn ai hết, chúng tôi hiểu rõ những khó khăn khi đặt những viên gạch đầu tiên xây dựng doanh nghiệp y tế tư nhân và những bất cập mà hệ thống y tế ở Việt Nam gặp phải. CMED mong muốn góp một cánh tay đồng hành cùng doanh nghiệp xây dựng doanh nghiệp với những giải pháp về vận hành, nhân sự, công nghệ và xây dựng, thực thi các chiến lược truyền thông.",
+            "author": "CEO - Founder Tang Anh Tuan"
+        },
+        "vision": {
+            "title": "Tầm nhìn",
+            "content": "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating graphics including illustrations, logos, layouts and photos. You’ll be the one to shape the visual aspects of websites, books, magazines, product packaging, exhibitions and more."
+        },
+        "personnel": {
+            "title": "Đội ngũ nhân sự"
+        }
+    },
     "project": {
         "title": "Tất cả dự án",
         "other": "Dự án khác",

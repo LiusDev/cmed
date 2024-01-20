@@ -58,6 +58,91 @@
         "other": "Dự án khác",
         "featured": "Dự án nổi bật"
     },
+    "service": {
+        "banner": {
+            "title": "Dịch vụ",
+            "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC",
+            "buttonContent": "Xem thêm"
+        },
+        "group223": {
+            "header": "Thành phố Cmed",
+            "slogan": "Thành phố của những ước mơ sáng tạo & cống hiến"
+        },
+        "article": {
+            "header": "Tư vấn giải pháp tổng thể",
+            "content": "Sáng tạo thực chất không phải điều gì xa xôi hay to lớn mà với Apec, nó xuất phát từ tình yêu thương và người làm sáng tạo bản chất là người làm sản phẩm, người sáng tạo giá trị, sáng tạo trải nghiệm của Khách hàng. Nếu bạn muốn cùng gánh vác sứ mệnh \"giết chết khách hàng bằng giá trị, giá trị và thật nhiều giá trị\", hãy gia nhập thành phố của chúng tôi!",
+            "buttonContent": "Tìm hiểu thêm"
+        },
+        "target": {
+            "header": "Về con người, Cmed đặt mục tiêu cho công dân của mình:",
+            "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."
+        }
+        
+    },
+    "terms": {
+        "banner": {
+            "title": "Dấu ấn vượt thời gian",
+            "description": "Giải pháp kiến tạo và phát triển phòng khám - chuỗi phòng khám",
+            "buttonContent1": "1000++ Khách hàng tin tưởng",
+            "buttonContent2": "100++ Dự án ra mắt"
+        },
+        "content": {
+            "title": "Điều khoản sử dụng",
+            "terms1": {
+                "title": "ĐIỀU KIỆN SỬ DỤNG",
+                "terms1.1": "1.1 Bằng việc truy cập vào trang thông tin điện tử này, Quý khách đồng ý với các điều khoản sử dụng bên dưới. Xin vui lòng đọc kỹ các điều kiện này trước khi sử dụng trang thông tin điện tử này.",
+                "terms1.2": "1.2 Nếu Quý khách không đồng ý với các Điều Khoản Sử Dụng này, Quý khách không được truy cập hay sử dụng trang thông tin điện tử này.",
+                "terms1.3": "1.3 Chúng tôi có thể điều chỉnh các Điều Khoản Sử Dụng này vào bất kỳ lúc nào mà không cần phải thông báo cho Quý khách hay đưa ra bất kỳ lý do gì, thông qua việc đăng tải bản cập nhật của Điều Khoản Sử Dụng trên trang thông tin điện tử này. Đề nghị Quý khách truy cập vào mục này thường xuyên để kiểm tra sự thay đổi của Điều Khoản Sử Dụng. Trong trường hợp có thay đổi, Quý khách phải tuân thủ với điều khoản đã cập nhật. Nếu Quý khách không đồng ý với nội dung thay đổi của Điều Khoản Sử Dụng, Quý khách phải ngay lập tức ngừng việc sử dụng trang điện tử này."
+            },
+            "terms2": {
+                "title": "LIÊN KẾT CỦA CÁC TRANG ĐIỆN TỬ KHÁC:",
+                "terms2.1": "2.1 Trang thông tin điện tử này có thể được kết nối với những trang thông tin điện tử khác không chịu sự kiểm soát của AIA. Những liên kết này chỉ nhằm mục đích cung cấp thêm sự tiện lợi cho Quý khách và chúng tôi không chịu trách nhiệm về việc sử dụng, ảnh hưởng và nội dung được đăng tải trên các trang thông tin điện tử đó.2.2 AIA không có bất kỳ cam đoan hoặc đảm bảo nào và không chịu trách nhiệm về tính chính xác của các nội dung được đăng tải trên các trang thông tin điện tử này cũng như không phê duyệt các thông tin, ý kiến, sản phẩm và dịch vụ dược giới thiệu ở đó. Quý khách theo đây xác nhận và đồng ý rằng Quý khách sẽ tự chịu mọi rủi ro liên quan đến việc Quý khách truy cập vào các trang thông tin đó."
+                },
+            "terms3": {
+                "title": "GIỚI HẠN TRÁCH NHIỆM",
+                "terms3.1": "3.1 Quý khách đồng ý rằng với việc truy cập vào trang thông tin điện tử này, Quý khách sẽ tự chịu mọi rủi ro đối với việc Quý khách kết nối và sử dụng trang thông tin điện tử",
+                "terms3.2": "3.2 Trong phạm vi tối đa theo luật định, AIA loại trừ khỏi Điều Khoản Sử Dụng này tất cả các tuyên bố, đảm bảo, điều kiện, cam đoan, biện pháp khắc phục, trách nhiệm và điều kiện khác được hàm ý trong các chế định, pháp luật hoặc tập quán, ngoại trừ sự đảm bảo hoặc quyền hạn do pháp luật quy định, ngoại trừ những việc trái pháp luật hoặc là nguyên nhân dẫn đến vô hiệu một phần hoặc toàn bộ điều khoản này.",
+                "terms3.3": {
+                    "content": "3.3 Trong phạm vi tối đa theo luật định, AIA không chịu bất kỳ trách nhiệm và nghĩa vụ nào phát sinh từ hoặc liên quan đến việc Quý khách kết nối và sử dụng trang điện tử này, bao gồm và không giới hạn:",
+                    "a": "(a) bất kỳ thiệt hại thực sự hay có khả năng gây thiệt hại về lợi nhuận, doanh thu, sự tín nhiệm, tiết kiệm, dữ liệu, cơ hội kinh doanh hoặc kỳ vọng, và bất kỳ và tất cả các thiệt hại gián tiếp, đặc biệt, do quan hệ nhân quả, bị trừng phạt hoặc để làm gương, và",
+                    "b": "(b) bất cứ thiệt hại nào khác, ngay cả trong trường hợp AIA hay bất kỳ đại diện được ủy quyền nào của AIA đã được thông báo về khả năng xảy ra các thiệt hại đó."
+                }
+            },
+            "terms4": {
+                "title": "CÁC VẦN ĐỀ VỀ CHẾ ĐỊNH PHÁP LUẬT:",
+                "terms4.1": "Sakura Medical & Dental Clinic Chính thức thành lập và đi vào hoạt động từ tháng 3 năm 2014, phòng khám Đa khoa Sakura là địa chỉ chăm sóc và điều trị các vấn đề sức khỏe cho cộng đồng người Nhật đang sinh sống, làm việc và du lịch tại Hà Nội. ",
+                "terms4.2": "Phòng khám Đa khoa Sakura được xây dựng để trở thành mô hình y tế Nhật Bản kiểu mẫu ngay tại Việt Nam, không chỉ trong phong cách phục vụ, môi trường mà cả về chất lượng dịch vụ y tế. Với vị trí nhìn ra hồ Tây cùng không gian thoáng mát, thân thiện mang đậm phong cách Nhật Bản, Sakura mang lại cho bạn cảm giác bình yên như một nước Nhật thu nhỏ giữa Hà Nội ồn ã, đông đúc.",
+                "terms4.3": {
+                    "content": "Trải qua gần 10 năm xây dựng và phát triển, đội ngũ nhân sự tại Cmed đã cùng đồng hành trong nhiều hạng mục vận hành của phòng khám: ",
+                    "a": "Vận hành phòng khám",
+                    "b": "Tư vấn và quản lý nhân sự",
+                    "c": "Tư vấn và xử lý các vấn đề về pháp lý Tư vấn và phát triển kinh doanh"
+                }
+            },
+            "terms5": {
+                "title": "KHÔNG ĐỀ NGHỊ:",
+                "terms5.1": "Sakura Medical & Dental Clinic Chính thức thành lập và đi vào hoạt động từ tháng 3 năm 2014, phòng khám Đa khoa Sakura là địa chỉ chăm sóc và điều trị các vấn đề sức khỏe cho cộng đồng người Nhật đang sinh sống, làm việc và du lịch tại Hà Nội. ",
+                "terms5.2": "Phòng khám Đa khoa Sakura được xây dựng để trở thành mô hình y tế Nhật Bản kiểu mẫu ngay tại Việt Nam, không chỉ trong phong cách phục vụ, môi trường mà cả về chất lượng dịch vụ y tế. Với vị trí nhìn ra hồ Tây cùng không gian thoáng mát, thân thiện mang đậm phong cách Nhật Bản, Sakura mang lại cho bạn cảm giác bình yên như một nước Nhật thu nhỏ giữa Hà Nội ồn ã, đông đúc.",
+                "terms5.3": {
+                    "content": "Trải qua gần 10 năm xây dựng và phát triển, đội ngũ nhân sự tại Cmed đã cùng đồng hành trong nhiều hạng mục vận hành của phòng khám: ",
+                    "a": "Vận hành phòng khám",
+                    "b": "Tư vấn và quản lý nhân sự",
+                    "c": "Tư vấn và xử lý các vấn đề về pháp lý Tư vấn và phát triển kinh doanh"
+                }
+            },
+            "terms6": {
+                "title": " LUẬT ĐIỀU CHỈNH VÀ THẨM QUYỀN XÉT XỬ:",
+                "terms6.1": "Sakura Medical & Dental Clinic Chính thức thành lập và đi vào hoạt động từ tháng 3 năm 2014, phòng khám Đa khoa Sakura là địa chỉ chăm sóc và điều trị các vấn đề sức khỏe cho cộng đồng người Nhật đang sinh sống, làm việc và du lịch tại Hà Nội. ",
+                "terms6.2": "Phòng khám Đa khoa Sakura được xây dựng để trở thành mô hình y tế Nhật Bản kiểu mẫu ngay tại Việt Nam, không chỉ trong phong cách phục vụ, môi trường mà cả về chất lượng dịch vụ y tế. Với vị trí nhìn ra hồ Tây cùng không gian thoáng mát, thân thiện mang đậm phong cách Nhật Bản, Sakura mang lại cho bạn cảm giác bình yên như một nước Nhật thu nhỏ giữa Hà Nội ồn ã, đông đúc.",
+                "terms6.3": {
+                    "content": "Trải qua gần 10 năm xây dựng và phát triển, đội ngũ nhân sự tại Cmed đã cùng đồng hành trong nhiều hạng mục vận hành của phòng khám: ",
+                    "a": "Vận hành phòng khám",
+                    "b": "Tư vấn và quản lý nhân sự",
+                    "c": "Tư vấn và xử lý các vấn đề về pháp lý Tư vấn và phát triển kinh doanh"
+                }
+            }
+        }
+    },
     "news": {
         "title": "Tin tức sự kiện",
         "detail": {

@@ -20,6 +20,7 @@ const Services = ({ services }: ServicesProps) => {
           services.map((service) => {
             return (
               <div
+                key={service.id}
                 className={`${
                   selectedService === service
                     ? "bg-primary text-secondary-dark scale-y-125"
@@ -45,7 +46,7 @@ const Services = ({ services }: ServicesProps) => {
               <h2 className="text-3xl font-bold text-primary">
                 <Trans text="services.detail.services.title" />
               </h2>
-              <p className="">{parse(selectedService.content)}</p>
+              <div className="">{parse(selectedService.content)}</div>
             </div>
           </>
         )}

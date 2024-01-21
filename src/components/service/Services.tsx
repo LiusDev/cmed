@@ -15,7 +15,7 @@ const Services = ({ services }: ServicesProps) => {
 
   return (
     <div className="py-20 bg-[#f4f5f9]">
-      <div className="h-40 w-3/5 bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
+      <div className="h-40 md:w-3/5 w-full bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
         {services.length > 0 &&
           services.map((service) => {
             return (
@@ -32,16 +32,16 @@ const Services = ({ services }: ServicesProps) => {
             );
           })}
       </div>
-      <div className="flex px-60">
+      <div className="flex flex-col lg:flex-row xl:px-60">
         {selectedService && (
           <>
-            <div className="w-1/2 px-10">
+            <div className="lg:w-1/2 px-10 pb-20">
               <div>
                 <img src={selectedService.featuredImage} alt="image" />
               </div>
             </div>
 
-            <div className="flex flex-col justify-center w-1/2 px-10 space-y-10">
+            <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
               <h2 className="text-3xl font-bold text-primary">
                 <Trans text="services.detail.services.title" />
               </h2>

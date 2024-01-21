@@ -1,63 +1,44 @@
+import { Customer } from "@/types"
 import { twMerge } from "tailwind-merge"
-import { Carousel } from "@mantine/carousel"
 import { Trans } from "../common"
+import { Carousel } from "@mantine/carousel"
 
+interface CustomersProps {
+    customers: Customer[]
+    className?: string
+}
 
-const persons = [
-    {
-        "id": 4,
-        "name": "Tang Anh Tuan",
-        "position": "CEO - Founder"
-        
-    },
-    {
-        "id": 4,
-        "name": "Tang Anh Tuan",
-        "position": "CEO - Founder"
-    },
-    {
-        "id": 4,
-        "name": "Tang Anh Tuan",
-        "position": "CEO - Founder"
-    },
-    {
-        "id": 4,
-        "name": "Tang Anh Tuan",
-        "position": "CEO - Founder"
-    },
-    {
-        "id": 4,
-        "name": "Tang Anh Tuan",
-        "position": "CEO - Founder"
-    }
-]
-
-const Personnel = ({ className = "" }) => {
+const Customers = ({ customers, className = "" }: CustomersProps) => {
     return (
         <section className={twMerge(`my-20 ${className}`)}>
             <div className="container m-auto px-4">
-                <h2 className=" text-start text-4xl font-semibold mt-20 px-10">
-                    {/* <Trans text="home.partner.title" /> */}
-                    Đội ngũ nhân sự
+                <h2 className="text-center text-4xl font-semibold mb-10">
+                    <Trans text="home.customer.title" />
                 </h2>
                 <Carousel
                     withIndicators
-                    height={500}
+                    height={600}
                     slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
                     slideGap={{ base: 0, sm: "md" }}
                     loop
                     align="start"
                     controlSize={40}
                 >
-                    {persons.map((person) => (
-                        <Carousel.Slide key={person.id}>
-                            <div className="h-full w-full mt-10">
+                    {customers.map((customer) => (
+                        <Carousel.Slide key={customer.id}>
+                            <div className="px-8 py-4 bg-secondary-dark h-full flex flex-col items-center justify-center">
                                 <img
-                                    src={"/about/personnel/person.png"}
-                                    alt={person.name}
-                                    className="object-contain mx-auto"
+                                    src={customer.image}
+                                    alt={customer.name}
+                                    className="object-contain mb-16"
                                 />
-                                
+                                <h3 className="text-center text-3xl font-medium mb-8">
+                                    {customer.name}
+                                </h3>
+
+                                <p className="text-center text-lg">
+                                    {customer.description}
+                                </p>
                             </div>
                         </Carousel.Slide>
                     ))}
@@ -67,4 +48,4 @@ const Personnel = ({ className = "" }) => {
     )
 }
 
-export default Personnel
+export default Customers

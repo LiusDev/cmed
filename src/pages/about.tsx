@@ -1,16 +1,35 @@
-import { Article, Banner, Testimonials, Vision } from "@/components/about"
-import Personnel from "@/components/about/Personnel"
-import { MainLayout } from "@/components/layout"
-import React from "react"
+import { Article, Banner, Testimonials, Vision } from "@/components/about";
+import Personnel from "@/components/about/Personnel";
+import { MainLayout } from "@/components/layout";
+import type { Staff } from "@/types";
+import { instance } from "@/utils";
 
-const AboutPage = () => {
-    return <MainLayout>
-        <Banner />
-        <Article />
-        <Testimonials />
-        <Vision />
-        <Personnel />
-    </MainLayout>
+interface PersonnelProps {
+  staffs: Staff[];
 }
 
-export default AboutPage
+const AboutPage = ({ staffs }: PersonnelProps) => {
+  console.log(staffs);
+  return (
+    <MainLayout>
+      <Banner />
+      <Article />
+      <Testimonials />
+      <Vision />
+      <Personnel staffs={staffs} />
+    </MainLayout>
+  );
+};
+
+export const getStaticProps = async () => {
+  const staffs: Staff[] = (await instance.get("/staffs")).data || [];
+
+  return {
+    props: {
+      staffs,
+    },
+    revalidate: 30,
+  };
+};
+
+export default AboutPage;

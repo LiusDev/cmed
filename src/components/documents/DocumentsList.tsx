@@ -12,7 +12,7 @@ const DocumentsList = ({ documents }: DocumentsListProps) => {
       <Grid>
         {documents.map((document) => {
           return (
-            <Grid.Col span={3}>
+            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
               <DocumentItem document={document} />
             </Grid.Col>
           );

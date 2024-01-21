@@ -9,11 +9,11 @@ const Article = () => {
             </div>
 
             <div className="mt-40 px-10 text-center space-y-5">
-                <h2 className="text-primary font-bold text-xl"><Trans text="service.article.header" /></h2>
-                <p className="text-base"><Trans text="service.article.content" /></p>
+                <h2 className="text-primary font-bold text-xl"><Trans text="services.article.header" /></h2>
+                <p className="text-base"><Trans text="services.article.content" /></p>
             </div>
 
-             <Button variant="outline" className="mx-auto my-12 w-52" href="https://www.facebook.com"><Trans text="service.article.buttonContent" /></Button>
+             <Button variant="outline" className="mx-auto my-12 w-52" href="/service/detail"><Trans text="services.article.buttonContent" /></Button>
 
         </div>
     )

@@ -43,6 +43,9 @@ const config: Config = {
                 "4/3": "4 / 3",
                 "21/9": "21 / 9",
                 "4/1": "4 / 1",
+            },
+            boxShadow: {
+                "custom": "0px 3px 5px rgba(0,0,0,0.24)",
             }
         },
     },

@@ -7,10 +7,10 @@ const Banner = () => {
                 <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
                     <div className="text-secondary">
                         <h1 className="text-7xl font-bold mb-12">
-                            <Trans text="service.banner.title" />
+                            <Trans text="services.banner.title" />
                         </h1>
                         <p className="mb-12 text-lg font-light">
-                            <Trans text="service.banner.description" />
+                            <Trans text="services.banner.description" />
                         </p>
                         <div className="flex gap-4">
                             
@@ -18,7 +18,7 @@ const Banner = () => {
                         className="col-span-2"
                         variant="outline"
                     >
-                        <Trans text="service.banner.buttonContent" /> 
+                        <Trans text="services.banner.buttonContent" /> 
                     </Button>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ const Banner = () => {
   const [keyword, setKeyword] = useState("");
 
   const handleSearch = () => {
-    router.push(`/project?name=${keyword}`);
+    router.push(`/projects?name=${keyword}`);
   };
   return (
     <section className="mt-16">

@@ -1,17 +1,43 @@
+import { useState } from "react";
 import { Trans } from "../common";
-
+import Link from "next/link";
 const TabBar = () => {
+  const [isChosen, setIsChosen] = useState("");
+  const handleChosen = (tabID: string) => {
+    setIsChosen(tabID);
+  };
   return (
-    <div className=" mx-40 border-b-[1px] border-[#000] md:flex justify-center space-x-20 hidden">
-      <div className="py-5 w-80 border-b-[2px] border-primary text-lg font-medium text-center">
-        <Trans text="about.article.tabbar.story" />
-      </div>
-      <div className="py-5 w-80 text-lg font-medium text-center">
-        <Trans text="about.article.tabbar.vision" />
-      </div>
-      <div className="py-5 w-80 text-lg font-medium text-center">
-        <Trans text="about.article.tabbar.personnel" />
-      </div>
+    <div className="w-full border-b-[1px] border-[#000] md:flex justify-center hidden">
+      <Link href={"#article"}>
+        <div
+          onClick={() => handleChosen("article")}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
+            isChosen === "article" && "border-b-[2px]"
+          }`}
+        >
+          <Trans text="about.article.tabbar.story" />
+        </div>
+      </Link>
+      <Link href={"#vision"}>
+        <div
+          onClick={() => handleChosen("vision")}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
+            isChosen === "vision" && "border-b-[2px]"
+          }`}
+        >
+          <Trans text="about.article.tabbar.vision" />
+        </div>
+      </Link>
+      <Link href={"#staff"}>
+        <div
+          onClick={() => handleChosen("staff")}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
+            isChosen === "staff" && "border-b-[2px]"
+          }`}
+        >
+          <Trans text="about.article.tabbar.personnel" />
+        </div>
+      </Link>
     </div>
   );
 };

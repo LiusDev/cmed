@@ -4,34 +4,6 @@ import { Carousel } from "@mantine/carousel";
 import { Trans } from "../common";
 import type { Staff } from "@/types";
 
-// const staff = [
-//   {
-//     id: 4,
-//     name: "Tang Anh Tuan",
-//     position: "CEO - Founder",
-//   },
-//   {
-//     id: 4,
-//     name: "Tang Anh Tuan",
-//     position: "CEO - Founder",
-//   },
-//   {
-//     id: 4,
-//     name: "Tang Anh Tuan",
-//     position: "CEO - Founder",
-//   },
-//   {
-//     id: 4,
-//     name: "Tang Anh Tuan",
-//     position: "CEO - Founder",
-//   },
-//   {
-//     id: 4,
-//     name: "Tang Anh Tuan",
-//     position: "CEO - Founder",
-//   },
-// ];
-
 interface PersonnelProps {
   staffs: Staff[];
   className?: string;
@@ -39,20 +11,17 @@ interface PersonnelProps {
 
 const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
   return (
-    <section className={twMerge(`my-20 ${className}`)}>
-      <img
-        src="/about/personnel/bg.png"
-        className="absolute w-full lg:w-4/5 mx-auto left-0 right-0"
-        alt="image"
-      />
-      <div className="container m-auto px-4">
-        <h2 className="absolute text-center text-4xl font-semibold mx-auto left-0 right-0 mt-20 text-secondary">
+    <section id="staff" className={twMerge(`my-20 ${className}`)}>
+      <div className="bg-[url('/about/personnel/bg.png')] flex items-center justify-center lg:w-[500px] w-full h-40 mx-auto">
+        <h2 className=" text-center text-4xl font-semibold mt-10 text-[#000]">
           <Trans text="about.personnel.title" />
         </h2>
+      </div>
+      <div className="container m-auto px-4">
         {staffs.length && (
           <Carousel
             withIndicators
-            height={800}
+            height={600}
             slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
             slideGap={{ base: 0, sm: "md" }}
             loop
@@ -61,7 +30,7 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
           >
             {staffs.map((staff) => (
               <Carousel.Slide key={staff.id}>
-                <div className="h-full w-full mt-52">
+                <div className="h-full w-full mt-32">
                   <img
                     src={staff.featuredImage}
                     alt={staff.name}

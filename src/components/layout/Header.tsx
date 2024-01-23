@@ -16,7 +16,7 @@ const headerNav = [
   },
   {
     i18nTitle: "header.project",
-    href: "/project",
+    href: "/projects",
   },
   {
     i18nTitle: "header.service",

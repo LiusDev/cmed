@@ -12,14 +12,14 @@ interface OtherProjectProps {
 
 const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
     const router = useRouter()
-    const { keyword, page } = router.query
+    const { name, page } = router.query
 
     const [data, setData] = useState<Project[]>(projects)
 
     const handleGetItems = async () => {
         const { data: fetchProjects } = await instance.get(
             `/projects?perPage=${pageSize}&page=${page || 1}${
-                keyword ? `&keyword=${keyword}` : ""
+                name ? `&name=${name}` : ""
             }`
         )
         setData(fetchProjects)
@@ -27,7 +27,7 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
 
     useEffect(() => {
         handleGetItems()
-    }, [page, keyword])
+    }, [page, name])
 
     if (!data || data.length === 0) return <></>
 

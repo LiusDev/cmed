@@ -9,11 +9,9 @@ interface PaginationProps {
 
 const Pagination = ({ pageSize }: PaginationProps) => {
     const router = useRouter()
-    const { keyword, page } = router.query
+    const { name, page } = router.query
 
-    const { data } = doGet(
-        `/projects/count?${keyword && `keyword=${keyword}&`}`
-    )
+    const { data } = doGet(`/projects/count?${name && `name=${name}&`}`)
 
     const [totalProjects, setTotalProjects] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
@@ -21,10 +19,10 @@ const Pagination = ({ pageSize }: PaginationProps) => {
     useEffect(() => {
         !data ? setTotalProjects(0) : setTotalProjects(data)
         !Number(page) ? setCurrentPage(1) : setCurrentPage(Number(page))
-    }, [data, page, keyword])
+    }, [data, page, name])
 
     const handlePageChange = (page: number) => {
-        router.push(`/projects?${keyword && `keyword=${keyword}&`}page=${page}`)
+        router.push(`/projects?${name && `name=${name}&`}page=${page}`)
     }
 
     const getTotalPages = (items: number) => {

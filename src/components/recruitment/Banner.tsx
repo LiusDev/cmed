@@ -16,7 +16,7 @@ const Banner = () => {
                     <input
                         type="text"
                         className="w-full max-w-[800px] h-12 bg-white px-8 outline-none"
-                        placeholder="Search"
+                        placeholder="Tìm kiếm vị trí tuyển dụng"
                         value={keyword}
                         onChange={(e) => setKeyword(e.target.value)}
                     />

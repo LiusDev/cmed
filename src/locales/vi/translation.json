@@ -83,8 +83,12 @@
     },
     "project": {
         "title": "Tất cả dự án",
-        "other": "Dự án khác",
-        "featured": "Dự án nổi bật"
+        "featured": "Dự án nổi bật",
+        "detail": {
+            "title": "Tổng quan dự án",
+            "images": "Thư viện hình ảnh",
+            "other": "Các dự án khác"
+        }
     },
     "services": {
         "banner": {

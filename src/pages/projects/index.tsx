@@ -26,9 +26,6 @@ const ProjectPage = ({ projects }: ProjectPageProps) => {
       const response = await instance.get(router.asPath);
       const projects: Project[] = response.data || [];
       setData(projects);
-      console.log(projects);
-
-      // !projects.length && alert("No projects found");
     } catch (error) {
       console.error("Error fetching data:", error);
     }

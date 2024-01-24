@@ -13,7 +13,7 @@ const CategoriesNav = ({ categories }: CategoriesNavProps) => {
     <ul className="flex flex-col md:flex-row justify-between mb-16 md:border-b border-tertiary/20">
       <li className={`pb-4 ${!c && "md:border-b-2 border-primary"}`}>
         <Link
-          href="/news"
+          href="/documents"
           className={` font-medium ${!c && "text-primary font-semibold"}`}
         >
           Tất cả

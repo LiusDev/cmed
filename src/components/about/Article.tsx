@@ -18,7 +18,7 @@ const Article = () => {
             className="col-span-3 absolute top-20 lg:left-60 xl:left-72 w-[400px] hidden lg:block"
             alt="image"
           />
-          <div className="col-span-10 col-start-2 lg:col-span-3 lg:col-start-8 text-xl font-medium">
+          <div className="col-span-10 col-start-2 lg:col-span-3 lg:col-start-8 text-xl font-base">
             <p className="py-5">
               <Trans text="about.article.article1" />
             </p>

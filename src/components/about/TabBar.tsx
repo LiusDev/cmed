@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Trans } from "../common";
 import Link from "next/link";
 const TabBar = () => {
-  const [isChosen, setIsChosen] = useState("");
+  const [isChosen, setIsChosen] = useState("article");
   const handleChosen = (tabID: string) => {
     setIsChosen(tabID);
   };

@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <section className="mt-16">
       <div className="bg-[url('/home/home-banner.png')] bg-no-repeat bg-center bg-cover grid grid-cols-12 relative">
-        <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
+        <div className="col-span-12 md:col-span-12 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
           <div className="text-secondary">
             <h1 className="text-7xl font-bold mb-12">
               <Trans text="terms.banner.title" />

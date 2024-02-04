@@ -13,7 +13,11 @@ const Banner = () => {
               <Trans text="services.banner.description" />
             </p>
             <div className="flex gap-4">
-              <Button className="col-span-2" variant="secondary">
+              <Button
+                className="col-span-2"
+                variant="secondary"
+                href="/service/detail"
+              >
                 <Trans text="services.banner.buttonContent" />
               </Button>
             </div>

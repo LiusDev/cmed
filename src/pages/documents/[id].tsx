@@ -8,6 +8,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { DocumentItem } from "@/components/documents";
 import { Grid } from "@mantine/core";
+import PdfViewer from "@/components/pdfViewer/PdfViewer";
 
 interface NewsDetailProps {
   documents: Document;
@@ -36,10 +37,13 @@ const DocumentsDetail = ({ documents, relatedDocuments }: NewsDetailProps) => {
           {documents.name}
         </h1>
         <p className="text-sm mb-2">{formatDate(documents.createdAt, " - ")}</p>
-        <div className="pb-20 mb-20 border-b border-tertiary/20">
+        <div className="pb-10 border-b border-tertiary/20">
           {parse(documents.description)}
         </div>
-        <h2 className="text-xl md:text-3xl uppercase mb-10">
+
+        <PdfViewer url={documents.document} />
+
+        <h2 className="text-xl md:text-3xl uppercase my-10">
           <Trans text="documents.detail.related" />
         </h2>
         <Grid className="w-full pb-20">

@@ -1,7 +1,7 @@
 import { Metadata } from "@/types"
 import axios from "axios"
 import useSWR from "swr"
-import https from "https"
+import * as https from "https"
 
 export const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,

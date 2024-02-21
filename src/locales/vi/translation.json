@@ -8,7 +8,9 @@
         "viewMore": "Xem thêm",
         "send": "Gửi",
         "noData": "Không có dữ liệu",
-        "search": "Tìm kiếm"
+        "search": "Tìm kiếm",
+        "downloadDocument": "Tải tài liệu",
+        "downloadDocumentForm": "Vui lòng hoàn thiện form để tải tài liệu miễn phí"
     },
     "header": {
         "home": "Trang chủ",
@@ -134,7 +136,8 @@
         "title": "Tài liệu",
         "detail": {
             "related": "Tài liệu liên quan"
-        }
+        },
+        "others": "Tài liệu khác"
     },
     "terms": {
         "banner": {

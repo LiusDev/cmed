@@ -83,7 +83,7 @@ export const getMetadata = async (): Promise<Metadata> => {
 }
 
 // format 2023-12-27T21:04:56.000Z to 27/12/2023
-export const formatDate = (date: string, splitChar: string): string => {
+export const formatDate = (date: string, splitChar: string = " - "): string => {
     const [year, month, day] = date.split("T")[0].split("-")
     return `${day}${splitChar}${month}${splitChar}${year}`
 }

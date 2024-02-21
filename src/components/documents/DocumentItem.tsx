@@ -8,7 +8,7 @@ interface ItemProps {
 const DocumentItem = ({ document }: ItemProps) => {
     const [loading, setLoading] = useState(false)
     return (
-        <div className="p-5 bg-[#f3faff] overflow-hidden relative">
+        <div className="p-5 bg-primary/10 overflow-hidden relative">
             <Link
                 href={`/documents/${document.id}`}
                 onClick={() => setLoading(true)}

@@ -1,4 +1,4 @@
-import { BreadCr, Trans } from "@/components/common"
+import { BreadCr, Button, Trans } from "@/components/common"
 import { MainLayout } from "@/components/layout"
 import { Document } from "@/types"
 import { formatDate, instance } from "@/utils"
@@ -9,13 +9,21 @@ import { useTranslation } from "react-i18next"
 import { DocumentItem } from "@/components/documents"
 import { Grid } from "@mantine/core"
 import PdfViewer from "@/components/pdfViewer/PdfViewer"
+import Link from "next/link"
+import { modals } from "@mantine/modals"
+import ContactForm from "@/components/contact/ContactForm"
 
 interface NewsDetailProps {
     document: Document
     relatedDocuments: Document[]
+    otherDocuments: Document[]
 }
 
-const DocumentsDetail = ({ document, relatedDocuments }: NewsDetailProps) => {
+const DocumentsDetail = ({
+    document,
+    relatedDocuments,
+    otherDocuments,
+}: NewsDetailProps) => {
     const { t } = useTranslation()
 
     const breadCrumbsItems = [
@@ -29,6 +37,22 @@ const DocumentsDetail = ({ document, relatedDocuments }: NewsDetailProps) => {
         },
     ]
 
+    const downloadFile = () => {
+        window.open(document.document, "_blank")
+    }
+
+    const handleDownload = () =>
+        modals.open({
+            size: "xl",
+            title: t("common.downloadDocumentForm"),
+            children: (
+                <ContactForm
+                    showContent={false}
+                    submitFunction={downloadFile}
+                />
+            ),
+        })
+
     return (
         <MainLayout>
             <div className="container m-auto px-4 mt-28">
@@ -39,18 +63,46 @@ const DocumentsDetail = ({ document, relatedDocuments }: NewsDetailProps) => {
                 <p className="text-sm mb-2">
                     {formatDate(document.createdAt, " - ")}
                 </p>
-                <div className="pb-10 border-b border-tertiary/20">
-                    {parse(document.description)}
+                <div className="pb-10">{parse(document.description)}</div>
+
+                <div className="grid grid-cols-4">
+                    <div className="col-span-3">
+                        <PdfViewer url={document.document} />
+                        <div className="pt-10">
+                            <Button className="m-auto" onClick={handleDownload}>
+                                <Trans text="common.downloadDocument" />
+                            </Button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="text-md md:text-xl uppercase my-10 text-center">
+                            <Trans text="documents.detail.related" />
+                        </h3>
+                        <div className="bg-primary/10 p-4 flex flex-col gap-4">
+                            {relatedDocuments.length > 0 &&
+                                relatedDocuments.map((item) => (
+                                    <div className="p-3 bg-secondary">
+                                        <Link href={`/documents/${item.id}`}>
+                                            <h4 className="line-clamp-2 font-semibold mb-2">
+                                                {item.name}
+                                            </h4>
+                                        </Link>
+
+                                        <p className="text-sm">
+                                            {formatDate(item.createdAt)}
+                                        </p>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
                 </div>
 
-                <PdfViewer url={document.document} />
-
                 <h2 className="text-xl md:text-3xl uppercase my-10">
-                    <Trans text="documents.detail.related" />
+                    <Trans text="documents.others" />
                 </h2>
                 <Grid className="w-full pb-20">
-                    {relatedDocuments.length > 0 &&
-                        relatedDocuments.map((item) => (
+                    {otherDocuments.length > 0 &&
+                        otherDocuments.map((item) => (
                             <Grid.Col span={3}>
                                 <DocumentItem key={item.id} document={item} />
                             </Grid.Col>
@@ -74,17 +126,25 @@ export const getServerSideProps = async (
         `/documents/${id}`
     )
     const { data }: { data: Document[] } = await instance.get(
-        `/documents?c=${document.category.id}&perPage=4`
+        `/documents?c=${document.category.id}&perPage=7`
     )
+
+    const { data: otherDocumentsRaw } =
+        await instance.get(`/documents?perPage=5`)
 
     const relatedDocuments = data
         .filter((item) => item.id !== document.id)
-        .slice(0, 3)
+        .slice(0, 6)
+
+    const otherDocuments = otherDocumentsRaw
+        .filter((item: Document) => item.id !== document.id)
+        .slice(0, 4)
 
     return {
         props: {
             document,
             relatedDocuments,
+            otherDocuments,
         },
     }
 }

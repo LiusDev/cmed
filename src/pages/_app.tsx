@@ -7,6 +7,7 @@ import "@mantine/carousel/styles.css"
 import "@mantine/notifications/styles.css"
 
 import { MantineProvider, createTheme } from "@mantine/core"
+import { ModalsProvider } from "@mantine/modals"
 import { Notifications } from "@mantine/notifications"
 
 const theme = createTheme({})
@@ -15,8 +16,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <I18nextProvider i18n={i18n}>
             <MantineProvider theme={theme}>
-                <Notifications />
-                <Component {...pageProps} />
+                <ModalsProvider>
+                    <Notifications />
+                    <Component {...pageProps} />
+                </ModalsProvider>
             </MantineProvider>
         </I18nextProvider>
     )

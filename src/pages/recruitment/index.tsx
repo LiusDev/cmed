@@ -10,8 +10,6 @@ interface RecruitmentProps {
 }
 
 const Recruitment = ({ recruitment }: RecruitmentProps) => {
-    console.log(recruitment)
-
     return (
         <MainLayout>
             <Banner />

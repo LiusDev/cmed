@@ -3,13 +3,23 @@ import Personnel from "@/components/about/Personnel"
 import { MainLayout } from "@/components/layout"
 import type { Staff } from "@/types"
 import { instance } from "@/utils"
+import { useEffect, useState } from "react"
 
-interface PersonnelProps {
-    staffs: Staff[]
-}
+const AboutPage = () => {
+    const [staffs, setStaffs] = useState<Staff[]>([])
 
-const AboutPage = ({ staffs }: PersonnelProps) => {
-    console.log(staffs)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const staffs: Staff[] =
+                    (await instance.get("/staffs")).data || []
+                setStaffs(staffs)
+            } catch (error) {
+                console.error("Error fetching data:", error)
+            }
+        }
+        fetchData()
+    }, [])
     return (
         <MainLayout>
             <Banner />
@@ -19,16 +29,6 @@ const AboutPage = ({ staffs }: PersonnelProps) => {
             <Personnel staffs={staffs} />
         </MainLayout>
     )
-}
-
-export const getServerSideProps = async () => {
-    const staffs: Staff[] = (await instance.get("/staffs")).data || []
-
-    return {
-        props: {
-            staffs,
-        },
-    }
 }
 
 export default AboutPage

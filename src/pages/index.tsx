@@ -9,18 +9,36 @@ import About from "@/components/homepage/About"
 import { MainLayout } from "@/components/layout"
 import type { Customer, Partner, Project, Service } from "@/types"
 import { instance } from "@/utils"
-import { InferGetServerSidePropsType } from "next"
+import { useEffect, useState } from "react"
 
-interface HomeProps {
-    services: InferGetServerSidePropsType<typeof getServerSideProps>["services"]
-    projects: InferGetServerSidePropsType<typeof getServerSideProps>["projects"]
-    partners: InferGetServerSidePropsType<typeof getServerSideProps>["partners"]
-    customers: InferGetServerSidePropsType<
-        typeof getServerSideProps
-    >["customers"]
-}
+const Home = () => {
+    const [services, setServices] = useState<Service[]>([])
+    const [projects, setProjects] = useState<Project[]>([])
+    const [partners, setPartners] = useState<Partner[]>([])
+    const [customers, setCustomers] = useState<Customer[]>([])
 
-const Home = ({ services, projects, partners, customers }: HomeProps) => {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const services: Service[] =
+                    (await instance.get("/services")).data || []
+                const projects: Project[] =
+                    (await instance.get("/projects")).data || []
+                const partners: Partner[] =
+                    (await instance.get("/partners")).data || []
+                const customers: Customer[] =
+                    (await instance.get("/customers")).data || []
+
+                setServices(services)
+                setProjects(projects)
+                setPartners(partners)
+                setCustomers(customers)
+            } catch (error) {
+                console.error("Error fetching data:", error)
+            }
+        }
+        fetchData()
+    }, [])
     return (
         <MainLayout>
             <Banner />
@@ -33,24 +51,4 @@ const Home = ({ services, projects, partners, customers }: HomeProps) => {
     )
 }
 
-export const getServerSideProps = async () => {
-    const services: Service[] =
-        (await instance.get("/services?perPage=3")).data || []
-
-    const projects: Project[] =
-        (await instance.get("/projects?perPage=4")).data || []
-
-    const partners: Partner[] = (await instance.get("/partners")).data || []
-
-    const customers: Customer[] = (await instance.get("/customers")).data || []
-
-    return {
-        props: {
-            services,
-            projects,
-            partners,
-            customers,
-        },
-    }
-}
 export default Home

@@ -8,27 +8,19 @@ import {
 } from "@/components/project"
 import { Project } from "@/types"
 import { instance } from "@/utils"
-import { InferGetServerSidePropsType } from "next"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 const PAGE_SIZE = 9
 
-interface ProjectPageProps {
-    projects: InferGetServerSidePropsType<typeof getServerSideProps>["projects"]
-}
-
-const ProjectPage = ({ projects }: ProjectPageProps) => {
-    const [data, setData] = useState<Project[]>(projects)
+const ProjectPage = () => {
+    const [data, setData] = useState<Project[]>([])
     const router = useRouter()
     const fetchData = async () => {
         try {
             const response = await instance.get(router.asPath)
             const projects: Project[] = response.data || []
             setData(projects)
-            console.log(projects)
-
-            // !projects.length && alert("No projects found");
         } catch (error) {
             console.error("Error fetching data:", error)
         }
@@ -47,17 +39,6 @@ const ProjectPage = ({ projects }: ProjectPageProps) => {
             <Pagination pageSize={PAGE_SIZE} />
         </MainLayout>
     )
-}
-
-export const getServerSideProps = async () => {
-    const projects: Project[] =
-        (await instance.get(`/projects?perPage=${PAGE_SIZE}`)).data || []
-
-    return {
-        props: {
-            projects,
-        },
-    }
 }
 
 export default ProjectPage

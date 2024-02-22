@@ -14,13 +14,10 @@ interface DocumentsProps {
     categories: InferGetServerSidePropsType<
         typeof getServerSideProps
     >["categories"]
-    documents: InferGetServerSidePropsType<
-        typeof getServerSideProps
-    >["documents"]
 }
 
-const DocumentPage = ({ categories, documents }: DocumentsProps) => {
-    const [data, setData] = useState<Document[]>(documents)
+const DocumentPage = ({ categories }: DocumentsProps) => {
+    const [data, setData] = useState<Document[]>([])
     const router = useRouter()
     const fetchData = async () => {
         try {
@@ -50,12 +47,9 @@ const DocumentPage = ({ categories, documents }: DocumentsProps) => {
 export const getServerSideProps = async () => {
     const categories: Category[] =
         (await instance.get("/categories")).data || []
-    const documents: Document[] =
-        (await instance.get("/documents?perPage=12")).data || []
     return {
         props: {
             categories,
-            documents,
         },
     }
 }

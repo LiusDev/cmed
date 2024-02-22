@@ -13,12 +13,16 @@ import { useRouter } from "next/router"
 
 const PAGE_SIZE = 9
 
-const ProjectPage = () => {
-    const [data, setData] = useState<Project[]>([])
+interface ProjectPageProps {
+    projects: Project[]
+}
+
+const ProjectPage = ({ projects }: ProjectPageProps) => {
+    const [data, setData] = useState<Project[]>(projects)
     const router = useRouter()
     const fetchData = async () => {
         try {
-            const response = await instance.get(router.asPath)
+            const response = await instance.get("/projects?perPage=10")
             const projects: Project[] = response.data || []
             setData(projects)
         } catch (error) {
@@ -39,6 +43,16 @@ const ProjectPage = () => {
             <Pagination pageSize={PAGE_SIZE} />
         </MainLayout>
     )
+}
+
+export const getServerSideProps = async () => {
+    const response = await instance.get("/projects?perPage=10")
+    const projects: Project[] = response.data || []
+    return {
+        props: {
+            projects,
+        },
+    }
 }
 
 export default ProjectPage

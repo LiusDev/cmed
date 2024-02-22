@@ -8,14 +8,14 @@ import {
 } from "@/components/project"
 import { Project } from "@/types"
 import { instance } from "@/utils"
-import { InferGetStaticPropsType } from "next"
+import { InferGetServerSidePropsType } from "next"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 const PAGE_SIZE = 9
 
 interface ProjectPageProps {
-    projects: InferGetStaticPropsType<typeof getStaticProps>["projects"]
+    projects: InferGetServerSidePropsType<typeof getServerSideProps>["projects"]
 }
 
 const ProjectPage = ({ projects }: ProjectPageProps) => {
@@ -49,7 +49,7 @@ const ProjectPage = ({ projects }: ProjectPageProps) => {
     )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const projects: Project[] =
         (await instance.get(`/projects?perPage=${PAGE_SIZE}`)).data || []
 
@@ -57,7 +57,6 @@ export const getStaticProps = async () => {
         props: {
             projects,
         },
-        revalidate: 30,
     }
 }
 

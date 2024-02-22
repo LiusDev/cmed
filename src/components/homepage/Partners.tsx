@@ -30,7 +30,7 @@ const Partners = ({ partners, className = "" }: PartnerProps) => {
                                 <img
                                     src={partner.image}
                                     alt={partner.name}
-                                    className="object-contain h-full"
+                                    className="object-cover h-full object-center"
                                 />
                             </div>
                         </Carousel.Slide>

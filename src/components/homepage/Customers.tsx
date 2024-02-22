@@ -17,7 +17,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 </h2>
                 <Carousel
                     withIndicators
-                    height={600}
+                    height={500}
                     slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
                     slideGap={{ base: 0, sm: "md" }}
                     loop
@@ -26,11 +26,11 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 >
                     {customers.map((customer) => (
                         <Carousel.Slide key={customer.id}>
-                            <div className="px-8 py-4 bg-secondary-dark h-full flex flex-col items-center justify-center">
+                            <div className="px-8 py-4 bg-secondary-dark h-full flex flex-col items-center">
                                 <img
                                     src={customer.image}
                                     alt={customer.name}
-                                    className="object-contain mb-16"
+                                    className="object-cover object-center h-52 mb-16"
                                 />
                                 <h3 className="text-center text-3xl font-medium mb-8">
                                     {customer.name}

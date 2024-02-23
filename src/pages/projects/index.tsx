@@ -1,58 +1,53 @@
-import { Trans } from "@/components/common"
-import { MainLayout } from "@/components/layout"
+import { Trans } from "@/components/common";
+import { MainLayout } from "@/components/layout";
 import {
-    Banner,
-    FeaturedProject,
-    OtherProject,
-    Pagination,
-} from "@/components/project"
-import { Project } from "@/types"
-import { instance } from "@/utils"
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+  Banner,
+  FeaturedProject,
+  OtherProject,
+  Pagination,
+} from "@/components/project";
+import { Project } from "@/types";
+import { instance } from "@/utils";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import React from "react";
 
-const PAGE_SIZE = 9
+const PAGE_SIZE = 9;
 
-interface ProjectPageProps {
-    projects: Project[]
-}
-
-const ProjectPage = ({ projects }: ProjectPageProps) => {
-    const [data, setData] = useState<Project[]>(projects)
-    const router = useRouter()
-    const fetchData = async () => {
-        try {
-            const response = await instance.get("/projects?perPage=10")
-            const projects: Project[] = response.data || []
-            setData(projects)
-        } catch (error) {
-            console.error("Error fetching data:", error)
-        }
+const ProjectPage = () => {
+  const projects: Project[] = [];
+  const [data, setData] = useState<Project[]>(projects);
+  const router = useRouter();
+  const fetchData = async () => {
+    try {
+      const response = await instance.get(`/projects?perPage=${PAGE_SIZE}`);
+      const projects: Project[] = response.data || [];
+      setData(projects);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-    useEffect(() => {
-        fetchData()
-    }, [router.asPath])
-    return (
-        <MainLayout>
-            <Banner />
-            <h1 className="text-center px-4 py-20 text-4xl">
-                <Trans text="project.title" />
-            </h1>
-            <FeaturedProject projects={data} />
-            <OtherProject projects={data} pageSize={PAGE_SIZE} />
-            <Pagination pageSize={PAGE_SIZE} />
-        </MainLayout>
-    )
-}
+  };
+  useEffect(() => {
+    fetchData();
+  }, [router.asPath]);
 
-export const getServerSideProps = async () => {
-    const response = await instance.get("/projects?perPage=10")
-    const projects: Project[] = response.data || []
-    return {
-        props: {
-            projects,
-        },
-    }
-}
+  return (
+    <MainLayout>
+      <Banner />
+      <h1 className="text-center px-4 py-20 text-4xl">
+        <Trans text="project.title" />
+      </h1>
+      {!data ? (
+        <div>Loading...</div>
+      ) : (
+        <React.Fragment>
+          <FeaturedProject projects={data} />
+          <OtherProject projects={data} pageSize={PAGE_SIZE} />
+          <Pagination pageSize={PAGE_SIZE} />
+        </React.Fragment>
+      )}
+    </MainLayout>
+  );
+};
 
-export default ProjectPage
+export default ProjectPage;

@@ -23,7 +23,7 @@ const Services = ({ services }: ServicesProps) => {
                 key={service.id}
                 className={`${
                   selectedService === service
-                    ? "bg-primary text-secondary-dark scale-y-125"
+                    ? "bg-primary text-secondary-dark scale-110"
                     : "bg-[#fff]"
                 } w-full flex justify-center items-center cursor-pointer text-lg font-medium transition-all`}
                 onClick={() => handleSelect(service)}

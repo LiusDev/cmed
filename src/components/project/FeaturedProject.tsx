@@ -1,110 +1,96 @@
-import { Project } from "@/types"
-import { Button, Trans } from "../common"
-import { useState } from "react"
-import { MdArrowBack, MdArrowForward } from "react-icons/md"
-
-const defaultProject: Project = {
-    id: 0,
-    createdAt: "abc",
-    modifiedAt: "abc",
-    name: "Tên dự án",
-    featuredImage: "/home/default-project.png",
-    description:
-        "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating graphics including illustrations, logos, layouts and photos. You’ll be the one to shape the visual aspects of websites, books, magazines, product packaging, exhibitions and more.",
-    content:
-        "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating graphics including illustrations, logos, layouts and photos. You’ll be the one to shape the visual aspects of websites, books, magazines, product packaging, exhibitions and more.",
-}
+import { Project } from "@/types";
+import { Button, Trans } from "../common";
+import { useState, useEffect } from "react";
+import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 interface FeaturedProjectProps {
-    projects: Project[]
+  projects: Project[];
 }
 
 const ProjectBanner = ({
-    project,
-    handleChangeProject,
+  project,
+  handleChangeProject,
 }: {
-    project: Project
-    handleChangeProject: (...param: any) => void
+  project: Project;
+  handleChangeProject: (...param: any) => void;
 }) => {
-    return (
-        <div
-            className={`bg-no-repeat bg-center bg-cover grid grid-cols-12 relative`}
-            style={{
-                backgroundImage: `url(${project.featuredImage})`,
-            }}
-        >
-            <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
-                <div className="text-secondary">
-                    <p className="mb-12 text-3xl font-light">
-                        <Trans text="project.featured" />
-                    </p>
-                    <h1 className="text-7xl font-bold mb-12">{project.name}</h1>
-                    <Button
-                        variant="outline"
-                        className="border border-secondary-dark text-secondary-dark w-fit"
-                        href={`/projects/${project.id}`}
-                    >
-                        <Trans text="common.viewMore" />
-                    </Button>
-                </div>
-            </div>
-            <div className="absolute bottom-0 right-12 flex items-center justify-center">
-                <Button
-                    type="square"
-                    className="w-12 h-12 p-2"
-                    onClick={() => handleChangeProject("prev")}
-                >
-                    <MdArrowBack className="text-2xl" />
-                </Button>
-                <Button
-                    type="square"
-                    variant="secondary"
-                    className=" w-12 h-12 p-2"
-                    onClick={() => handleChangeProject("next")}
-                >
-                    <MdArrowForward className="text-2xl" />
-                </Button>
-            </div>
+  return (
+    <div
+      className={`bg-no-repeat bg-center bg-cover grid grid-cols-12 relative`}
+      style={{
+        backgroundImage: `url(${project.featuredImage})`,
+      }}
+    >
+      <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
+        <div className="text-secondary">
+          <p className="mb-12 text-3xl font-light">
+            <Trans text="project.featured" />
+          </p>
+          <h1 className="text-7xl font-bold mb-12">{project.name}</h1>
+          <Button
+            variant="outline"
+            className="border border-secondary-dark text-secondary-dark w-fit"
+            href={`/projects/${project.id}`}
+          >
+            <Trans text="common.viewMore" />
+          </Button>
         </div>
-    )
-}
+      </div>
+      <div className="absolute bottom-0 right-12 flex items-center justify-center">
+        <Button
+          type="square"
+          className="w-12 h-12 p-2"
+          onClick={() => handleChangeProject("prev")}
+        >
+          <MdArrowBack className="text-2xl" />
+        </Button>
+        <Button
+          type="square"
+          variant="secondary"
+          className=" w-12 h-12 p-2"
+          onClick={() => handleChangeProject("next")}
+        >
+          <MdArrowForward className="text-2xl" />
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 const FeaturedProject = ({ projects }: FeaturedProjectProps) => {
-    const [currentProject, setCurrentProject] = useState<Project>(
-        projects[0] || defaultProject
-    )
-    const handleChangeProject = (direction: "next" | "prev") => {
-        const currentIndex = projects.findIndex(
-            (project) => project.id === currentProject.id
-        )
-        if (direction === "next") {
-            if (currentIndex === projects.length - 1) {
-                setCurrentProject(projects[0])
-            } else {
-                setCurrentProject(projects[currentIndex + 1])
-            }
-        } else {
-            if (currentIndex === 0) {
-                setCurrentProject(projects[projects.length - 1])
-            } else {
-                setCurrentProject(projects[currentIndex - 1])
-            }
-        }
+  const [currentProject, setCurrentProject] = useState<Project>(projects[0]);
+  const handleChangeProject = (direction: "next" | "prev") => {
+    const currentIndex = projects.findIndex(
+      (project) => project.id === currentProject.id
+    );
+    if (direction === "next") {
+      if (currentIndex === projects.length - 1) {
+        setCurrentProject(projects[0]);
+      } else {
+        setCurrentProject(projects[currentIndex + 1]);
+      }
+    } else {
+      if (currentIndex === 0) {
+        setCurrentProject(projects[projects.length - 1]);
+      } else {
+        setCurrentProject(projects[currentIndex - 1]);
+      }
     }
-    if (projects.length === 0)
-        return (
-            <section className="container px-4 m-auto">
-                Không có dữ liệu
-            </section>
-        )
-    return (
-        <section>
-            <ProjectBanner
-                project={currentProject}
-                handleChangeProject={handleChangeProject}
-            />
-        </section>
-    )
-}
+  };
+  useEffect(() => {
+    setCurrentProject(projects[0]);
+  }, [projects]);
+  if (!currentProject) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <section>
+      <ProjectBanner
+        project={currentProject}
+        handleChangeProject={handleChangeProject}
+      />
+    </section>
+  );
+};
 
-export default FeaturedProject
+export default FeaturedProject;

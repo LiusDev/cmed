@@ -19,10 +19,10 @@ const ProjectCard = ({ project, className = "" }: ProjectCardProps) => {
       <div className="w-full h-full bg-tertiary-dark/30 flex items-end">
         <div className="flex flex-col gap-4 p-8">
           <p className="line-clamp-1 border-b border-secondary text-secondary pb-2">
-            {project.description}
+            {project.name}
           </p>
           <h4 className="text-secondary text-lg font-medium line-clamp-2">
-            {project.name}
+            {project.description}
           </h4>
         </div>
       </div>

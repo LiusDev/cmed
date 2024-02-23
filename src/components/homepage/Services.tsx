@@ -37,7 +37,7 @@ const Services = ({ services, className = "" }: ServiceProps) => {
   return (
     <section className={twMerge(` my-20 ${className}`)}>
       <div className="container px-4 m-auto">
-        <div className="relative flex flex-col lg:flex-row items-center">
+        <div className="relative flex flex-col lg:flex-row items-center mb-20">
           <h2 className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 capitalize font-semibold text-4xl text-center mb-4 w-full lg:whitespace-nowrap">
             <Trans text="home.service.title" />
           </h2>

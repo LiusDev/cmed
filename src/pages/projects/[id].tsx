@@ -6,16 +6,37 @@ import {
 } from "@/components/project";
 import { Project } from "@/types";
 import { instance } from "@/utils";
-import { GetServerSidePropsContext } from "next";
 import parse from "html-react-parser";
 import { Trans } from "@/components/common";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+const ProjectDetail = () => {
+  const [project, setProject] = useState<Project>();
+  const [otherProjects, setOtherProjects] = useState<Project[]>([]);
+  const router = useRouter();
+  const fetchData = async () => {
+    try {
+      const id = router.query.id;
+      const { data: project }: { data: Project } = await instance.get(
+        `/projects/${id}`
+      );
+      setProject(project);
+      const { data }: { data: Project[] } =
+        await instance.get(`/projects?perPage=4`);
+      const otherProjects = data
+        .filter((item) => item.id !== project.id)
+        .slice(0, 3);
+      setOtherProjects(otherProjects);
+    } catch (error) {}
+  };
 
-interface ProjectDetailProps {
-  project: Project;
-  otherProjects: Project[];
-}
+  useEffect(() => {
+    fetchData();
+  }, [router.asPath]);
 
-const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
+  if (!project) {
+    return <div>Loading...</div>;
+  }
   return (
     <MainLayout>
       <ProjectDetailBanner project={project} />
@@ -39,7 +60,7 @@ const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
             <span className="text-primary">2.</span>{" "}
             <Trans text="project.detail.images" />
           </h2>
-          <ProjectDetailCarousel />
+          <ProjectDetailCarousel project={project} />
         </div>
 
         <h2 className="text-xl font-bold capitalize mb-4">
@@ -61,30 +82,4 @@ const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
   );
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  if (!context.params || typeof context.params.id !== "string") {
-    return {
-      notFound: true,
-    };
-  }
-  const { id } = context.params;
-  const { data: project }: { data: Project } = await instance.get(
-    `/projects/${id}`
-  );
-  const { data }: { data: Project[] } =
-    await instance.get(`/projects?perPage=4`);
-
-  const otherProjects = data
-    .filter((item) => item.id !== project.id)
-    .slice(0, 3);
-
-  return {
-    props: {
-      project,
-      otherProjects,
-    },
-  };
-};
 export default ProjectDetail;

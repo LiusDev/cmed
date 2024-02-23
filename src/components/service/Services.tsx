@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import type { Service } from "@/types";
 import { Trans } from "../common";
 import parse from "html-react-parser";
-
+import { useEffect } from "react";
 interface ServicesProps {
   services: Service[];
 }
@@ -12,6 +12,10 @@ const Services = ({ services }: ServicesProps) => {
   const handleSelect = (service: Service) => {
     setSelectedService(service);
   };
+
+  useEffect(() => {
+    setSelectedService(services[0]);
+  }, [services]);
 
   return (
     <div className="py-20 bg-[#f4f5f9]">

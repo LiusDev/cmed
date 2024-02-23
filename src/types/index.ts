@@ -49,7 +49,6 @@ export interface Partner {
 }
 
 export interface Project {
-<<<<<<< HEAD
   id: number;
   createdAt: string;
   modifiedAt: string;
@@ -65,23 +64,6 @@ export interface Images {
   id: number;
   image: string;
   modifiedAt: string;
-=======
-    id: number
-    createdAt: string
-    modifiedAt: string
-    name: string
-    featuredImage: string
-    description: string
-    content: string
-    images: ProjectImage[]
-}
-
-export interface ProjectImage {
-    id: number
-    createdAt: string
-    modifiedAt: string
-    image: string
->>>>>>> 85749a05409f2d4b03a7797afcf9d6b850d93370
 }
 
 export interface Service {

@@ -47,7 +47,7 @@ const NewsDetail = () => {
 
   useEffect(() => {
     fetchData();
-  }, [news]);
+  }, [news, router.asPath]);
 
   if (!news) {
     return <div>Loading...</div>;

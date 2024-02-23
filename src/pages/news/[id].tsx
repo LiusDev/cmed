@@ -2,31 +2,56 @@ import { BreadCr, Trans } from "@/components/common";
 import { MainLayout } from "@/components/layout";
 import { News } from "@/types";
 import { formatDate, instance } from "@/utils";
-import { GetServerSidePropsContext } from "next";
 import parse from "html-react-parser";
-import React from "react";
+import React, { use } from "react";
 import { useTranslation } from "react-i18next";
 import { NewsItem } from "@/components/news";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-interface NewsDetailProps {
-  news: News;
-  relatedNews: News[];
-}
-
-const NewsDetail = ({ news, relatedNews }: NewsDetailProps) => {
+const NewsDetail = () => {
   const { t } = useTranslation();
+  const [relatedNews, setRelatedNews] = useState<News[]>([]);
+  const [news, setNews] = useState<News>();
+  const router = useRouter();
+  const breadCrumbsItems = news
+    ? [
+        {
+          name: t("news.title"),
+          link: "/news",
+        },
+        {
+          name: news.category.name,
+          link: `/news?c=${news.category.id}`,
+        },
+      ]
+    : [];
 
-  const breadCrumbsItems = [
-    {
-      name: t("news.title"),
-      link: "/news",
-    },
-    {
-      name: news.category.name,
-      link: `/news?c=${news.category.id}`,
-    },
-  ];
+  const fetchData = async () => {
+    try {
+      const id = router.query.id;
+      const { data: news }: { data: News } = await instance.get(`/news/${id}`);
+      setNews(news);
+      const { data }: { data: News[] } = await instance.get(
+        `/news?c=${news.category.id}&perPage=4`
+      );
 
+      const relatedNews = data
+        .filter((item) => item.id !== news.id)
+        .slice(0, 3);
+      setRelatedNews(relatedNews);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [news]);
+
+  if (!news) {
+    return <div>Loading...</div>;
+  }
   return (
     <MainLayout>
       <div className="container m-auto px-4 mt-28">
@@ -59,30 +84,6 @@ const NewsDetail = ({ news, relatedNews }: NewsDetailProps) => {
       </div>
     </MainLayout>
   );
-};
-
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  if (!context.params || typeof context.params.id !== "string") {
-    return {
-      notFound: true,
-    };
-  }
-  const { id } = context.params;
-  const { data: news }: { data: News } = await instance.get(`/news/${id}`);
-  const { data }: { data: News[] } = await instance.get(
-    `/news?c=${news.category.id}&perPage=4`
-  );
-
-  const relatedNews = data.filter((item) => item.id !== news.id).slice(0, 3);
-
-  return {
-    props: {
-      news,
-      relatedNews,
-    },
-  };
 };
 
 export default NewsDetail;

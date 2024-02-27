@@ -41,7 +41,7 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
 
   return (
     <section className={twMerge(`my-10 ${className}`)}>
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 md:h-[700px]">
         <article className="col-span-12 md:col-span-6 lg:col-span-4 bg-secondary-dark flex items-start justify-center py-10 md:py-20 px-4 md:px-20 relative">
           <div className="flex flex-col justify-start items-start">
             <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10 text-primary">
@@ -79,11 +79,11 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
             </Button>
           </div>
         </article>
-        <div className="col-span-12 md:col-span-6 lg:col-span-6">
+        <div className="col-span-12 md:col-span-6 lg:col-span-8">
           <img
             src={currentProject.featuredImage}
             alt={currentProject.name}
-            className="h-full object-cover object-center w-full"
+            className="md:h-[700px] object-cover object-center w-full"
           />
         </div>
       </div>

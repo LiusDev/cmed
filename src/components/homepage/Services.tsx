@@ -3,10 +3,11 @@ import { Button, Trans } from "../common";
 import { MdArrowForwardIos } from "react-icons/md";
 import type { Service } from "@/types";
 import { twMerge } from "tailwind-merge";
+import { Carousel } from "@mantine/carousel";
 
 const Card = ({ service }: { service: Service }) => {
   return (
-    <article className="flex flex-col gap-4 h-full">
+    <article className="flex flex-col gap-4 h-full px-3">
       <Link
         href={`/service/detail`}
         className="aspect-square overflow-hidden group"
@@ -20,7 +21,7 @@ const Card = ({ service }: { service: Service }) => {
       <Link href={`/service/detail`}>
         <h3 className="text-xl font-semibold">{service.name}</h3>
       </Link>
-      <p className="line-clamp-4 mb-2">{service.description}</p>
+      <p className="line-clamp-2 mb-2">{service.description}</p>
       <Button href={`/service/detail`} variant="outline" className="w-fit">
         <Trans text="common.viewMore" />
       </Button>
@@ -49,12 +50,28 @@ const Services = ({ services, className = "" }: ServiceProps) => {
             <MdArrowForwardIos className="text-xs" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-32">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-32">
           {services &&
             services.map((service) => (
               <Card key={service.id} service={service} />
             ))}
-        </div>
+        </div> */}
+        <Carousel
+          withIndicators
+          height={600}
+          slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
+          slideGap={{ base: 0, sm: "md" }}
+          loop
+          align="start"
+          controlSize={40}
+        >
+          {services &&
+            services.map((service) => (
+              <Carousel.Slide key={service.id}>
+                <Card key={service.id} service={service} />
+              </Carousel.Slide>
+            ))}
+        </Carousel>
       </div>
     </section>
   );

@@ -11,18 +11,18 @@ interface PartnerProps {
 const Partners = ({ partners, className = "" }: PartnerProps) => {
   return (
     <section className={twMerge(`my-20 ${className}`)}>
-      <div className="container m-auto px-4">
+      <div className="container m-auto w-full">
         <h2 className="text-center text-4xl font-semibold mb-10 ">
           <Trans text="home.partner.title" />
         </h2>
         <Carousel
-          height={230}
+          height={250}
           slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop
           align="start"
-          controlSize={30}
-          className="flex justify-center w-full"
+          controlSize={40}
+          className="flex justify-center items-center"
         >
           {partners.map((partner) => (
             <Carousel.Slide key={partner.id}>
@@ -30,7 +30,7 @@ const Partners = ({ partners, className = "" }: PartnerProps) => {
                 <img
                   src={partner.image}
                   alt={partner.name}
-                  className="object-cover h-full object-center"
+                  className="w-full object-cover h-full object-center"
                 />
               </div>
             </Carousel.Slide>

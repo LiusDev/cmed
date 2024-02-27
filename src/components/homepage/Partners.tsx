@@ -16,17 +16,17 @@ const Partners = ({ partners, className = "" }: PartnerProps) => {
           <Trans text="home.partner.title" />
         </h2>
         <Carousel
-          withIndicators
-          height={300}
+          height={230}
           slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop
           align="start"
-          controlSize={40}
+          controlSize={30}
+          className="flex justify-center w-full"
         >
           {partners.map((partner) => (
             <Carousel.Slide key={partner.id}>
-              <div className="px-8 py-4 bg-secondary-dark h-full flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-start">
                 <img
                   src={partner.image}
                   alt={partner.name}

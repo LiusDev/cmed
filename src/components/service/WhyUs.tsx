@@ -7,7 +7,7 @@ const WhyUs = () => {
       <h1 className="font-bold text-primary text-3xl text-center py-20">
         <Trans text="services.detail.title" />
       </h1>
-      <div className="flex flex-col lg:flex-row xl:px-72 pb-20 space-y-28 px-5 lg:space-x-5 lg:space-y-0">
+      <div className="flex flex-col lg:flex-row lg:justify-center xl:px-72 pb-20 space-y-28 px-5 lg:space-x-5 lg:space-y-0">
         <ReasonCard
           title={"services.detail.reasons.reason1.title"}
           content={"services.detail.reasons.reason1.content"}

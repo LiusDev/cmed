@@ -36,7 +36,7 @@ interface ServiceProps {
 
 const Services = ({ services, className = "" }: ServiceProps) => {
   return (
-    <section className={twMerge(` my-10 ${className}`)}>
+    <section className={twMerge(` mt-10 ${className}`)}>
       <div className="container px-4 m-auto">
         <div className="relative flex flex-col lg:flex-row items-center justify-center mb-20">
           <h2 className="capitalize font-semibold md:text-4xl text-2xl text-center mb-4 md:w-[650px] w-full sm:w-[450px] lg:leading-snug">
@@ -51,7 +51,7 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           </Link>
         </div>
         <Carousel
-          height={600}
+          height={650}
           slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop

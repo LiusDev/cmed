@@ -17,7 +17,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 </h2>
                 <Carousel
                     withIndicators
-                    height={600}
+                    height={500}
                     slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
                     slideGap={{ base: 0, sm: "md" }}
                     loop
@@ -30,7 +30,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                                 <img
                                     src={customer.image}
                                     alt={customer.name}
-                                    className="object-contain mb-16"
+                                    className="object-cover h-72 w-full mb-16"
                                 />
                                 <h3 className="text-center text-3xl font-medium mb-8">
                                     {customer.name}

@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 
 const Card = ({ service }: { service: Service }) => {
   return (
-    <article className="flex flex-col gap-4">
+    <article className="flex flex-col gap-4 h-full">
       <Link
         href={`/service/detail`}
         className="aspect-square overflow-hidden group"

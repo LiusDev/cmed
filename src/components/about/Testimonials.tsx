@@ -1,33 +1,47 @@
-import { PiQuotes } from "react-icons/pi";
 import { Trans } from "../common";
 import { Carousel } from "@mantine/carousel";
+import { useTranslation } from "react-i18next";
+
 const Testimonials = () => {
+  const { t } = useTranslation();
+
+  const data = [
+    {
+      id: 1,
+      content: t("about.testimonials.content1"),
+      author: t("about.testimonials.author1"),
+    },
+    {
+      id: 2,
+      content: t("about.testimonials.content2"),
+      author: t("about.testimonials.author2"),
+    },
+  ];
+
   return (
-    <div className=" bg-[url('/about/testimonials/bg.png')] bg-no-repeat flex justify-center items-center mb-20 h-[600px] lg:h-[400px]">
-      <div className="h-[600px] lg:h-[400px] w-full flex">
-        <Carousel withIndicators height="100%" style={{ flex: 1 }}>
-          <Carousel.Slide>
-            <div className=" py-0 lg:px-60 px-10 w-full h-full md:py-20 bg-primary-dark opacity-60 text-secondary flex flex-col items-center justify-center">
-              <p className=" text-xl md:text-2xl">
-                <Trans text="about.testimonials.content1" />
-              </p>
-              <div className="border-[1px] w-20 my-8"></div>
-              <div className="text-2xl">
-                <Trans text="about.testimonials.author1" />
+    <div className=" bg-[url('/about/testimonials/bg.png')] bg-cover bg-no-repeat flex justify-center items-center mb-20 h-full">
+      <div className="h-full w-full flex justify-center bg-[#7493BC]/60 ">
+        <Carousel
+          withIndicators
+          height="100%"
+          // slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
+          slideGap={{ base: 0, sm: "md" }}
+          loop
+        >
+          {data.map((item) => (
+            <Carousel.Slide>
+              <div className="mx-auto w-full md:w-3/5 text-center h-full md:py-20 text-secondary flex flex-col items-center justify-center">
+                <img
+                  src="/about/testimonials/Vector.png"
+                  alt="quotation"
+                  className="w-10 h-10 md:w-12 md:h-12 my-10"
+                />
+                <p className="text-lg md:text-xl px-10">{item.content}</p>
+                <div className="border md:w-60 md:my-8"></div>
+                <div className="text-2xl py-10">{item.author}</div>
               </div>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className="md:py-20 py-0 lg:px-60 px-10 w-full h-full bg-primary-dark opacity-60 text-secondary flex flex-col items-center justify-center">
-              <p className="px-10 text-xl md:text-2xl">
-                <Trans text="about.testimonials.content2" />
-              </p>
-              <div className="border-[1px] w-20 my-8"></div>
-              <div className="text-xl md:text-2xl">
-                <Trans text="about.testimonials.author2" />
-              </div>
-            </div>
-          </Carousel.Slide>
+            </Carousel.Slide>
+          ))}
         </Carousel>
       </div>
     </div>

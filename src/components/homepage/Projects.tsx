@@ -44,7 +44,7 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
       <div className="grid grid-cols-12">
         <article className="col-span-12 md:col-span-6 lg:col-span-4 bg-secondary-dark flex items-center justify-center py-10 md:py-20 px-4 md:px-20 relative">
           <div>
-            <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10">
+            <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10 text-primary">
               <Trans text="home.project.title" />
             </h2>
             <h3 className="text-2xl font-medium capitalize mb-6 md:mb-8">

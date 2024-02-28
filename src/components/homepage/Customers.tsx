@@ -10,13 +10,12 @@ interface CustomersProps {
 
 const Customers = ({ customers, className = "" }: CustomersProps) => {
   return (
-    <section className={twMerge(`my-20 bg-secondary-dark ${className}`)}>
+    <section className={twMerge(`mt-20 bg-secondary-dark ${className}`)}>
       <div className="container m-auto w-full">
         <h2 className="text-center text-4xl font-semibold py-10 ">
           <Trans text="home.customer.title" />
         </h2>
         <Carousel
-          height={500}
           slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop
@@ -30,13 +29,15 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 <img
                   src={customer.image}
                   alt={customer.name}
-                  className="object-cover object-center h-48 mb-16"
+                  className="object-cover object-center mb-8 mt-12 h-32"
                 />
-                <h3 className="text-center text-3xl font-medium mb-8">
+                <h3 className="text-center text-2xl font-medium mb-8 mx-10">
                   {customer.name}
                 </h3>
 
-                <p className="text-center text-lg">{customer.description}</p>
+                <p className="text-center text-base mb-12">
+                  {customer.description}
+                </p>
               </div>
             </Carousel.Slide>
           ))}

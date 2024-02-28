@@ -1,44 +1,44 @@
 import Link from "next/link";
 import { Button, Trans } from "../common";
 import { MdArrowForwardIos } from "react-icons/md";
-import type { Service } from "@/types";
+import type { News } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
 
-const Card = ({ service }: { service: Service }) => {
+const Card = ({ news }: { news: News }) => {
   return (
-    <article className="flex flex-col gap-4 h-full xl:px-10 px-0 md:px-3">
+    <article className="flex flex-col gap-4 h-full xl:px-10 md:px-3">
       <Link
-        href={`/service/detail`}
+        href={`/news/${news.id}`}
         className="aspect-square overflow-hidden group"
       >
         <img
-          src={service.featuredImage}
-          alt={service.name}
+          src={news.featuredImage}
+          alt={news.title}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300 ease-in-out"
         />
       </Link>
-      <Link href={`/service/detail`}>
-        <h3 className="text-xl font-semibold">{service.name}</h3>
+      <Link href={`/news/${news.id}`}>
+        <h3 className="text-xl font-semibold">{news.title}</h3>
       </Link>
-      <p className="line-clamp-2 mb-2">{service.description}</p>
-      <Button href={`/service/detail`} variant="outline" className="w-fit">
+      <p className="line-clamp-2 mb-2">{news.description}</p>
+      <Button href={`/news/${news.id}`} variant="outline" className="w-fit">
         <Trans text="common.viewMore" />
       </Button>
     </article>
   );
 };
 
-interface ServiceProps {
-  services: Service[];
+interface NewsProps {
+  news: News[];
   className?: string;
 }
 
-const Services = ({ services, className = "" }: ServiceProps) => {
+const Services = ({ news, className = "" }: NewsProps) => {
   return (
-    <section className={twMerge(` mt-10 ${className}`)}>
+    <section className={twMerge(`mt-10 mb-20 ${className}`)}>
       <div className="container px-4 m-auto">
-        <div className="relative flex flex-col lg:flex-row items-center justify-center mb-20">
+        <div className="relative flex flex-col lg:flex-row items-center justify-center mb-10">
           <h2 className="capitalize font-semibold md:text-4xl text-2xl text-center mb-4 md:w-[650px] w-full sm:w-[450px] lg:leading-snug">
             <Trans text="home.service.title" />
           </h2>
@@ -51,7 +51,6 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           </Link>
         </div>
         <Carousel
-          height={650}
           slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop
@@ -60,10 +59,10 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           className="px-3 lg:px-10"
           controlsOffset={"md"}
         >
-          {services &&
-            services.map((service) => (
-              <Carousel.Slide key={service.id}>
-                <Card key={service.id} service={service} />
+          {news &&
+            news.map((newsItem) => (
+              <Carousel.Slide key={newsItem.id}>
+                <Card key={newsItem.id} news={newsItem} />
               </Carousel.Slide>
             ))}
         </Carousel>

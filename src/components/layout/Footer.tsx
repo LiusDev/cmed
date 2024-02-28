@@ -55,8 +55,10 @@ const Footer = () => {
         </div>
         <div className="col-span-12 lg:col-span-4">
           <h4 className="lg:text-right text-2xl mb-8 lg:mb-12">
-            <FiPhone className="inline-block mr-2" />
-            {metadata?.companyPhone || "0898 099 886"}
+            <a href="tel:0898 099 886">
+              <FiPhone className="inline-block mr-2" />
+              {metadata?.companyPhone || "0898 099 886"}
+            </a>
           </h4>
           <p className="lg:text-right mb-6">
             <span className="capitalize">

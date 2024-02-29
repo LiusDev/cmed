@@ -20,7 +20,14 @@ const ServiceDetail = () => {
       });
 
     instance
-      .get("/services")
+      .get("/services", {
+        params: {
+          perPage: 5,
+          sortBy: "id",
+          order: "asc",
+          page: 3
+        }
+      })
       .then((response) => {
         setServices(response.data || []);
       })
@@ -31,6 +38,7 @@ const ServiceDetail = () => {
 
   useEffect(() => {
     fetchData();
+    console.log(services);
   }, [news.length, services.length]);
 
   return (

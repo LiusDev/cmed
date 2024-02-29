@@ -7,12 +7,12 @@ import {
 } from "@/components/homepage";
 import About from "@/components/homepage/About";
 import { MainLayout } from "@/components/layout";
-import type { Customer, Partner, Project, News } from "@/types";
+import type { Customer, Partner, Project, Service } from "@/types";
 import { instance } from "@/utils";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [news, setNews] = useState<News[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -20,14 +20,14 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const news: News[] = (await instance.get("/news?perPage=3")).data || [];
+        const services: Service[] = (await instance.get("/services")).data || [];
         const projects: Project[] = (await instance.get("/projects")).data;
         const partners: Partner[] =
           (await instance.get("/partners")).data || [];
         const customers: Customer[] =
           (await instance.get("/customers")).data || [];
 
-        setNews(news);
+        setServices(services);
         setProjects(projects);
         setPartners(partners);
         setCustomers(customers);
@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <MainLayout>
       <Banner />
-      <Services news={news} />
+      <Services services={services} />
       <Projects projects={projects} />
       <About />
       <Partners partners={partners} />

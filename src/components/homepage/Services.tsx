@@ -1,40 +1,40 @@
 import Link from "next/link";
 import { Button, Trans } from "../common";
 import { MdArrowForwardIos } from "react-icons/md";
-import type { News } from "@/types";
+import type { Service } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
 
-const Card = ({ news }: { news: News }) => {
+const Card = ({ service }: { service: Service }) => {
   return (
     <article className="flex flex-col gap-4 h-full xl:px-10 md:px-3">
       <Link
-        href={`/news/${news.id}`}
+        href={`/news/${service.id}`}
         className="aspect-square overflow-hidden group"
       >
         <img
-          src={news.featuredImage}
-          alt={news.title}
+          src={service.featuredImage}
+          alt={service.name}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-300 ease-in-out"
         />
       </Link>
-      <Link href={`/news/${news.id}`}>
-        <h3 className="text-xl font-semibold">{news.title}</h3>
+      <Link href={`/service/${service.id}`}>
+        <h3 className="text-xl font-semibold">{service.name}</h3>
       </Link>
-      <p className="line-clamp-2 mb-2">{news.description}</p>
-      <Button href={`/news/${news.id}`} variant="outline" className="w-fit">
+      <p className="line-clamp-2 mb-2">{service.description}</p>
+      <Button href={`/service/${service.id}`} variant="outline" className="w-fit">
         <Trans text="common.viewMore" />
       </Button>
     </article>
   );
 };
 
-interface NewsProps {
-  news: News[];
+interface ServiceProps {
+  services: Service[];
   className?: string;
 }
 
-const Services = ({ news, className = "" }: NewsProps) => {
+const Services = ({ services, className = "" }: ServiceProps) => {
   return (
     <section className={twMerge(`mt-10 mb-20 ${className}`)}>
       <div className="container px-4 m-auto">
@@ -59,10 +59,10 @@ const Services = ({ news, className = "" }: NewsProps) => {
           className="px-3 lg:px-10"
           controlsOffset={"md"}
         >
-          {news &&
-            news.map((newsItem) => (
-              <Carousel.Slide key={newsItem.id}>
-                <Card key={newsItem.id} news={newsItem} />
+          {services &&
+            services.map((Item) => (
+              <Carousel.Slide key={Item.id}>
+                <Card key={Item.id} service={Item} />
               </Carousel.Slide>
             ))}
         </Carousel>

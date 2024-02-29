@@ -7,6 +7,29 @@ interface ServicesProps {
   services: Service[];
 }
 
+const icons = [
+  {
+    id: 1,
+    link: "/service/article/icons/icon1.png"
+  },
+  {
+    id: 2,
+    link: "/service/article/icons/icon2.png"
+  },
+  {
+    id: 3,
+    link: "/service/article/icons/icon3.png"
+  },
+  {
+    id: 4,
+    link: "/service/article/icons/icon4.png"
+  },
+  {
+    id: 5,
+    link: "/service/article/icons/icon5.png"
+  }
+]
+
 const Services = ({ services }: ServicesProps) => {
   const [selectedService, setSelectedService] = useState(services[0]);
   const handleSelect = (service: Service) => {
@@ -21,17 +44,17 @@ const Services = ({ services }: ServicesProps) => {
     <div className="py-20 bg-[#f4f5f9]">
       <div className="h-40 md:w-3/5 w-full bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
         {services.length > 0 &&
-          services.map((service) => {
+          services.map((service, index) => {
             return (
               <div
                 key={service.id}
-                className={`${
-                  selectedService === service
-                    ? "bg-primary text-secondary-dark scale-110"
-                    : "bg-[#fff]"
-                } w-full flex justify-center items-center cursor-pointer text-lg font-medium transition-all`}
+                className={`${selectedService === service
+                  ? "bg-primary text-secondary-dark scale-110"
+                  : "bg-[#fff]"
+                  } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`}
                 onClick={() => handleSelect(service)}
               >
+                <img src={icons[index].link} className="w-10 h-10 mb-2" alt="icon" />
                 {service.name}
               </div>
             );

@@ -9,6 +9,7 @@ interface CustomersProps {
 }
 
 const Customers = ({ customers, className = "" }: CustomersProps) => {
+
   return (
     <section className={twMerge(`mt-20 bg-secondary-dark ${className}`)}>
       <div className="container m-auto w-full">
@@ -23,8 +24,8 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
           controlSize={40}
           className="flex justify-center items-center lg:px-12 pb-20"
         >
-          {customers.map((customer) => (
-            <Carousel.Slide key={customer.id}>
+          {customers.map((customer, index) => (
+            <Carousel.Slide key={index}>
               <div className="px-8 bg-secondary w-full h-full flex flex-col items-center">
                 <img
                   src={customer.image}

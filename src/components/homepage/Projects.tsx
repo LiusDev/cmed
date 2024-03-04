@@ -80,11 +80,13 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
           </div>
         </article>
         <div className="col-span-12 md:col-span-6 lg:col-span-8">
-          <img
-            src={currentProject.featuredImage}
-            alt={currentProject.name}
-            className="md:h-[700px] object-cover object-center w-full"
-          />
+          <a href={`/projects/${currentProject.id}`}>
+            <img
+              src={currentProject.featuredImage}
+              alt={currentProject.name}
+              className="md:h-[700px] object-cover object-center w-full"
+            />
+          </a>
         </div>
       </div>
     </section>

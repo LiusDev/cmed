@@ -6,7 +6,7 @@ import { GetServerSidePropsContext } from "next"
 import parse from "html-react-parser"
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { DocumentItem } from "@/components/documents"
+import { DocumentItem, DocumentsList } from "@/components/documents"
 import { Grid } from "@mantine/core"
 import PdfViewer from "@/components/pdfViewer/PdfViewer"
 import Link from "next/link"
@@ -55,7 +55,7 @@ const DocumentsDetail = ({
 
     return (
         <MainLayout>
-            <div className="container m-auto px-4 mt-28">
+            <div className="container m-auto px-4 my-20">
                 <BreadCr items={breadCrumbsItems} />
                 <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
                     {document.name}
@@ -65,8 +65,8 @@ const DocumentsDetail = ({
                 </p>
                 <div className="pb-10">{parse(document.description)}</div>
 
-                <div className="grid grid-cols-4">
-                    <div className="col-span-3">
+                <div className="lg:grid flex flex-col grid-cols-4">
+                    <div className="lg:col-span-3 w-full">
                         <PdfViewer url={document.document} />
                         <div className="pt-10">
                             <Button className="m-auto" onClick={handleDownload}>
@@ -74,14 +74,14 @@ const DocumentsDetail = ({
                             </Button>
                         </div>
                     </div>
-                    <div>
+                    <div className="">
                         <h3 className="text-md md:text-xl uppercase my-10 text-center">
                             <Trans text="documents.detail.related" />
                         </h3>
                         <div className="bg-primary/10 p-4 flex flex-col gap-4">
                             {relatedDocuments.length > 0 &&
                                 relatedDocuments.map((item) => (
-                                    <div className="p-3 bg-secondary">
+                                    <div className="p-3 bg-secondary" key={item.id}>
                                         <Link href={`/documents/${item.id}`}>
                                             <h4 className="line-clamp-2 font-semibold mb-2">
                                                 {item.name}
@@ -100,14 +100,7 @@ const DocumentsDetail = ({
                 <h2 className="text-xl md:text-3xl uppercase my-10">
                     <Trans text="documents.others" />
                 </h2>
-                <Grid className="w-full pb-20">
-                    {otherDocuments.length > 0 &&
-                        otherDocuments.map((item) => (
-                            <Grid.Col span={3}>
-                                <DocumentItem key={item.id} document={item} />
-                            </Grid.Col>
-                        ))}
-                </Grid>
+                <DocumentsList documents={otherDocuments} />
             </div>
         </MainLayout>
     )

@@ -84,6 +84,7 @@ export interface Staff {
   name: string;
   position: string;
   featuredImage: string;
+  description: string;
 }
 
 export interface Metadata {

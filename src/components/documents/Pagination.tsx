@@ -29,7 +29,7 @@ const Pagination = ({ pageSize }: PaginationProps) => {
         return Math.ceil(items / pageSize)
     }
     return (
-        <div className="flex w-full items-center justify-center mb-16">
+        <div className="flex w-full items-center justify-center my-16">
             <MantinePage
                 value={currentPage}
                 total={getTotalPages(totalNews)}

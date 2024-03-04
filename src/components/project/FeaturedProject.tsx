@@ -38,7 +38,7 @@ const ProjectBanner = ({
           </Button>
         </div>
       </div>
-      <div className="absolute bottom-0 right-12 flex items-center justify-center">
+      <div className="absolute bottom-0 right-0 md:right-40 lg:right-60 flex items-center justify-center">
         <Button
           type="square"
           className="w-12 h-12 p-2"

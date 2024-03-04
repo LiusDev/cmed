@@ -17,7 +17,7 @@ interface article {
 const articles = [
   {
     id: 1,
-    link: '/service/phong-kham-da-khoa',
+    link: '/service/benh-vien',
     title: 'services.article.header-1',
     content: 'services.article.content-1',
     image: '/service/article/nha-3.webp',
@@ -26,7 +26,7 @@ const articles = [
   },
   {
     id: 2,
-    link: '/service/benh-vien',
+    link: '/service/vien-duong-lao',
     title: 'services.article.header-2',
     content: 'services.article.content-2',
     image: '/service/article/nha-1.webp',
@@ -35,7 +35,7 @@ const articles = [
   },
   {
     id: 3,
-    link: '/service/vien-duong-lao',
+    link: '/service/phong-kham-da-khoa',
     title: 'services.article.header-3',
     content: 'services.article.content-3',
     image: '/service/article/nha-2.webp',
@@ -77,7 +77,7 @@ const ServicePage = () => {
     fetchData();
   }, []);
   return (
-    <MainLayout>
+    <MainLayout title="Dịch vụ">
       <Banner />
       <div className='relative mb-20'>
         <div className='mx-auto w-2/3 space-y-2 py-10 text-center font-bold md:mb-12 md:w-[500px] lg:mb-0'>

@@ -5,7 +5,7 @@ import ContactForm from "@/components/contact/ContactForm"
 
 const ContactPage = () => {
     return (
-        <MainLayout>
+        <MainLayout title="Contact">
             <div className="container m-auto px-4 mt-28">
                 <h1 className="pb-8 mb-20 text-center border-b border-tertiary/50 text-2xl md:text-4xl uppercase">
                     <Trans text="contact.title" />

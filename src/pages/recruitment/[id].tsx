@@ -47,6 +47,7 @@ const RecruitmentDetail = ({
               <Link
                 href={`/recruitment/${item.id}`}
                 className={`col-span-1  mb-10`}
+                key={item.id}
               >
                 <div>
                   <h1 className="text-xl font-medium text-primary">

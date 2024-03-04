@@ -24,37 +24,40 @@ const Article: React.FC<ArticleProps> = ({
     setIsClose(true);
   };
   return (
-    <div
-      className={`${className} ${positionArticle} ${isClose ? 'hidden' : 'block'} mx-auto w-4/5 rounded-bl-[20px] rounded-br-[75px] rounded-tl-[75px] rounded-tr-[20px] bg-secondary pb-5 drop-shadow-lg md:w-3/5 lg:w-[350px] `}
-    >
-      <div className='md:h-42 md:w-42 absolute -top-20 left-0 right-0 mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-secondary p-5 shadow-custom'>
-        <img src={image} alt='image' />
-      </div>
-
-      <div className='mt-12 space-y-5 px-5 pt-20 text-center'>
-        <h2 className='text-xl font-bold text-primary'>
-          <Trans text={title} />
-        </h2>
-        <p className='text-sm'>
-          <Trans text={content} />
-        </p>
-      </div>
-
-      <Button
-        variant='outline'
-        className='mx-auto my-6 w-52'
-        href={link}
-      >
-        <Trans text='services.article.buttonContent' />
-      </Button>
-
+    <a href={link}>
       <div
-        onClick={handleClose}
-        className='mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary text-center text-xl text-secondary lg:hidden'
+        className={`${className} ${positionArticle} ${isClose ? 'hidden' : 'block'} mx-auto w-4/5 rounded-bl-[20px] rounded-br-[75px] rounded-tl-[75px] rounded-tr-[20px] bg-secondary pb-5 drop-shadow-lg md:w-3/5 lg:w-[350px] `}
       >
-        <IoMdCloseCircleOutline />
+        <div className='md:h-42 md:w-42 absolute -top-20 left-0 right-0 mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-secondary p-5 shadow-custom'>
+          <img src={image} alt='image' />
+        </div>
+
+        <div className='mt-12 space-y-5 px-5 pt-20 text-center'>
+          <h2 className='text-xl font-bold text-primary'>
+            <Trans text={title} />
+          </h2>
+          <p className='text-sm px-5 text-justify'>
+            <Trans text={content} />
+          </p>
+        </div>
+
+        <Button
+          variant='outline'
+          className='mx-auto my-6 w-52'
+          href={link}
+        >
+          <Trans text='services.article.buttonContent' />
+        </Button>
+
+        <div
+          onClick={handleClose}
+          className='mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary text-center text-xl text-secondary lg:hidden'
+        >
+          <IoMdCloseCircleOutline />
+        </div>
       </div>
-    </div>
+    </a>
+
   );
 };
 

@@ -29,7 +29,7 @@ const News = () => {
     handleGetNews();
   }, [c, page]);
   return (
-    <MainLayout>
+    <MainLayout title="Tin tức">
       <div className="container m-auto px-4 mt-28">
         <Title />
         <CategoriesNav categories={categories} />

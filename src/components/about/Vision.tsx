@@ -31,7 +31,7 @@ const Vision = () => {
   const content = data[currentIndex];
 
   return (
-    <section id="vision" className={twMerge(`my-20`)}>
+    <section id="vision" className={twMerge(`my-20 `)}>
       <div className="grid grid-cols-12">
         <article className="col-span-12 md:col-span-6 lg:col-span-4 bg-secondary-dark flex items-center justify-center py-10 md:py-20 px-4 md:px-20 relative">
           <div>
@@ -62,7 +62,7 @@ const Vision = () => {
           <img
             src={content.image}
             alt={"image"}
-            className="h-full object-cover object-center"
+            className=" h-[700px] w-full object-cover object-center"
           />
         </div>
       </div>

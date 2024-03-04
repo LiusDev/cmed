@@ -2,6 +2,8 @@ import { Carousel } from "@mantine/carousel";
 import type { Project } from "@/types";
 
 const ProjectDetailCarousel = ({ project }: { project: Project }) => {
+  project.images.length <= 4 && (project.images = [...project.images, ...project.images]);
+
   const slides = project.images.map((image, index) => (
     <Carousel.Slide key={index}>
       <img

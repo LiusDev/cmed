@@ -20,7 +20,7 @@ const AboutPage = () => {
     fetchData();
   }, []);
   return (
-    <MainLayout>
+    <MainLayout title="Giới thiệu">
       <Banner />
       <Article />
       <Testimonials />

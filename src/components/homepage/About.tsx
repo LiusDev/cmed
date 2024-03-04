@@ -8,22 +8,21 @@ interface AboutProps {
 const About = ({ className }: AboutProps) => {
   return (
     <section className={twMerge(`my-20 ${className}`)}>
-      <div className="grid grid-cols-12">
-        <div className="col-span-12 md:col-span-10 lg:col-span-4 py-10 lg:py-20 px-4 md:px-20">
-          <h2 className="capitalize text-4xl md:text-5xl leading-normal md:border-b-2 border-tertiary pb-4 font-semibold text-center md:text-left">
-            <Trans text="home.about.title" />
-          </h2>
-        </div>
-        <div className="hidden md:block col-span-12 md:col-span-2 lg:col-span-8 bg-primary-dark relative">
-          <div className="absolute right-1/2 translate-x-1/2 hidden lg:block">
-            <img src="/home/about.png" alt="About" className="h-[600px]" />
+      <div className="relative grid grid-cols-12">
+        <div className="flex flex-col xl:col-span-6 lg:col-span-8 md:col-span-10 col-span-12 z-10 min-h-[400px]">
+          <div className="md:h-1/2 relative px-5">
+            <h2 className="md:absolute xl:w-1/2 lg:w-2/3  right-12 top-20 capitalize text-4xl md:text-5xl lg:text-6xl leading-normal md:border-b-2 border-tertiary pb-4 font-semibold text-center md:text-left">
+              <Trans text="home.about.title" />
+            </h2>
+          </div>
+          <div className="bg-secondary-dark md:h-1/2 flex justify-center items-center p-10 lg:p-20 lg:text-base xl:text-xl text-sm ">
+            <Trans text="home.about.description" />
           </div>
         </div>
-      </div>
-      <div className="bg-secondary-dark md:w-4/5 lg:w-3/5 px-4 py-10 md:pl-20 lg:pr-52 lg:py-20">
-        <p>
-          <Trans text="home.about.description" />
-        </p>
+        <div className="hidden lg:block w-full xl:col-span-4 lg:col-span-3 xl:col-start-7 lg:col-start-9 z-10 min-h-[600px]">
+          <img src="/home/about.png" alt="home/about image" className="h-full object-cover object-center" />
+        </div>
+        <div className="absolute hidden md:block bg-primary w-3/5 h-3/5 z-5 right-0"></div>
       </div>
     </section>
   );

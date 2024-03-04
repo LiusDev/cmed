@@ -10,6 +10,10 @@ import { MainLayout } from "@/components/layout";
 import type { Customer, Partner, Project, Service } from "@/types";
 import { instance } from "@/utils";
 import { useEffect, useState } from "react";
+const duplicateData = (data: any[]) => {
+  data.length <= 4 && (data = [...data, ...data]);
+  return data;
+}
 
 const Home = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -27,10 +31,12 @@ const Home = () => {
         const customers: Customer[] =
           (await instance.get("/customers")).data || [];
 
-        setServices(services);
-        setProjects(projects);
-        setPartners(partners);
-        setCustomers(customers);
+        setServices(duplicateData(services));
+        setProjects(duplicateData(projects));
+
+        setPartners(duplicateData(partners));
+        console.log("partners: ", partners, duplicateData(partners))
+        setCustomers(duplicateData(customers));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,7 +44,9 @@ const Home = () => {
     fetchData();
   }, []);
   return (
-    <MainLayout>
+    <MainLayout
+      title="Home"
+    >
       <Banner />
       <Services services={services} />
       <Projects projects={projects} />

@@ -31,9 +31,9 @@ const DocumentPage = () => {
   }, [router.asPath]);
 
   return (
-    <MainLayout>
+    <MainLayout title="Tài liệu">
       <Banner />
-      <div className="px-10 lg:px-40 pt-28">
+      <div className="px-10 lg:px-40 pt-20">
         <CategoriesNav categories={categories} />
         <DocumentsList documents={data} />
         <Pagination pageSize={10} />

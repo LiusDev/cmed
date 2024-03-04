@@ -1,11 +1,10 @@
-import { Trans } from "../common";
 import { Carousel } from "@mantine/carousel";
 import { useTranslation } from "react-i18next";
-
+import classes from "@/styles/testimonial.module.css"
 const Testimonials = () => {
   const { t } = useTranslation();
 
-  const data = [
+  let data = [
     {
       id: 1,
       content: t("about.testimonials.content1"),
@@ -18,18 +17,21 @@ const Testimonials = () => {
     },
   ];
 
+  data.length <= 4 && (data = [...data, ...data]);
+
   return (
     <div className=" bg-[url('/about/testimonials/bg.png')] bg-cover bg-no-repeat flex justify-center items-center mb-20 h-full">
       <div className="h-full w-full flex justify-center bg-[#7493BC]/60 ">
         <Carousel
+          classNames={classes}
           withIndicators
           height="100%"
           // slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
           slideGap={{ base: 0, sm: "md" }}
           loop
         >
-          {data.map((item) => (
-            <Carousel.Slide>
+          {data.map((item, index) => (
+            <Carousel.Slide key={index}>
               <div className="mx-auto w-full md:w-3/5 text-center h-full md:py-20 text-secondary flex flex-col items-center justify-center">
                 <img
                   src="/about/testimonials/Vector.png"

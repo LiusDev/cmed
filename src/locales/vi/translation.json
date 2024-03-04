@@ -80,7 +80,8 @@
             "content2": "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating graphics including illustrations, logos, layouts and photos. You’ll be the one to shape the visual aspects of websites, books, magazines, product packaging, exhibitions and more."
         },
         "personnel": {
-            "title": "Đội ngũ nhân sự"
+            "title": "Đội ngũ nhân sự",
+            "description": "The Graphic Designer job description includes the entire process of defining requirements, visualizing and creating"
         }
     },
     "project": {
@@ -103,11 +104,11 @@
             "slogan": "Thành phố của những ước mơ sáng tạo & cống hiến"
         },
         "article": {
-            "header-1": "Phòng khám đa khoa",
+            "header-1": "Bệnh viện",
             "content-1": "Sáng tạo thực chất không phải điều gì xa xôi hay to lớn mà với Apec, nó xuất phát từ tình yêu thương và người làm sáng tạo bản chất là người làm sản phẩm, người sáng tạo giá trị, sáng tạo trải nghiệm của Khách hàng. Nếu bạn muốn cùng gánh vác sứ mệnh \"giết chết khách hàng bằng giá trị, giá trị và thật nhiều giá trị\", hãy gia nhập thành phố của chúng tôi!",
-            "header-2": "Bệnh viện",
+            "header-2": "Viện dưỡng lão",
             "content-2": "Sáng tạo thực chất không phải điều gì xa xôi hay to lớn mà với Apec, nó xuất phát từ tình yêu thương và người làm sáng tạo bản chất là người làm sản phẩm, người sáng tạo giá trị, sáng tạo trải nghiệm của Khách hàng. Nếu bạn muốn cùng gánh vác sứ mệnh \"giết chết khách hàng bằng giá trị, giá trị và thật nhiều giá trị\", hãy gia nhập thành phố của chúng tôi!",
-            "header-3": "Viện dưỡng lão",
+            "header-3": "Phòng khám đa khoa",
             "content-3": "Sáng tạo thực chất không phải điều gì xa xôi hay to lớn mà với Apec, nó xuất phát từ tình yêu thương và người làm sáng tạo bản chất là người làm sản phẩm, người sáng tạo giá trị, sáng tạo trải nghiệm của Khách hàng. Nếu bạn muốn cùng gánh vác sứ mệnh \"giết chết khách hàng bằng giá trị, giá trị và thật nhiều giá trị\", hãy gia nhập thành phố của chúng tôi!",
             "header-4": "Phòng khám chuyên khoa",
             "content-4": "Sáng tạo thực chất không phải điều gì xa xôi hay to lớn mà với Apec, nó xuất phát từ tình yêu thương và người làm sáng tạo bản chất là người làm sản phẩm, người sáng tạo giá trị, sáng tạo trải nghiệm của Khách hàng. Nếu bạn muốn cùng gánh vác sứ mệnh \"giết chết khách hàng bằng giá trị, giá trị và thật nhiều giá trị\", hãy gia nhập thành phố của chúng tôi!",

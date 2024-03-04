@@ -7,13 +7,12 @@ const TabBar = () => {
     setIsChosen(tabID);
   };
   return (
-    <div className="w-full border-b-[1px] border-[#000] md:flex justify-center hidden">
+    <div className="w-2/3 mx-auto border-b-[0.01px] border-solid border-[#ccc] md:flex justify-center hidden">
       <Link href={"#article"}>
         <div
           onClick={() => handleChosen("article")}
-          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
-            isChosen === "article" && "border-b-[2px]"
-          }`}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${isChosen === "article" && "border-b-[2px] text-primary"
+            }`}
         >
           <Trans text="about.article.tabbar.story" />
         </div>
@@ -21,9 +20,8 @@ const TabBar = () => {
       <Link href={"#vision"}>
         <div
           onClick={() => handleChosen("vision")}
-          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
-            isChosen === "vision" && "border-b-[2px]"
-          }`}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${isChosen === "vision" && "border-b-[2px] text-primary"
+            }`}
         >
           <Trans text="about.article.tabbar.vision" />
         </div>
@@ -31,9 +29,8 @@ const TabBar = () => {
       <Link href={"#staff"}>
         <div
           onClick={() => handleChosen("staff")}
-          className={`py-5 w-60 border-primary text-lg font-medium text-center ${
-            isChosen === "staff" && "border-b-[2px]"
-          }`}
+          className={`py-5 w-60 border-primary text-lg font-medium text-center ${isChosen === "staff" && "border-b-[2px] text-primary"
+            }`}
         >
           <Trans text="about.article.tabbar.personnel" />
         </div>

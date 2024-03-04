@@ -43,12 +43,12 @@ const ProjectDetail = () => {
 
       <div className='container m-auto mt-28 px-4'>
         <div className='mb-20 border-b border-tertiary/20'>
-          <div className='flex flex-col items-center pb-20 md:flex-row'>
-            <div className='mb-10 w-full px-5 md:mb-0 md:w-1/2'>
-              <img src={project.featuredImage} alt='project-image' />
+          <div className='flex flex-col items-start pb-20 md:flex-row'>
+            <div className='mb-10 w-full px-5 md:mb-0 md:w-1/2 h-[400px]'>
+              <img src={project.featuredImage} alt='project-image' className='h-full w-full object-cover' />
             </div>
-            <div className='w-full px-5 md:w-1/2'>
-              <h1 className='mb-4 text-xl font-bold capitalize'>
+            <div className='w-full px-5 md:w-1/2 '>
+              <h1 className='mb-4 text-xl font-bold capitalize border-b-2 py-2 pr-2 border-primary inline-block'>
                 <span className='text-primary'>1.</span>{' '}
                 <Trans text='project.detail.title' />
               </h1>

@@ -32,7 +32,7 @@ const ProjectPage = () => {
   }, [router.asPath]);
 
   return (
-    <MainLayout>
+    <MainLayout title="Dự án">
       <Banner />
       <h1 className="text-center px-4 py-20 text-4xl">
         <Trans text="project.title" />

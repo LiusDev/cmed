@@ -60,9 +60,9 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           controlsOffset={"md"}
         >
           {services &&
-            services.map((Item) => (
-              <Carousel.Slide key={Item.id}>
-                <Card key={Item.id} service={Item} />
+            services.map((Item, index) => (
+              <Carousel.Slide key={index}>
+                <Card service={Item} />
               </Carousel.Slide>
             ))}
         </Carousel>

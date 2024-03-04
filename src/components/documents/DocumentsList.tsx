@@ -8,11 +8,11 @@ interface DocumentsListProps {
 }
 const DocumentsList = ({ documents }: DocumentsListProps) => {
   return (
-    <div className="w-full py-20">
+    <div className="w-full ">
       <Grid>
         {documents.map((document) => {
           return (
-            <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+            <Grid.Col span={{ base: 12, md: 6, lg: 3 }} key={document.id}>
               <DocumentItem document={document} />
             </Grid.Col>
           );

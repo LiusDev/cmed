@@ -28,7 +28,7 @@ const Recruitment = () => {
         fetchData();
     }, [router.asPath]);
     return (
-        <MainLayout>
+        <MainLayout title="Tuyển dụng">
             <Banner />
             <h1 className='mx-10 mt-10 border-b-[1px] border-[#000] py-5 text-2xl font-medium uppercase md:mx-40'>
                 <Trans text='recruitment.title' />
@@ -41,6 +41,7 @@ const Recruitment = () => {
                         <Link
                             href={`/recruitment/${item.id}`}
                             className={`col-span-1 mb-10`}
+                            key={item.id}
                         >
                             <div>
                                 <h1 className='text-xl font-medium text-primary'>

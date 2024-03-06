@@ -48,7 +48,7 @@ const Home = () => {
       title="Home"
     >
       <Banner />
-      <Services services={services} />
+      {/* <Services services={services} /> */}
       <Projects projects={projects} />
       <About />
       <Partners partners={partners} />

@@ -27,10 +27,10 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
           {customers.map((customer, index) => (
             <Carousel.Slide key={index}>
               <div className="group px-8 bg-secondary w-full h-full flex flex-col items-center relative cursor-pointer transition-all">
-                <div className="absolute w-full h-full hover:hidden group-hover:opacity-0 transition-all ">
+                <div className="absolute w-full h-full hover:hidden group-hover:opacity-0 transition-all">
                   <img src="/home/about.png" alt="w-full h-full object-cover content-center" />
                 </div>
-                <div className="absolute w-full h-full bg-primary opacity-80 group-hover:opacity-0 transition-all flex justify-center items-center">
+                <div className="absolute w-full h-full bg-primary opacity-80 group-hover:-translate-y-[60%] group-hover:opacity-0 transition-all flex justify-center items-center">
                   <img src="/favicon.png" alt="icon" className="w-28" />
                 </div>
                 <img

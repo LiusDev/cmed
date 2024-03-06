@@ -32,7 +32,6 @@ const News = () => {
     <MainLayout title="Tin tức">
       <div className="container m-auto px-4 mt-28">
         <Title />
-        <CategoriesNav categories={categories} />
         <NewsList news={news} />
         <Pagination pageSize={PAGE_SIZE} />
       </div>

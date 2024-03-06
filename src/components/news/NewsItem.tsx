@@ -10,7 +10,7 @@ interface NewsItemProps {
 
 const NewsItem = ({ news, className = "" }: NewsItemProps) => {
   return (
-    <article className={twMerge(`${className}`)}>
+    <article className={twMerge(`group ${className}`)}>
       <div className="h-60 overflow-hidden mb-4">
         <Link href={`/news/${news.id}`}>
           <img
@@ -24,7 +24,7 @@ const NewsItem = ({ news, className = "" }: NewsItemProps) => {
         {news.category.name}
       </p>
       <Link href={`/news/${news.id}`}>
-        <h4 className="uppercase font-bold mb-4 text-xl line-clamp-2">
+        <h4 className="uppercase font-bold mb-4 text-xl line-clamp-2 group-hover:text-primary">
           {news.title}
         </h4>
       </Link>

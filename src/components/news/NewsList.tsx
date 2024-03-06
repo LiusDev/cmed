@@ -19,7 +19,7 @@ const NewsList = ({ news, className = "" }: NewsProps) => {
                 </div>
             ) : (
                 <>
-                    <article className="hidden sm:block relative col-span-12 lg:col-span-8 overflow-hidden">
+                    <article className="group hidden sm:block relative col-span-12 lg:col-span-8 overflow-hidden">
                         <Link href={`/news/${news[0].id}`}>
                             <img
                                 src={news[0].featuredImage}
@@ -27,12 +27,12 @@ const NewsList = ({ news, className = "" }: NewsProps) => {
                                 className="object-cover w-full object-center h-96 transition-all hover:scale-105"
                             />
                         </Link>
-                        <div className="absolute bottom-0 left-0 p-6 bg-secondary-dark/70 w-1/2">
+                        <div className=" absolute bottom-0 left-0 p-6 bg-secondary-dark/70 w-1/2">
                             <p className="text-primary uppercase font-medium mb-2">
                                 {news[0].category.name}
                             </p>
                             <Link href={`/news/${news[0].id}`}>
-                                <h4 className="uppercase font-bold mb-4 text-xl line-clamp-2">
+                                <h4 className="uppercase font-bold mb-4 text-xl line-clamp-2 group-hover:text-primary">
                                     {news[0].title}
                                 </h4>
                             </Link>
@@ -46,9 +46,8 @@ const NewsList = ({ news, className = "" }: NewsProps) => {
                         <NewsItem
                             key={newsItem.id}
                             news={newsItem}
-                            className={` col-span-12 sm:col-span-6 lg:col-span-4 ${
-                                index === 0 && "sm:hidden"
-                            }`}
+                            className={` col-span-12 sm:col-span-6 lg:col-span-4 ${index === 0 && "sm:hidden"
+                                }`}
                         />
                     ))}
                 </>

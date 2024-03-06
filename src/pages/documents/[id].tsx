@@ -7,8 +7,6 @@ import parse from "html-react-parser"
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { DocumentItem, DocumentsList } from "@/components/documents"
-import { Grid } from "@mantine/core"
-import PdfViewer from "@/components/pdfViewer/PdfViewer"
 import Link from "next/link"
 import { modals } from "@mantine/modals"
 import ContactForm from "@/components/contact/ContactForm"
@@ -67,14 +65,9 @@ const DocumentsDetail = ({
 
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">
-                        <PdfViewer url={document.document} />
-                        <div className="pt-10">
-                            <Button className="m-auto" onClick={handleDownload}>
-                                <Trans text="common.downloadDocument" />
-                            </Button>
-                        </div>
+                        <object data={document.document} type="application/pdf" width="100%" height="800px"></object>
                     </div>
-                    <div className="">
+                    <div className="ml-5">
                         <h3 className="text-md md:text-xl uppercase my-10 text-center">
                             <Trans text="documents.detail.related" />
                         </h3>

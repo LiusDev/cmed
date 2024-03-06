@@ -12,9 +12,9 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
   staffs.length <= 4 && (staffs = [...staffs, ...staffs]);
 
   return (
-    <section id="staff" className={twMerge(`my-20 ${className}`)}>
+    <section id="staff" className={twMerge(`my-20 min-h-[800px] ${className}`)}>
       <div className="relative container flex flex-col items-center justify-center w-full mx-auto">
-        <div className="absolute bg-[url('/about/personnel/bg.png')] w-full h-[500px] translate-y-40"></div>
+        <div className="absolute bg-primary w-full h-[500px] translate-y-40"></div>
         <h2 className="relative text-center text-4xl font-semibold mt-10 text-secondary-dark drop-shadow">
           <Trans text="about.personnel.title" />
         </h2>
@@ -22,10 +22,10 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
           <Trans text="about.personnel.description" />
         </p>
       </div>
-      <div className="container m-auto px-4">
+      <div className="container m-auto px-4 ">
         {staffs.length > 0 && (
           <Carousel
-            height={600}
+            height="100%"
             slideSize={{ base: "100%", sm: "50%", md: "25%" }}
             slideGap={{ base: 0, sm: "md" }}
             loop
@@ -40,7 +40,7 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
                     alt=""
                     className="h-96 object-cover object-top"
                   />
-                  <div className="w-full h-20 text-center relative">
+                  <div className="w-full  text-center relative">
                     <div className="text-xl font-medium pt-5 mx-auto">{staff.name}</div>
                     <div className="text-base italic py-3 mx-auto">
                       {staff.position}

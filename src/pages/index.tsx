@@ -24,7 +24,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const services: Service[] = (await instance.get("/services")).data || [];
+        const services: Service[] = (await instance.get("/services?perPage=3&order=asc&page=5")).data || [];
         const projects: Project[] = (await instance.get("/projects")).data;
         const partners: Partner[] =
           (await instance.get("/partners")).data || [];
@@ -48,7 +48,7 @@ const Home = () => {
       title="Home"
     >
       <Banner />
-      {/* <Services services={services} /> */}
+      <Services services={services} />
       <Projects projects={projects} />
       <About />
       <Partners partners={partners} />

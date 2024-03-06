@@ -57,7 +57,7 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           align="start"
           controlSize={30}
           className="px-3 lg:px-10"
-          controlsOffset={"md"}
+          controlsOffset={"none"}
         >
           {services &&
             services.map((Item, index) => (

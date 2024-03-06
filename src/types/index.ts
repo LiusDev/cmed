@@ -16,7 +16,7 @@ export interface News {
   featuredImage: string;
   content: string;
   view: number;
-  category: Exclude<Category, 'documents' | 'news'>;
+  category: Exclude<Category, "documents" | "news">;
 }
 
 export interface Document {
@@ -28,7 +28,7 @@ export interface Document {
   featuredImage: string;
   document: string;
   view: number;
-  category: Exclude<Category, 'documents' | 'news'>;
+  category: Exclude<Category, "documents" | "news">;
 }
 
 export interface Customer {
@@ -38,6 +38,8 @@ export interface Customer {
   name: string;
   description: string;
   image: string;
+  logo: string;
+  icon: string;
 }
 
 export interface Partner {
@@ -96,7 +98,7 @@ export interface Metadata {
 }
 
 export const isPersonalLabel = (isPersonal: boolean) => {
-  return isPersonal ? 'Cá nhân' : 'Tổ chức';
+  return isPersonal ? "Cá nhân" : "Tổ chức";
 };
 
 export interface Contact {

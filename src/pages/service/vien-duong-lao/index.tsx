@@ -22,7 +22,7 @@ const ServiceDetail = () => {
     instance
       .get("/services", {
         params: {
-          perPage: 5,
+          perPage: 3,
           sortBy: "id",
           order: "asc",
           page: 3

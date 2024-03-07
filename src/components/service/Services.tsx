@@ -19,14 +19,6 @@ const icons = [
   {
     id: 3,
     link: "/service/article/icons/icon3.png"
-  },
-  {
-    id: 4,
-    link: "/service/article/icons/icon4.png"
-  },
-  {
-    id: 5,
-    link: "/service/article/icons/icon5.png"
   }
 ]
 

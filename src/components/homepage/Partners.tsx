@@ -2,7 +2,8 @@ import { Partner } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
 import { Trans } from "../common";
-import { useEffect } from "react";
+import { useRef } from "react";
+import Autoplay from 'embla-carousel-autoplay';
 
 interface PartnerProps {
   partners: Partner[];
@@ -10,6 +11,7 @@ interface PartnerProps {
 }
 
 const Partners = ({ partners, className = "" }: PartnerProps) => {
+  const autoplay = useRef(Autoplay({ delay: 4000 }))
   return (
     <section className={twMerge(`my-20 ${className}`)}>
       <div className="container m-auto w-full">
@@ -24,6 +26,9 @@ const Partners = ({ partners, className = "" }: PartnerProps) => {
           controlSize={40}
           className="flex justify-center items-center"
           loop
+          plugins={[autoplay.current]}
+          onMouseEnter={autoplay.current.stop}
+          onMouseLeave={autoplay.current.reset}
         >
           {partners.map((partner, index) => (
             <Carousel.Slide key={index}>

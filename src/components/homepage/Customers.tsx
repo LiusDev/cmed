@@ -31,7 +31,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                   <img src={customer.image} className="w-full h-full object-cover content-center" />
                 </div>
                 <div className="absolute w-full h-full bg-primary opacity-80 group-hover:-translate-y-[60%] group-hover:opacity-0 transition-all flex justify-center items-center">
-                  <img src={customer.icon} alt="icon" className="w-28" />
+                  <img src={customer.icon} alt="icon" className="w-1/2" />
                 </div>
                 <img
                   src={customer.logo}

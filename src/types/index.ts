@@ -127,6 +127,6 @@ export interface CreateContactDto {
   email: string;
   phone: string;
   company: string;
-  isPersonal: boolean
+  customerType: string
   content: string;
 }

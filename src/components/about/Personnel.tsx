@@ -45,7 +45,7 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
                     <div className="text-base italic py-3 mx-auto">
                       {staff.position}
                     </div>
-                    <div className="text-start text-sm space-y-3 mx-3">
+                    <div className="text-sm space-y-3 mx-3 text-justify max-md:leading-relaxed">
                       {parse(staff.description)}
                     </div>
                   </div>

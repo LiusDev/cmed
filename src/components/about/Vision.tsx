@@ -35,7 +35,7 @@ const Vision = () => {
       <div className="grid grid-cols-12">
         <article className="col-span-12 md:col-span-6 lg:col-span-4 bg-secondary-dark flex items-start justify-center py-10 md:py-20 lg:py-40 px-4 md:px-20 relative">
           <div className="">
-            <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10">
+            <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10 text-primary-dark">
               {content.title}
             </h2>
             <p className="mb-8 md:mb-10">{content.content}</p>
@@ -58,7 +58,7 @@ const Vision = () => {
             </Button>
           </div>
         </article>
-        <div className="col-span-12 md:col-span-6 lg:col-span-8">
+        <div className="col-span-12 md:col-span-6 lg:col-span-8 hidden md:block">
           <img
             src={content.image}
             alt={"image"}

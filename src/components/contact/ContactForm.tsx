@@ -21,17 +21,15 @@ const ContactForm = ({
 }: ContactFromProps) => {
     const form = useForm({
         initialValues: {
-            customerType: "",
             name: "",
+            isPersonal: false,
             phone: "",
             company: "",
             email: "",
             content: "",
         },
-
         validate: {
-            customerType: (value) =>
-                value.trim().length > 0 ? null : "Vui lòng nhập kiểu người liên hệ",
+            isPersonal: (v) => v != null ? null : "Vui lòng chọn bạn là gì",
             name: (value) =>
                 value.trim().length > 0 ? null : "Vui lòng nhập tên",
             phone: (value) =>
@@ -85,14 +83,18 @@ const ContactForm = ({
             )}
         >
             <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
-                <label htmlFor="" className="font-medium">
+                <label htmlFor="isPersonal" className="font-medium">
                     <Trans text="contact.form.userType.label" />
                 </label>
-                <input
-                    type="text"
+                <select
+                    id="isPersonal"
+                    name="isPersonal"
                     className="border-b border-tertiary outline-none pb-1"
                     {...form.getInputProps("customerType")}
-                />
+                >
+                    <option value="true">Cá nhân</option>
+                    <option value="false">Công ty</option>
+                </select>
             </div>
             <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
                 <label htmlFor="" className="font-medium">

@@ -3,7 +3,7 @@ import { MainLayout } from "@/components/layout";
 import { News } from "@/types";
 import { formatDate, instance } from "@/utils";
 import parse from "html-react-parser";
-import React, { use } from "react";
+import React, { use, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { NewsItem } from "@/components/news";
 import { useState, useEffect } from "react";
@@ -14,20 +14,20 @@ const NewsDetail = () => {
   const [relatedNews, setRelatedNews] = useState<News[]>([]);
   const [news, setNews] = useState<News>();
   const router = useRouter();
-  const breadCrumbsItems = news
+  const breadCrumbsItems = useMemo(() => news
     ? [
-        {
-          name: t("news.title"),
-          link: "/news",
-        },
-        {
-          name: news.category.name,
-          link: `/news?c=${news.category.id}`,
-        },
-      ]
-    : [];
+      {
+        name: t("news.title"),
+        link: "/news",
+      },
+      {
+        name: news.category.name,
+        link: `/news?c=${news.category.id}`,
+      },
+    ]
+    : [], [news]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const id = router.query.id;
       const { data: news }: { data: News } = await instance.get(`/news/${id}`);
@@ -43,11 +43,11 @@ const NewsDetail = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, [router.asPath]);
 
   useEffect(() => {
     fetchData();
-  }, [news, router.asPath]);
+  }, [router.asPath]);
 
   if (!news) {
     return <div>Loading...</div>;

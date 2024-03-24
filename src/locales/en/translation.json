@@ -6,5 +6,12 @@
     "about": {
         "title": "About",
         "description": "Welcome to the about page!"
+    },
+    "contact": {
+        "company" : "công ty",
+        "hotline" : "số hotline",
+        "email" : "email",
+        "address" : "địa chỉ",
+        "blabla": "Hãy để chúng tôi góp phần vào thành công của bạn!"
     }
 }

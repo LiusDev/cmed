@@ -76,6 +76,7 @@ const ContactForm = ({
             modals.closeAll()
         }
     }
+
     return (
         <div
             className={twMerge(

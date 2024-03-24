@@ -218,6 +218,11 @@
         }
     },
     "contact": {
+        "company" : "công ty",
+        "hotline" : "số hotline",
+        "email" : "email",
+        "address" : "địa chỉ",
+        "blabla": "Hãy để chúng tôi góp phần vào thành công của bạn!",
         "title": "Liên hệ với chúng tôi",
         "description": "Hãy để chúng tôi góp phần vào câu chuyện thành công của bạn",
         "form": {

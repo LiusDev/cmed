@@ -5,8 +5,10 @@ import { Banner } from "../../types";
 import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useRef, useState } from "react";
 
-const Slider = ({ banners }: { banners: Banner[] }) => {
+const Slider = ({ banners }: { banners?: Banner[] }) => {
   const autoplay = useRef(Autoplay({ delay: 4000 }))
+
+  if (banners == null) return <></>
 
   return <div className="absolute bg-primary w-full h-full top-0 left-0 -z-10">
     <Carousel plugins={[autoplay.current]}>
@@ -20,7 +22,9 @@ const Slider = ({ banners }: { banners: Banner[] }) => {
 const Banner = () => {
   const [banners, setBanners] = useState<Banner[]>([])
   useEffect(() => {
-    doGet("/banners").then(res => setBanners(res.data))
+    doGet("/banners").then(res => {
+      setBanners(res.data)
+    })
   }, [])
   return (
     <section className="mt-16">
@@ -43,7 +47,7 @@ const Banner = () => {
               </Button>
             </div>
           </div>
-          Slider</div>
+        </div>
       </div>
     </section>
   );

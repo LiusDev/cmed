@@ -8,7 +8,13 @@ export const instance = axios.create({
 const fetcher = (url: string) => instance.get(url).then((res) => res.data);
 
 export const doGet = async (url: string) => {
-  const { data, error } = await fetcher(url);
+  let error = undefined
+  let data = undefined
+  try {
+    data = await fetcher(url);
+  } catch (er) {
+    error = er
+  }
   return {
     data,
     error,

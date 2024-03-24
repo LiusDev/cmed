@@ -1,7 +1,5 @@
 import { Metadata } from "@/types";
 import axios from "axios";
-import useSWR from "swr";
-import * as https from "https";
 
 export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -9,8 +7,8 @@ export const instance = axios.create({
 
 const fetcher = (url: string) => instance.get(url).then((res) => res.data);
 
-export const doGet = (url: string) => {
-  const { data, error } = useSWR(url, fetcher);
+export const doGet = async (url: string) => {
+  const { data, error } = await fetcher(url);
   return {
     data,
     error,

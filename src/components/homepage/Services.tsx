@@ -21,7 +21,7 @@ const Card = ({ service }: { service: Service }) => {
       <Link href={`/service/${service.id}`}>
         <h3 className="text-xl font-semibold">{service.name}</h3>
       </Link>
-      <p className="line-clamp-2 mb-2">{service.description}</p>
+      <p className="line-clamp-2 mb-2 text-lg">{service.description}</p>
       <Button href={`/service/${service.id}`} variant="outline" className="w-fit">
         <Trans text="common.viewMore" />
       </Button>

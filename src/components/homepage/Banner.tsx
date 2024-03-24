@@ -3,7 +3,7 @@ import { Button, Trans } from "../common";
 import { doGet } from "../../utils";
 import { Banner } from "../../types";
 import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Slider = ({ banners }: { banners: Banner[] }) => {
   const autoplay = useRef(Autoplay({ delay: 4000 }))
@@ -18,7 +18,10 @@ const Slider = ({ banners }: { banners: Banner[] }) => {
 }
 
 const Banner = () => {
-  const banners: Banner[] = doGet("/banners").data ?? []
+  const [banners, setBanners] = useState<Banner[]>([])
+  useEffect(() => {
+    doGet("/banners").then(res => setBanners(res.data))
+  }, [])
   return (
     <section className="mt-16">
       <div className="bg-no-repeat bg-center bg-cover grid grid-cols-12 relative overflow-hidden">

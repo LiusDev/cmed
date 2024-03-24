@@ -3,13 +3,17 @@ import { Metadata } from "@/types";
 import Link from "next/link";
 import { FiPhone } from "react-icons/fi";
 import { Trans } from "../common";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CallFloatingButton from "../floatingButtons/CallFloatingButton";
 import ChatZaloFloatingButton from "../floatingButtons/ChatZaloFloatingButton";
 
 const Footer = () => {
-  const { data: metadata }: { data: Metadata } = doGet("/metadata");
-
+  const [metadata, setMetada] = useState<Metadata>()
+  useEffect(() => {
+    doGet("/metadata").then(res => {
+      setMetada(res.data)
+    })
+  }, [])
   const companyPhone = useMemo(() => metadata?.companyPhone || "0898 099 886", [metadata])
 
   return (

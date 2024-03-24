@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { Pagination as MantinePage } from "@mantine/core"
 import { doGet } from "@/utils"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 interface PaginationProps {
     pageSize: number
@@ -10,9 +10,7 @@ interface PaginationProps {
 const Pagination = ({ pageSize }: PaginationProps) => {
     const router = useRouter()
     const { page, c } = router.query
-
-    const { data } = doGet(`/news/count${c ? `?category=${c}` : ""} `)
-
+    const [data, setData] = useState()
     const [totalNews, setTotalNews] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -21,13 +19,22 @@ const Pagination = ({ pageSize }: PaginationProps) => {
         !Number(page) ? setCurrentPage(1) : setCurrentPage(Number(page))
     }, [data, page])
 
-    const handlePageChange = (page: number) => {
-        router.push(`/news?${c ? `c=${c}&` : ""}page=${page}`)
-    }
+    useEffect(() => {
+        doGet(`/news/count${c ? `?category=${c}` : ""} `).then(res => {
+            setData(res.data)
+        })
+    }, [])
 
-    const getTotalPages = (items: number) => {
+    const handlePageChange = useCallback((page: number) => {
+        router.push(`/news?${c ? `c=${c}&` : ""}page=${page}`)
+    }, [page])
+
+    const getTotalPages = useCallback((items: number) => {
         return Math.ceil(items / pageSize)
-    }
+    }, [pageSize])
+
+    if (data == null) return <></>
+
     return (
         <div className="flex w-full items-center justify-center my-16">
             <MantinePage

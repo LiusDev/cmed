@@ -11,15 +11,16 @@ const Pagination = ({ pageSize }: PaginationProps) => {
     const router = useRouter()
     const { page, c } = router.query
 
-    const { data } = doGet(`/news/count${c ? `?category=${c}` : ""} `)
-
     const [totalNews, setTotalNews] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
-        !data ? setTotalNews(0) : setTotalNews(data)
-        !Number(page) ? setCurrentPage(1) : setCurrentPage(Number(page))
-    }, [data, page])
+        doGet(`/news/count${c ? `?category=${c}` : ""} `).then(res => {
+            const data = res.data
+            !data ? setTotalNews(0) : setTotalNews(data)
+            !Number(page) ? setCurrentPage(1) : setCurrentPage(Number(page))
+        })
+    }, [page])
 
     const handlePageChange = (page: number) => {
         router.push(`/news?${c ? `c=${c}&` : ""}page=${page}`)

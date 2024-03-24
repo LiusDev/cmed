@@ -130,3 +130,9 @@ export interface CreateContactDto {
   customerType: string
   content: string;
 }
+
+export interface Banner {
+  id: string;
+  image: string;
+  name: string;
+}

@@ -8,14 +8,14 @@ import {
 import About from "@/components/homepage/About";
 import { MainLayout } from "@/components/layout";
 import type { Customer, Partner, Project, Service } from "@/types";
-import { instance } from "@/utils";
+import { doGet, instance } from "@/utils";
 import { useEffect, useState } from "react";
 const duplicateData = (data: any[]) => {
   data.length <= 4 && (data = [...data, ...data]);
   return data;
 }
 
-const Home = () => {
+const Home = ({ banners }: { banners: any }) => {
   const [services, setServices] = useState<Service[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);
@@ -47,7 +47,7 @@ const Home = () => {
     <MainLayout
       title="Home"
     >
-      <Banner />
+      <Banner banners={banners} />
       <Services services={services} />
       <Projects projects={projects} />
       <About />
@@ -56,5 +56,14 @@ const Home = () => {
     </MainLayout>
   );
 };
+
+export async function getServerSideProps() {
+  const banners = (await doGet("/banners")).data
+  return {
+    props: {
+      banners
+    }
+  }
+}
 
 export default Home;

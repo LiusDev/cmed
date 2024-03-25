@@ -26,13 +26,7 @@ const Slider = ({ banners }: { banners?: Banner[] }) => {
   </div>
 }
 
-const Banner = () => {
-  const [banners, setBanners] = useState<Banner[]>([])
-  useEffect(() => {
-    doGet("/banners").then(res => {
-      setBanners(res.data)
-    })
-  }, [])
+const Banner = ({ banners }: { banners: Banner[] }) => {
   return (
     <section className="mt-16">
       <div className="bg-no-repeat bg-center bg-cover grid grid-cols-12 relative overflow-hidden">

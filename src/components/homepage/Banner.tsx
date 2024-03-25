@@ -11,9 +11,16 @@ const Slider = ({ banners }: { banners?: Banner[] }) => {
   if (banners == null) return <></>
 
   return <div className="absolute bg-primary w-full h-full top-0 left-0 -z-10">
-    <Carousel plugins={[autoplay.current]}>
-      {banners.map((b, index) => <CarouselSlide key={index}>
-        <img title={b.name} src={b.image} width={"100%"} />
+    <Carousel plugins={[autoplay.current]} nextControlProps={{ style: { display: "none" } }} previousControlProps={{ style: { display: "none" } }} className="w-full h-full" styles={{
+      viewport: {
+        height: "100%"
+      },
+      container: {
+        height: "100%"
+      }
+    }}>
+      {banners.map((b, index) => <CarouselSlide key={index} className="w-full h-full">
+        <img title={b.name} src={b.image} className="object-cover w-full h-full" />
       </CarouselSlide>)}
     </Carousel>
   </div>

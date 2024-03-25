@@ -24,19 +24,17 @@ const Home = ({ banners }: { banners: any }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const services: Service[] = (await instance.get("/services?perPage=3&order=asc&page=5")).data || [];
-        const projects: Project[] = (await instance.get("/projects")).data;
-        const partners: Partner[] =
-          (await instance.get("/partners")).data || [];
-        const customers: Customer[] =
-          (await instance.get("/customers")).data || [];
+        const [_services, _projects, _partners, _customers] = (await Promise.all([instance.get<Service[]>("/services?perPage=3&order=asc&page=5"), instance.get<Project[]>("/projects"), instance.get<Partner[]>("/partners"), instance.get<Customer[]>("/customers")])).map(i => i.data) as [Service[]?, Project[]?, Partner[]?, Customer[]?]
+        console.log(JSON.stringify(_services))
+        if (_services)
+          setServices(duplicateData(_services));
+        if (_projects)
+          setProjects(duplicateData(_projects));
+        if (_partners)
+          setPartners(duplicateData(_partners));
+        if (_customers)
+          setCustomers(duplicateData(_customers));
 
-        setServices(duplicateData(services));
-        setProjects(duplicateData(projects));
-
-        setPartners(duplicateData(partners));
-        console.log("partners: ", partners, duplicateData(partners))
-        setCustomers(duplicateData(customers));
       } catch (error) {
         console.error("Error fetching data:", error);
       }

@@ -24,7 +24,7 @@ const Home = ({ banners }: { banners: any }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [_services, _projects, _partners, _customers] = (await Promise.all([instance.get<Service[]>("/services?perPage=3&order=asc&page=5"), instance.get<Project[]>("/projects"), instance.get<Partner[]>("/partners"), instance.get<Customer[]>("/customers")])).map(i => i.data) as [Service[]?, Project[]?, Partner[]?, Customer[]?]
+        const [_services, _projects, _partners, _customers] = (await Promise.all([instance.get<Service[]>("/services?perPage=3&order=asc&page=0"), instance.get<Project[]>("/projects"), instance.get<Partner[]>("/partners"), instance.get<Customer[]>("/customers")])).map(i => i.data) as [Service[]?, Project[]?, Partner[]?, Customer[]?]
         console.log(JSON.stringify(_services))
         if (_services)
           setServices(duplicateData(_services));

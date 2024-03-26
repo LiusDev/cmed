@@ -39,7 +39,7 @@ const ServiceDetail = () => {
 
     return (
         <MainLayout>
-            <Banner />
+            <Banner title={service?.name} />
             <div className="flex flex-col lg:flex-row xl:px-60 mt-10 items-center">
                 {service && (
                     <>

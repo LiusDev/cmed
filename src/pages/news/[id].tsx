@@ -59,7 +59,6 @@ const NewsDetail = () => {
         <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
           {news.title}
         </h1>
-        <p className="text-sm mb-2">{formatDate(news.createdAt, " - ")}</p>
         <img
           src={news.featuredImage}
           alt={news.title}

@@ -25,7 +25,7 @@ const MainLayout = ({
                     {title ? `${title} | ${siteName}` : `${siteName}`}
                 </title>
                 <meta name="description" content={description} />
-                <link rel="icon" href="/favicon.png" />
+                <link rel="icon" href="/favicon.webp" />
             </Head>
             <Header />
             <main>{children}</main>

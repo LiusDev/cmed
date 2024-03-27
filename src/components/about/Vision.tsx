@@ -9,12 +9,12 @@ const Vision = () => {
     {
       title: t("about.vision.title1"),
       content: t("about.vision.content1"),
-      image: "/about/vision/image.png",
+      image: "/about/vision/image.webp",
     },
     {
       title: t("about.vision.title2"),
       content: t("about.vision.content2"),
-      image: "/about/vision/image2.png",
+      image: "/about/vision/image2.webp",
     },
   ];
 

@@ -16,7 +16,7 @@ const DocumentItem = ({ document }: ItemProps) => {
           overlayProps={{ radius: "sm", blur: 2 }}
         />
         <img
-          src={document.featuredImage || "/home/about.png"}
+          src={document.featuredImage || "/home/about.webp"}
           className="px-3 w-full h-[350px] object-cover object-center"
           alt={document.name}
         />

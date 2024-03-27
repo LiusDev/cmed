@@ -1,5 +1,45 @@
 import { Trans } from "../common";
 import { TabBar } from ".";
+import { useMemo } from "react";
+
+const ContentDeco = () => {
+  return <>
+    <div className="absolute bg-[#EFEFEF] top-0 right-0 w-screen h-[max(calc(100%_-_370px),635px)] -z-[1] max-lg:hidden" />
+    <div className="absolute bg-[#1B76BB] bottom-0 left-0 h-[370px] w-screen -z-[2]" />
+  </>
+}
+
+const Content = () => {
+  const articles = useMemo(() => [
+    <Trans text="about.article.article1" />,
+    <Trans text="about.article.article2" />,
+    <Trans text="about.article.article3" />,
+  ], [])
+  return (
+    <div className="w-full flex flex-col lg:flex-row justify-center overflow-hidden">
+      <div className="box-content gap-[30px] lg:pl-[160px] lg:pr-[135px] lg:pb-[107px] lg:pt-[60px] flex flex-col-reverse bg-[#EFEFEF] lg:bg-opacity-0 lg:flex-row justify-between lg:w-[1222px] font-normal relative">
+        <ContentDeco />
+        <div className="2xl:w-[570px] flex-1">
+          <img
+            src="/about/article-image.webp"
+            className="w-full object-cover"
+            alt="image"
+          />
+        </div>
+        <div className="2xl:w-[512px] pt-[40px] flex-1">
+          {
+            articles.map((a, i) => <>
+              <p className={`text-justify ${i == 0 ? "text-[24px] line-clamp-[32.69px]" : "text-[17px] line-clamp-[23.15px] text-[black]"}`} key={i}>
+                {a}
+              </p>
+              {i + 1 != articles.length && <div key={i} className="border-[1px] w-[109px] border-[#FFBE88] my-[25px]"></div>}
+            </>)
+          }
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const Article = () => {
   return (
@@ -9,34 +49,8 @@ const Article = () => {
         <Trans text="about.article.title" />
       </h1>
 
-      <div className="grid grid-cols-12 relative w-full mb-20 lg:mb-60">
-        <div className="hidden lg:block absolute bg-primary h-80 -bottom-20 lg:-bottom-60 right-0 w-full md:w-[90%]"></div>
-        <div className="grid grid-cols-12 col-span-12 lg:col-span-11 bg-[#efefef] py-10 md:py-20 relative">
-          <img
-            src="/about/article-image.png"
-            className="hidden lg:block col-start-3 xl:col-start-4 max-w-[400px] absolute top-20"
-            alt="image"
-          />
-          <div className="col-span-12 col-start-2 lg:col-span-4 lg:col-start-8 xl:col-start-8 xl:col-span-3 text-xl font-base">
-            <p className="py-5">
-              <Trans text="about.article.article1" />
-            </p>
-            <div className="w-20 border-[1px]"></div>
-            <p className="py-5">
-              <Trans text="about.article.article2" />
-            </p>
-            <div className="w-20 border-[1px]"></div>
-            <p className="py-5">
-              <Trans text="about.article.article3" />
-            </p>
-          </div>
-        </div>
-        <img
-          src="/about/article-image.png"
-          className="w-full col-span-12 lg:hidden"
-          alt="image"
-        />
-      </div>
+      <Content />
+
     </div>
   );
 };

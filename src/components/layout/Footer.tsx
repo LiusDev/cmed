@@ -48,7 +48,7 @@ const Footer = () => {
             <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8 order-1 lg:order-2 mb-8 lg:mb-0">
               <Link href="#">
                 <img
-                  src="/logo-bw.png"
+                  src="/logo-bw.webp"
                   alt="logo"
                   className="object-contain h-10"
                 />

@@ -7,7 +7,7 @@ const TabBar = () => {
     setIsChosen(tabID);
   };
   return (
-    <div className="w-2/3 mx-auto border-b-[0.01px] border-solid border-[#ccc] md:flex justify-center hidden">
+    <div className="lg:gap-[129px] mx-auto border-b-[0.01px] border-solid border-[#ccc] md:flex justify-center hidden">
       <Link href={"#article"}>
         <div
           onClick={() => handleChosen("article")}

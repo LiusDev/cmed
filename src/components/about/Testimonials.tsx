@@ -4,7 +4,7 @@ import classes from "@/styles/testimonial.module.css"
 const Testimonials = () => {
   const { t } = useTranslation();
 
-  let data = [
+  const data = [
     {
       id: 1,
       content: t("about.testimonials.content1"),
@@ -17,10 +17,12 @@ const Testimonials = () => {
     },
   ];
 
-  data.length <= 4 && (data = [...data, ...data]);
+  if (data.length <= 4) {
+    data.push(...data, ...data)
+  }
 
   return (
-    <div className=" bg-[url('/about/testimonials/bg.png')] bg-cover bg-no-repeat flex justify-center items-center mb-20">
+    <div className=" bg-[url('/about/testimonials/bg.webp')] bg-cover bg-no-repeat flex justify-center items-center mb-20 overflow-hidden">
       <Carousel
         classNames={classes}
         withIndicators
@@ -32,7 +34,7 @@ const Testimonials = () => {
           <Carousel.Slide key={index}>
             <div className="mx-auto md:w-3/5  text-center md:py-20 text-secondary flex flex-col items-center justify-center">
               <img
-                src="/about/testimonials/Vector.png"
+                src="/about/testimonials/Vector.webp"
                 alt="quotation"
                 className="w-10 h-10 md:w-12 md:h-12 my-10"
               />

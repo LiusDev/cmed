@@ -20,7 +20,7 @@ const About = ({ className }: AboutProps) => {
           </div>
         </div>
         <div className="hidden lg:block w-full xl:col-span-4 lg:col-span-3 xl:col-start-7 lg:col-start-9 z-10 min-h-[600px]">
-          <img src="/home/about.png" alt="home/about image" className="h-full object-cover object-center" />
+          <img src="/home/about.webp" alt="home/about image" className="h-full object-cover object-center" />
         </div>
         <div className="absolute hidden md:block bg-primary w-3/5 h-3/5 z-5 right-0"></div>
       </div>

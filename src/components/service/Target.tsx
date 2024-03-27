@@ -13,7 +13,7 @@ const Target = () => {
       </div>
 
       <img
-        src="/service/target/back-image.png"
+        src="/service/target/back-image.webp"
         className="mx-10 lg:w-1/2"
         alt=""
       />

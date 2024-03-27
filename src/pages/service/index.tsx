@@ -89,7 +89,7 @@ const ServicePage = () => {
           </h1>
         </div>
 
-        <div className='relative mx-auto hidden h-[550px] w-full bg-[url("/service/article/model-2.png")] bg-contain bg-center bg-no-repeat md:h-[500px] md:bg-[url("/service/article/model-1.png")] lg:mt-20 lg:block lg:h-[800px] xl:h-[1000px]'>
+        <div className='relative mx-auto hidden h-[550px] w-full bg-[url("/service/article/model-2.webp")] bg-contain bg-center bg-no-repeat md:h-[500px] md:bg-[url("/service/article/model-1.webp")] lg:mt-20 lg:block lg:h-[800px] xl:h-[1000px]'>
           {articles.map((articleItem, index) => (
             <Link href={articleItem.link}
               key={articleItem.id}
@@ -108,7 +108,7 @@ const ServicePage = () => {
           ))}
         </div>
 
-        <div className='relative mx-auto h-[550px] w-full bg-[url("/service/article/model-2.png")] bg-contain bg-center bg-no-repeat md:h-[500px] md:bg-[url("/service/article/model-1.png")] lg:mt-20 lg:hidden lg:h-[800px] xl:h-[1000px]'>
+        <div className='relative mx-auto h-[550px] w-full bg-[url("/service/article/model-2.webp")] bg-contain bg-center bg-no-repeat md:h-[500px] md:bg-[url("/service/article/model-1.webp")] lg:mt-20 lg:hidden lg:h-[800px] xl:h-[1000px]'>
           {articles.map((articleItem, index) => (
             <div
               key={articleItem.id}

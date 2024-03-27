@@ -10,15 +10,15 @@ interface ServicesProps {
 const icons = [
   {
     id: 1,
-    link: "/service/article/icons/icon1.png"
+    link: "/service/article/icons/icon1.webp"
   },
   {
     id: 2,
-    link: "/service/article/icons/icon2.png"
+    link: "/service/article/icons/icon2.webp"
   },
   {
     id: 3,
-    link: "/service/article/icons/icon3.png"
+    link: "/service/article/icons/icon3.webp"
   }
 ]
 

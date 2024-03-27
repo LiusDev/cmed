@@ -11,7 +11,7 @@ const Banner = () => {
   };
   return (
     <section className="mt-16">
-      <div className="bg-[url('/home/home-banner.png')] bg-no-repeat bg-center bg-cover aspect-4/3 md:aspect-21/9 lg:aspect-4/1 flex justify-center items-end">
+      <div className="bg-[url('/home/home-banner.webp')] bg-no-repeat bg-center bg-cover aspect-4/3 md:aspect-21/9 lg:aspect-4/1 flex justify-center items-end">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-4 pb-12 w-full px-4">
           <input
             type="text"

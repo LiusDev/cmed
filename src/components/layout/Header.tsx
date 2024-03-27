@@ -73,14 +73,13 @@ const HamburgerMenu = () => {
       </button>
       <aside
         ref={menuRef}
-        className={` fixed top-0 left-0 bottom-0 bg-secondary-dark p-6 w-2/3 ${
-          isShowMenu ? "translate-x-0" : "-translate-x-full"
-        } lg:-translate-x-full transition-all z-40`}
+        className={` fixed top-0 left-0 bottom-0 bg-secondary-dark p-6 w-2/3 ${isShowMenu ? "translate-x-0" : "-translate-x-full"
+          } lg:-translate-x-full transition-all z-40`}
       >
         <div className="flex items-center justify-between mb-10">
           <Link href="/">
             <img
-              src="logo.png"
+              src="logo.webp"
               alt="Logo"
               className="h-[36px] max-w-full align-middle object-cover"
             />
@@ -94,9 +93,8 @@ const HamburgerMenu = () => {
             <li key={item.i18nTitle}>
               <Link
                 href={item.href}
-                className={` ${
-                  router.asPath === item.href ? "text-primary" : "text-tertiary"
-                } hover:text-primary transition-all capitalize font-semibold text-lg`}
+                className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
+                  } hover:text-primary transition-all capitalize font-semibold text-lg`}
               >
                 {t(item.i18nTitle)}
               </Link>
@@ -113,7 +111,7 @@ const Logo = () => {
   return (
     <Link href="/">
       <img
-        src="/logo.png"
+        src="/logo.webp"
         alt="Logo"
         className="h-[31px] max-w-full align-middle object-cover"
       />
@@ -131,9 +129,8 @@ const NavItem = () => {
         <li key={item.i18nTitle}>
           <Link
             href={item.href}
-            className={` ${
-              router.asPath === item.href ? "text-primary" : "text-tertiary"
-            } hover:text-primary transition-all uppercase font-semibold`}
+            className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
+              } hover:text-primary transition-all uppercase font-semibold`}
           >
             {t(item.i18nTitle)}
           </Link>
@@ -174,25 +171,22 @@ const SwitchLanguage = ({ className }: { className?: string }) => {
     >
       <button
         onClick={() => handleChangeLanguage(Language.VI)}
-        className={`${
-          i18n.language === Language.VI && "text-primary font-semibold"
-        } text-base lg:text-sm`}
+        className={`${i18n.language === Language.VI && "text-primary font-semibold"
+          } text-base lg:text-sm`}
       >
         {languageLabel[Language.VI]}
       </button>
       <button
         onClick={() => handleChangeLanguage(Language.EN)}
-        className={`${
-          i18n.language === Language.EN && "text-primary font-semibold"
-        }  text-base lg:text-sm`}
+        className={`${i18n.language === Language.EN && "text-primary font-semibold"
+          }  text-base lg:text-sm`}
       >
         {languageLabel[Language.EN]}
       </button>
       <button
         onClick={() => handleChangeLanguage(Language.JP)}
-        className={`${
-          i18n.language === Language.JP && "text-primary font-semibold"
-        }  text-base lg:text-sm`}
+        className={`${i18n.language === Language.JP && "text-primary font-semibold"
+          }  text-base lg:text-sm`}
       >
         {languageLabel[Language.JP]}
       </button>

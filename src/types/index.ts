@@ -28,6 +28,8 @@ export interface Document {
   featuredImage: string;
   document: string;
   view: number;
+  download: number
+  pages: number
   category: Exclude<Category, "documents" | "news">;
 }
 

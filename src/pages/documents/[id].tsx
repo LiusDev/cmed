@@ -4,12 +4,18 @@ import { Document } from "@/types"
 import { formatDate, instance } from "@/utils"
 import { GetServerSidePropsContext } from "next"
 import parse from "html-react-parser"
-import React from "react"
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { DocumentItem, DocumentsList } from "@/components/documents"
 import Link from "next/link"
 import { modals } from "@mantine/modals"
 import ContactForm from "@/components/contact/ContactForm"
+import dynamic from "next/dynamic"
+import { FiBookOpen, FiDownload, FiEye, FiPaperclip } from "react-icons/fi"
+import { MdFirstPage, MdPages } from "react-icons/md"
+const Viewer = dynamic(() => import("@/components/documents/Viewer"), { ssr: false })
+import "./style.module.css"
+
 
 interface NewsDetailProps {
     document: Document
@@ -24,7 +30,7 @@ const DocumentsDetail = ({
 }: NewsDetailProps) => {
     const { t } = useTranslation()
 
-    const breadCrumbsItems = [
+    const breadCrumbsItems = useMemo(() => [
         {
             name: t("documents.title"),
             link: "/documents",
@@ -33,13 +39,13 @@ const DocumentsDetail = ({
             name: document.category.name,
             link: `/documents?c=${document.category.id}`,
         },
-    ]
+    ], [document])
 
-    const downloadFile = () => {
+    const downloadFile = useCallback(() => {
         window.open(document.document, "_blank")
-    }
+    }, [document.document])
 
-    const handleDownload = () =>
+    const handleDownload = useCallback(() =>
         modals.open({
             size: "xl",
             title: t("common.downloadDocumentForm"),
@@ -49,7 +55,7 @@ const DocumentsDetail = ({
                     submitFunction={downloadFile}
                 />
             ),
-        })
+        }), [downloadFile])
 
     return (
         <MainLayout>
@@ -58,14 +64,26 @@ const DocumentsDetail = ({
                 <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
                     {document.name}
                 </h1>
-                <p className="text-sm mb-2">
-                    {formatDate(document.createdAt, " - ")}
-                </p>
+                <div className="flex flex-row gap-3">
+                    <p className="text-sm mb-2">
+                        {formatDate(document.createdAt, " - ")}
+                    </p>
+                    <p className="text-sm mb-2">
+                        <FiEye className="inline-block" /> {document.view}
+                    </p>
+                    <p className="text-sm mb-2">
+                        <FiDownload className="inline-block" /> {document.download}
+                    </p>
+                    <p className="text-sm mb-2">
+                        <FiBookOpen className="inline-block" /> {document.download} trang
+                    </p>
+                </div>
                 <div className="pb-10">{parse(document.description)}</div>
 
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">
                         <object data={document.document} type="application/pdf" width="100%" height="800px"></object>
+                        {/* <Viewer file={document.document} /> */}
                     </div>
                     <div className="ml-5">
                         <h3 className="text-md md:text-xl uppercase my-10 text-center">

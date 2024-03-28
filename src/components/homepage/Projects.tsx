@@ -1,6 +1,6 @@
 import { Project } from "@/types";
 import { Button, Trans } from "../common";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ interface ProjectProps {
 const Projects = ({ projects, className = "" }: ProjectProps) => {
   const [currentProject, setCurrentProject] = useState<Project>(projects[0]);
 
-  const handleChangeProject = (direction: "next" | "prev") => {
+  const handleChangeProject = useCallback((direction: "next" | "prev") => {
     const currentIndex = projects.findIndex(
       (project) => project.id === currentProject.id
     );
@@ -30,9 +30,11 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
         setCurrentProject(projects[currentIndex - 1]);
       }
     }
-  };
+  }, [projects, currentProject]);
+
   useEffect(() => {
-    setCurrentProject(projects[0]);
+    if (projects.length > 0)
+      setCurrentProject(projects[0]);
   }, [projects]);
 
   if (!currentProject) {

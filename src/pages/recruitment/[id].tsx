@@ -7,6 +7,9 @@ import parse from "html-react-parser";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
+import { FaClock } from "react-icons/fa";
+
+import dayjs from "dayjs"
 interface NewsDetailProps {
   recruitment: Recruitment;
   relatedRecruitment: Recruitment[];
@@ -29,16 +32,19 @@ const RecruitmentDetail = ({
     <MainLayout>
       <div className="container m-auto px-4 mt-28">
         <BreadCr items={breadCrumbsItems} />
-        <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
+        <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4 text-[#1B76BB]">
           {recruitment.title}
         </h1>
-        <p className="text-sm mb-2">
-          {formatDate(recruitment.deadline, " - ")}
-        </p>
-        <div className="pb-20 mb-20 border-b border-tertiary/20">
+        <div className="flex flex-row items-baseline gap-[5px]">
+          <FaClock className="inline-block text-[#808080]" />
+          <p className="text-[20px] line-clamp-[27.24px] mb-2 text-[#808080]">
+            {`Ngày hết hạn ${dayjs(recruitment.deadline).format("DD/MM/YYYY HH:mm")}`}
+          </p>
+        </div>
+        <div className="pb-20 pt-11 mb-20 border-b border-tertiary/20">
           {parse(recruitment.content)}
         </div>
-        <h2 className="text-xl md:text-3xl uppercase mb-10">
+        <h2 className="text-[40px] text-[#3E4756] line-clamp-[54.48px] md:text-3xl uppercase mb-[34px]">
           <Trans text="news.detail.related" />
         </h2>
         <div className="grid md:grid-cols-2 md:gap-2 mb-10">
@@ -53,7 +59,12 @@ const RecruitmentDetail = ({
                   <h1 className="text-xl font-medium text-primary">
                     {item.title}
                   </h1>
-                  <div className="text-sm">{item.deadline}</div>
+                  <div className="flex flex-row items-baseline gap-[5px]">
+                    <FaClock className="inline-block text-[#808080]" />
+                    <p className="text-[20px] line-clamp-[27.24px] mb-2 text-[#808080]">
+                      {`Ngày hết hạn ${dayjs(recruitment.deadline).format("DD/MM/YYYY HH:mm")}`}
+                    </p>
+                  </div>
                 </div>
               </Link>
             ))}

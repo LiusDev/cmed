@@ -22,6 +22,7 @@
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
     "embla-carousel-autoplay": "^7.1.0",
     "html-react-parser": "^5.0.11",
     "i18next": "^23.7.6",

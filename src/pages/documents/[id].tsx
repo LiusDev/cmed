@@ -15,8 +15,8 @@ import { FiBookOpen, FiDownload, FiEye, FiPaperclip } from "react-icons/fi"
 import { MdFirstPage, MdPages } from "react-icons/md"
 const Viewer = dynamic(() => import("@/components/documents/Viewer"), { ssr: false })
 import "./style.module.css"
-
-
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 interface NewsDetailProps {
     document: Document
     relatedDocuments: Document[]
@@ -42,7 +42,9 @@ const DocumentsDetail = ({
     ], [document])
 
     const downloadFile = useCallback(() => {
-        window.open(document.document, "_blank")
+        instance.get(`/documents/${document.id}?download=1`).then(() => {
+            window.open(document.document, "_blank")
+        })
     }, [document.document])
 
     const handleDownload = useCallback(() =>
@@ -64,6 +66,9 @@ const DocumentsDetail = ({
                 <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
                     {document.name}
                 </h1>
+                <button
+                    className="text-sm mb-2 bg-primary-light hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition duration-300 text-[#fff]"
+                    onClick={handleDownload}>Download</button>
                 <div className="flex flex-row gap-3">
                     <p className="text-sm mb-2">
                         {formatDate(document.createdAt, " - ")}
@@ -82,8 +87,8 @@ const DocumentsDetail = ({
 
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">
-                        <object data={document.document} type="application/pdf" width="100%" height="800px"></object>
-                        {/* <Viewer file={document.document} /> */}
+                        {/* <object data={document.document} type="application/pdf" width="100%" height="800px"></object> */}
+                        <Viewer file={document.document} />
                     </div>
                     <div className="ml-5">
                         <h3 className="text-md md:text-xl uppercase my-10 text-center">

@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 interface ProjectCardProps {
   project: Project;
   className?: string;
+  index: number
 }
 
-const ProjectCard = ({ project, className = "" }: ProjectCardProps) => {
+const ProjectCard = ({ project, className = "", index }: ProjectCardProps) => {
   const router = useRouter();
   return (
     <article
@@ -18,9 +19,12 @@ const ProjectCard = ({ project, className = "" }: ProjectCardProps) => {
     >
       <div className="w-full h-full bg-tertiary-dark/30 flex items-end">
         <div className="flex flex-col gap-4 p-8">
-          <p className="line-clamp-1 border-b border-secondary text-secondary">
-            {project.name}
-          </p>
+          <div className="flex flex-row items-center">
+            <span className="font-semibold text-[32px] line-clamp-1 text-[white]">{index + 1}.</span>
+            <p className="border-b border-secondary text-secondary">
+              {project.name}
+            </p>
+          </div>
           <h4 className="text-secondary text-lg font-medium line-clamp-2">
             {project.description}
           </h4>

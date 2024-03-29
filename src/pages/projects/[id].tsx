@@ -10,33 +10,14 @@ import parse from 'html-react-parser';
 import { Trans } from '@/components/common';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-const ProjectDetail = () => {
-  const [project, setProject] = useState<Project>();
-  const [otherProjects, setOtherProjects] = useState<Project[]>([]);
-  const router = useRouter();
-  const fetchData = async () => {
-    try {
-      const id = router.query.id;
-      const { data: project }: { data: Project } = await instance.get(
-        `/projects/${id}`
-      );
-      setProject(project);
-      const { data }: { data: Project[] } =
-        await instance.get(`/projects?perPage=4`);
-      const otherProjects = data
-        .filter((item) => item.id !== project.id)
-        .slice(0, 3);
-      setOtherProjects(otherProjects);
-    } catch (error) { }
-  };
+import { GetServerSideProps, GetServerSidePropsContext, NextPageContext } from 'next';
 
-  useEffect(() => {
-    fetchData();
-  }, [router.asPath]);
+type ProjectDetailProps = {
+  project: Project;
+  otherProjects: Project[];
+}
 
-  if (!project) {
-    return <div>Loading...</div>;
-  }
+const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
   return (
     <MainLayout>
       <ProjectDetailBanner project={project} />
@@ -69,9 +50,10 @@ const ProjectDetail = () => {
         </h2>
         <div className='mb-10 grid grid-cols-12 gap-8'>
           {otherProjects.length > 0 &&
-            otherProjects.map((item) => (
+            otherProjects.map((item, index) => (
               <ProjectCard
                 key={item.id}
+                index={index}
                 project={item}
                 className='col-span-12 sm:col-span-6 lg:col-span-4'
               />
@@ -81,5 +63,25 @@ const ProjectDetail = () => {
     </MainLayout>
   );
 };
+
+
+export async function getServerSideProps({ res, params }: GetServerSidePropsContext) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
+  if (!params) throw new Error('No params')
+
+  const id = params.id;
+  const [{ data: project }, { data: p2 }] = await Promise.all([instance.get<Project>(
+    `/projects/${id}`
+  ), instance.get<Project[]>(`/projects?perPage=4`)])
+  const otherProjects = p2
+    .filter((item) => item.id !== project.id)
+    .slice(0, 3);
+
+  return { props: { project, otherProjects } };
+}
 
 export default ProjectDetail;

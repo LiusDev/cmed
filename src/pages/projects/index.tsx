@@ -8,7 +8,7 @@ import {
 } from "@/components/project";
 import { Project } from "@/types";
 import { instance } from "@/utils";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -18,7 +18,7 @@ const ProjectPage = () => {
   const projects: Project[] = [];
   const [data, setData] = useState<Project[]>(projects);
   const router = useRouter();
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await instance.get(`/projects?perPage=${PAGE_SIZE}`);
       const projects: Project[] = response.data || [];
@@ -26,7 +26,7 @@ const ProjectPage = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, []);
   useEffect(() => {
     fetchData();
   }, [router.asPath]);

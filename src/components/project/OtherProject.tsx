@@ -8,6 +8,7 @@ import ProjectCard from "./ProjectCard";
 interface OtherProjectProps {
   projects: Project[];
   pageSize: number;
+  page: number
 }
 
 const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
@@ -18,8 +19,7 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
 
   const handleGetItems = async () => {
     const { data: fetchProjects } = await instance.get(
-      `/projects?perPage=${pageSize}&page=${page || 1}${
-        name ? `&name=${name}` : ""
+      `/projects?perPage=${pageSize}&page=${page || 1}${name ? `&name=${name}` : ""
       }`
     );
     setData(fetchProjects);
@@ -37,8 +37,8 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
         <Trans text="project.detail.other" />
       </h3>
       <div className="grid grid-cols-6 gap-8">
-        {data.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {data.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
     </section>

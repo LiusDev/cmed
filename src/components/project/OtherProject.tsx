@@ -8,7 +8,6 @@ import ProjectCard from "./ProjectCard";
 interface OtherProjectProps {
   projects: Project[];
   pageSize: number;
-  page: number
 }
 
 const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {

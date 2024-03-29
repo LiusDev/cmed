@@ -2,8 +2,8 @@ import { Trans } from "../common";
 
 const Target = () => {
   return (
-    <div className="lg:px-40 px-10 bg-[#f4f5f9] py-28 flex flex-col lg:flex-row justify-center items-center space-y-5">
-      <div className="lg:w-1/2 md:px-10 space-y-5">
+    <div className="lg:px-40 px-10 bg-[#f4f5f9] py-28 gap-[79px] flex flex-col lg:flex-row justify-center items-center space-y-5">
+      <div className="flex-1">
         <h1 className="text-3xl text-primary font-bold">
           <Trans text="services.target.header" />
         </h1>
@@ -12,11 +12,18 @@ const Target = () => {
         </p>
       </div>
 
-      <img
-        src="/service/target/back-image.webp"
-        className="mx-10 lg:w-1/2"
-        alt=""
-      />
+      <div className="flex-1 relative pt-[5%]">
+        <img
+          src="/service/target/back-image.webp"
+          className="w-4/5 z-20 relative"
+          alt=""
+        />
+        <img
+          src="/service/target/back-image.webp"
+          className="w-4/5 absolute top-0 right-0 z-10"
+          alt=""
+        />
+      </div>
     </div>
   );
 };

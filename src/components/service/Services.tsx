@@ -7,21 +7,6 @@ interface ServicesProps {
   services: Service[];
 }
 
-const icons = [
-  {
-    id: 1,
-    link: "/service/article/icons/icon1.webp"
-  },
-  {
-    id: 2,
-    link: "/service/article/icons/icon2.webp"
-  },
-  {
-    id: 3,
-    link: "/service/article/icons/icon3.webp"
-  }
-]
-
 const Services = ({ services }: ServicesProps) => {
   const [selectedService, setSelectedService] = useState(services[0]);
   const handleSelect = (service: Service) => {
@@ -46,7 +31,7 @@ const Services = ({ services }: ServicesProps) => {
                   } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`}
                 onClick={() => handleSelect(service)}
               >
-                <img src={icons[index].link} className="w-10 h-10 mb-2" alt="icon" />
+                <img src={service.logo} className="w-10 h-10 mb-2" alt="icon" />
                 {service.name}
               </div>
             );

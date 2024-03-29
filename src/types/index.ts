@@ -59,8 +59,9 @@ export interface Project {
   name: string;
   featuredImage: string;
   description: string;
+  subtitle: string;
   content: string;
-  images: Images[];
+  images: string[];
 }
 
 export interface Images {
@@ -76,6 +77,7 @@ export interface Service {
   modifiedAt: string;
   name: string;
   description: string;
+  logo: string
   featuredImage: string;
   featuredImage2: string;
   content: string;

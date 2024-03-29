@@ -52,7 +52,7 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
             <h3 className="text-2xl font-medium capitalize mb-6 md:mb-8">
               {currentProject.name}
             </h3>
-            <p className="mb-8 md:mb-10 line-clamp-4">
+            <p className="mb-8 md:mb-10 line-clamp-4 max-lg:min-h-[150px]">
               {currentProject.description}
             </p>
             <Button

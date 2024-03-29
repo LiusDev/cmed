@@ -2,14 +2,14 @@ import { MainLayout } from "@/components/layout";
 import { instance } from "@/utils";
 import { Banner, Services, WhyUs } from "@/components/service";
 import type { News, Service } from "@/types";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NewsItem } from "@/components/news";
 import { Trans } from "@/components/common";
 const ServiceDetail = () => {
   const [news, setNews] = useState<News[]>([]);
   const [services, setServices] = useState<Service[]>([]);
 
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     instance
       .get("/news?perPage=3")
       .then((response) => {
@@ -34,17 +34,16 @@ const ServiceDetail = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  };
+  }, [])
 
   useEffect(() => {
     fetchData();
-  }, [news.length, services.length]);
+  }, []);
 
   return (
     <MainLayout>
       <Banner />
       <Services services={services} />
-      <WhyUs />
       <div className="container m-auto px-4 mb-20">
         <h1 className="font-bold text-primary text-3xl text-center py-20">
           <Trans text="services.detail.related" />

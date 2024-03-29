@@ -8,9 +8,7 @@ import { Project } from '@/types';
 import { instance } from '@/utils';
 import parse from 'html-react-parser';
 import { Trans } from '@/components/common';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { GetServerSideProps, GetServerSidePropsContext, NextPageContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 
 type ProjectDetailProps = {
   project: Project;

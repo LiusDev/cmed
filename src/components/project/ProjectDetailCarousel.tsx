@@ -1,5 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import type { Project } from "@/types";
+import { useMediaQuery } from "@mantine/hooks";
 
 const ProjectDetailCarousel = ({ project }: { project: Project }) => {
   const slides = project.images.map((image, index) => (
@@ -11,16 +12,18 @@ const ProjectDetailCarousel = ({ project }: { project: Project }) => {
       />
     </Carousel.Slide>
   ));
+  const isTabletOrMobile = useMediaQuery("(max-width: 768px)", false)
   return (
     <Carousel
       withIndicators
       height={600}
-      slideSize="60%"
-      slideGap="md"
+      {...(isTabletOrMobile ? {} : {
+        slideGap: "md",
+        slideSize: "60%",
+        dragFree: true,
+      })}
       loop
       align="center"
-
-      dragFree
     >
       {slides}
     </Carousel>

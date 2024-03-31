@@ -54,6 +54,11 @@ const articles = [
 ];
 
 const ServicePage = () => {
+  useEffect(()=>{
+    instance.get('homeservices/top4').then((res)=>{
+      console.log(res.data)
+    })
+  }, [])
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [article, setArticle] = useState<article[]>([]);
 

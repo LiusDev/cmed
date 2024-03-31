@@ -9,7 +9,7 @@ const Card = ({ service }: { service: Service }) => {
   return (
     <article className="flex flex-col gap-4 h-full xl:px-10 md:px-3">
       <Link
-        href={`/news/${service.id}`}
+        href={`/service/${service.id}`}
         className="aspect-square overflow-hidden group"
       >
         <img

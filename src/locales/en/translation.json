@@ -1,17 +1,248 @@
 {
+    "common": {
+        "siteName": "CMED",
+        "sitePhoneLabel": "Phone Number",
+        "siteWebLabel": "Website",
+        "siteEmailLabel": "Email",
+        "siteAddressLabel": "Address",
+        "viewMore": "View More",
+        "send": "Send",
+        "noData": "No Data",
+        "search": "Search",
+        "downloadDocument": "Download Document",
+        "downloadDocumentForm": "Please complete the form to download the document for free"
+    },
+    "header": {
+        "home": "Home",
+        "about": "About Us",
+        "project": "Projects",
+        "service": "Services",
+        "document": "Documents",
+        "news": "News",
+        "contact": "Contact"
+    },
+    "footer": {
+        "link": {
+            "about": "About Us",
+            "recruitment": "Recruitment",
+            "contact": "Contact",
+            "terms": "Terms of Use"
+        },
+        "email": "Email",
+        "website": "Website"
+    },
     "home": {
-        "title": "Home",
-        "description": "Welcome to the home page!"
+        "banner": {
+            "title": "CMED",
+            "description": "Solution for Constructing and Developing Clinics - Clinic Chain",
+            "buttonContent": "1K + HAPPY CUSTOMERS"
+        },
+        "service": {
+            "title": "SOLUTIONS FOR CONSTRUCTING AND DEVELOPING HEALTHCARE FACILITIES",
+            "viewMore": "View All Services"
+        },
+        "project": {
+            "title": "Projects"
+        },
+        "about": {
+            "title": "Vietnamese Dream of Aspiration",
+            "description": "CMED is a startup project pursuing the mission of providing solutions for constructing and developing private healthcare models to optimize time and human resources for businesses. Above all, we understand the difficulties of laying the first bricks to build a private healthcare business and the shortcomings that the healthcare system in Vietnam faces. CMED desires to lend a helping hand alongside businesses in building enterprises with solutions regarding operations, personnel, technology, and construction, implementing communication strategies."
+        },
+        "partner": {
+            "title": "Partners"
+        },
+        "customer": {
+            "title": "Customers"
+        }
     },
     "about": {
-        "title": "About",
-        "description": "Welcome to the about page!"
+        "article": {
+            "title": "Aspiration to Expand into the Vast Sea",
+            "tabbar": {
+                "story": "Brand Story",
+                "vision": "Vision, Mission",
+                "personnel": "Personnel"
+            },
+            "article1": "Building Clinic Management Solutions",
+            "article2": "CMED was founded in 2022 by experienced consultants and doctors with profound understanding of the healthcare sector - a business field with its own conditions and specificities. We understand that establishing and operating an efficient healthcare facility is not easy. Private healthcare businesses face difficulties in establishment, personnel management, operation, and application of digital transformation solutions. CMED aims not only to be a consulting unit providing comprehensive solutions but also to accompany businesses until the solutions succeed.",
+            "article3": "Our aspiration is tied to every customer, every strategic partner, and the network of talented personnel, which serves as inspiration and strength for us to work together creatively, continuously improving to better serve customers every day. Currently, we are closely collaborating with customers, whether it's constructing new healthcare facilities, expanding the scope of specialized activities, or improving the operations of existing healthcare facilities. We aim to support the establishment and operation of healthcare facilities effectively, narrowing the gap between patients and quality healthcare services, as well as the gap between healthcare services in Vietnam and the world. CMED chooses to develop with a proactive mindset, pioneering in the healthcare consulting field, with a vision to create sustainable and humane values for the overall development of the healthcare industry in Vietnam."
+        },
+        "testimonials": {
+            "content1": "Above all, we understand the difficulties of laying the first bricks to build a private healthcare business and the shortcomings that the healthcare system in Vietnam faces. CMED desires to lend a helping hand alongside businesses in building enterprises with solutions regarding operations, personnel, technology, and construction, implementing communication strategies.",
+            "author1": "CEO - Founder Tang Anh Tuan",
+            "content2": "Above all, we understand the difficulties of laying the first bricks to build a private healthcare business and the shortcomings that the healthcare system in Vietnam faces. CMED desires to lend a helping hand alongside businesses in building enterprises with solutions regarding operations, personnel, technology, and construction, implementing communication strategies.",
+            "author2": "CEO - Founder Tang Anh Tuan 2"
+        },
+        "vision": {
+            "title1": "Vision",
+            "content1": "With a team of experienced, reputable experts operating in the Law and Healthcare sectors, CMED provides customers with comprehensive consulting services on holistic solutions, legal matters, and personnel in the private healthcare sector, especially for businesses with foreign investment. We confidently deliver perfect service quality to customers. CMED will become the leading consulting company in the healthcare sector domestically and aim to be on par with the Southeast Asian region.",
+            "title2": "Mission",
+            "content2": "Our mission is to collaborate with hospitals, clinics, and businesses for sustainable development in the current healthcare landscape. CMED wishes to contribute its efforts to the development of infrastructure and architecture in the healthcare system of Vietnam."
+        },
+        "personnel": {
+            "title": "Personnel",
+            "description": "A great mission requires TALENTED PERSONNEL with the desire to bring real value to the healthcare business. CMED gathers a team of experts with many years of experience in the healthcare field."
+        }
+    },
+    "project": {
+        "title": "All Projects",
+        "featured": "Featured Projects",
+        "detail": {
+            "title": "Project Overview",
+            "images": "Image Gallery",
+            "other": "Other Projects"
+        }
+    },
+    "services": {
+        "banner": {
+            "title": "Services",
+            "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC",
+            "buttonContent": "See more"
+        },
+        "group223": {
+            "header": "Cmed City",
+            "slogan": "City of creative dreams & contributions"
+        },
+        "article": {
+            "header-1": "Hospital",
+            "content-1": "From addressing the daily challenges hospitals face to initiating new hospital projects or improving existing ones, we have solutions for all. CMED assists businesses with various plans to enhance management, restructure, start new ventures, etc., to implementing those plans. We aim to create hospitals that patients and healthcare workers choose.",
+            "header-2": "Nursing Home",
+            "content-2": "Our experienced consultants provide reliable support for businesses considering opening a new nursing home right from the planning stage. While the elderly population will increase in the future, currently there are few nursing homes, and people's habits of using nursing services are limited. Therefore, careful consideration, including market research, is needed before starting a new business. Our services not only support entrepreneurship but also provide comprehensive assistance, including understanding the vision that business owners want to achieve, building plans to ensure stable management even after operation, and recruitment support.",
+            "header-3": "Multi-Specialty Clinic",
+            "content-3": "We support the establishment and operation of clinics by maximizing the skills acquired towards both ideals and practicality. We flexibly respond to various types of clinics with different specialties. We listen to the ideas and experiences of doctors, build a model suitable for medical operations, and provide effective business support based on customer data and market research. We provide support tailored to the needs of each business.",
+            "header-4": "Specialty Clinic",
+            "content-4": "We provide consulting services from opening specialty clinics to operational support. We can help solve problems at different stages of specialty clinics. Operating a clinic is becoming increasingly difficult due to the fiercely competitive private healthcare environment. With the motto 'Success in opening and operating clinics will contribute to the overall success of the national healthcare system,' we support businesses in maintaining clinics that adapt to societal changes and continue to meet the healthcare needs of the people.",
+            "buttonContent": "Learn more"
+        },
+        "target": {
+            "header": "Mission to Build the Ideal Health City",
+            "content": "With the rapid changes in modern life, the desire to build an ideal healthcare service facility for healthcare professionals and patients is becoming increasingly urgent. However, there is still a shortage of healthcare facilities, and existing facilities have many issues to overcome. Cmed has a mission to be a strong arm accompanying healthcare businesses in the process of construction and development. We call this the mission to build a 'Modern Health City.' Cmed aims to be a trusted partner for anyone pursuing this goal. Initially, we have strengths in working at both state-owned and private healthcare facilities. We have implemented and operated numerous clinic projects in Vietnam and internationally. By leveraging our experience and capabilities, we will realize the sustainable development of the 'Modern Health City.' Like pioneers in building the 'City,' we sow seeds, nurture, and shape healthcare facilities for your ideas. With a pioneering spirit, we strive for innovation and value creation alongside individuals and businesses operating in the healthcare sector. 'For a modern health city' is what CMED aims for."
+        },
+        "detail": {
+            "title": "Why Choose Us?",
+            "reasons": {
+                "reason1": {
+                    "title": "High Experience and Expertise",
+                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                },
+                "reason2": {
+                    "title": "High Experience and Expertise",
+                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                },
+                "reason3": {
+                    "title": "High Experience and Expertise",
+                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                }
+            },
+            "services": {
+                "title": "Service Content"
+            },
+            "related": "Related Articles"
+        }
+    },
+    "documents": {
+        "title": "Documents",
+        "detail": {
+            "related": "Related Documents"
+        },
+        "others": "Other Documents"
+    },
+    "terms": {
+        "banner": {
+            "title": "Timeless Mark",
+            "description": "Solution for building and developing clinics - clinic chain",
+            "buttonContent1": "1000++ Trusted Customers",
+            "buttonContent2": "100++ Launched Projects"
+        },
+        "content": {
+            "title": "Terms of Use",
+            "terms1": {
+                "title": "TERMS OF USE",
+                "terms1.1": "1.1 By accessing this website, you agree to the terms of use below. Please read these terms carefully before using this website.",
+                "terms1.2": "1.2 If you do not agree to these Terms of Use, you are not allowed to access or use this website.",
+                "terms1.3": "1.3 We may adjust these Terms of Use at any time without notice to you or giving any reason, by posting an updated version of the Terms of Use on this website. Please check this section regularly for updates to the Terms of Use. If you do not agree with the updated terms, you must immediately cease using this website."
+            },
+            "terms2": {
+                "title": "LINKS TO OTHER WEBSITES:",
+                "terms2.1": "2.1 This website may be linked to other websites not controlled by AIA. These links are provided for your convenience only, and we are not responsible for the use, impact, and content posted on those websites. 2.2 AIA does not make any representations or warranties and is not responsible for the accuracy of the content posted on these websites, nor does it endorse the information, opinions, products, and services advertised therein. You hereby acknowledge and agree that you assume all risks associated with accessing these websites."
+            },
+            "terms3": {
+                "title": "LIMITATION OF LIABILITY",
+                "terms3.1": "3.1 You agree that by accessing this website, you will assume all risks associated with your connection and use of the website.",
+                "terms3.2": "3.2 To the maximum extent permitted by law, AIA excludes from these Terms of Use all representations, warranties, conditions, undertakings, remedies, and terms implied by statute, law, or custom, except for any guarantee or right provided by law, excluding unlawful acts or causes that render any part or all of these terms invalid.",
+                "terms3.3": {
+                    "content": "3.3 To the maximum extent permitted by law, AIA shall not be liable for any responsibility or obligation arising from or related to your connection and use of this website, including but not limited to:",
+                    "a": "(a) any actual or potential damages to profits, revenues, reputation, savings, data, business opportunities, or expectations, and any and all indirect, special, consequential, punitive, or exemplary damages, and",
+                    "b": "(b) any other damages, even in cases where AIA or any authorized representative of AIA has been notified of the possibility of such damages."
+                }
+            },
+            "terms4": {
+                "title": "ISSUES RELATED TO LEGAL PROVISIONS:",
+                "terms4.1": "Sakura Medical & Dental Clinic was officially established and put into operation since March 2014, Sakura General Clinic is the address for health care and treatment of health problems for the Japanese community living, working, and traveling in Hanoi.",
+                "terms4.2": "Sakura General Clinic is built to become a model Japanese healthcare facility in Vietnam, not only in service style, environment but also in the quality of healthcare services. With a view overlooking West Lake and a cool, friendly space imbued with Japanese style, Sakura gives you a sense of peace like a miniature Japan in bustling, crowded Hanoi.",
+                "terms4.3": {
+                    "content": "Through nearly 10 years of construction and development, the personnel at Cmed have accompanied in many operating categories of the clinic:",
+                    "a": "Clinic operation",
+                    "b": "Consulting and personnel management",
+                    "c": "Consulting and handling legal issues Consulting and business development"
+                }
+            },
+            "terms5": {
+                "title": "DISCLAIMER:",
+                "terms5.1": "Sakura Medical & Dental Clinic was officially established and put into operation since March 2014, Sakura General Clinic is the address for health care and treatment of health problems for the Japanese community living, working, and traveling in Hanoi.",
+                "terms5.2": "Sakura General Clinic is built to become a model Japanese healthcare facility in Vietnam, not only in service style, environment but also in the quality of healthcare services. With a view overlooking West Lake and a cool, friendly space imbued with Japanese style, Sakura gives you a sense of peace like a miniature Japan in bustling, crowded Hanoi.",
+                "terms5.3": {
+                    "content": "Through nearly 10 years of construction and development, the personnel at Cmed have accompanied in many operating categories of the clinic:",
+                    "a": "Clinic operation",
+                    "b": "Consulting and personnel management",
+                    "c": "Consulting and handling legal issues Consulting and business development"
+                }
+            },
+            "terms6": {
+                "title": "REGULATION AND JURISDICTION:",
+                "terms6.1": "Sakura Medical & Dental Clinic was officially established and put into operation since March 2014, Sakura General Clinic is the address for health care and treatment of health problems for the Japanese community living, working, and traveling in Hanoi.",
+                "terms6.2": "Sakura General Clinic is built to become a model Japanese healthcare facility in Vietnam, not only in service style, environment but also in the quality of healthcare services. With a view overlooking West Lake and a cool, friendly space imbued with Japanese style, Sakura gives you a sense of peace like a miniature Japan in bustling, crowded Hanoi.",
+                "terms6.3": {
+                    "content": "Through nearly 10 years of construction and development, the personnel at Cmed have accompanied in many operating categories of the clinic:",
+                    "a": "Clinic operation",
+                    "b": "Consulting and personnel management",
+                    "c": "Consulting and handling legal issues Consulting and business development"
+                }
+            }
+        }
+    },
+    "news": {
+        "title": "Event News",
+        "detail": {
+            "related": "Other Recruitment News"
+        }
     },
     "contact": {
-        "company" : "công ty",
-        "hotline" : "số hotline",
-        "email" : "email",
-        "address" : "địa chỉ",
-        "blabla": "Hãy để chúng tôi góp phần vào thành công của bạn!"
+        "company": "Company",
+        "hotline": "Hotline number",
+        "email": "Email",
+        "address": "Address",
+        "blabla": "Let us contribute to your success!",
+        "title": "Contact Us",
+        "description": "Let us contribute to your success story",
+        "form": {
+            "userType": {
+                "label": "You are",
+                "options": {
+                    "personal": "Individual",
+                    "hospital": "Hospital"
+                }
+            },
+            "name": "Full Name",
+            "phone": "Phone Number",
+            "company": "Company",
+            "email": "Email",
+            "message": "Message",
+            "send": "Send Message"
+        }
+    },
+    "recruitment": {
+        "title": "Recruitment News",
+        "noData": "No data available"
     }
 }

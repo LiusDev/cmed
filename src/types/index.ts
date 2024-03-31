@@ -140,3 +140,57 @@ export interface Banner {
   image: string;
   name: string;
 }
+
+export type About = {
+  title1: string;
+  subtitle: string;
+  featuredImage: string;
+  featuredButtonTitle: string;
+  featuredButtonTitle2: string;
+  tabTitle1: string;
+  tabTitle2: string;
+  tabTitle3: string;
+  title2: string;
+  content2: string[];
+  image2: string;
+  quotes1: {
+    content: string;
+    author: string;
+    background: string;
+  }
+  quotes2: {
+    title: string;
+    content: string;
+    image: string;
+  }[]
+}
+
+export type HomeService = {
+  id: number;
+
+  createdAt: Date;
+
+  modifiedAt: Date;
+
+  name: string;
+
+  description: string;
+
+  index: number
+
+  showInHome: boolean
+
+  content: {
+    title: string
+    content: string
+    featuredImage: string;
+    featuredImage2: string;
+    logo: string
+  }[];
+
+  category: {
+    id: number
+    name: string
+  }
+}
+

@@ -43,8 +43,11 @@ const ServiceDetail = () => {
             <div className="flex flex-col lg:flex-row xl:px-60 mt-10 items-center">
                 {service && (
                     <>
-                        <div className="lg:w-1/2 px-10 pb-20 lg:pb-0">
-                            <img src={service.featuredImage} alt="image" className="mx-auto" />
+                        <div className="lg:w-1/2 px-10 pb-20 lg:pb-0  mt-[65px] ">
+                            <div className="relative">
+                                <img src={service.featuredImage} alt="image" className="lg:w-[80%] lg:h-[80%]" />
+                                <img src={service.featuredImage} alt="image" className="hidden lg:block absolute w-[80%] h-auto -top-[45px] -left-[45px] -z-10" />
+                            </div>
                         </div>
 
                         <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
@@ -56,7 +59,6 @@ const ServiceDetail = () => {
                     </>
                 )}
             </div>
-            <WhyUs />
             <div className="container m-auto px-4 mb-20">
                 <h1 className="font-bold text-primary text-3xl text-center py-20">
                     <Trans text="services.detail.related" />
@@ -72,6 +74,8 @@ const ServiceDetail = () => {
                         ))}
                 </div>
             </div>
+            <WhyUs />
+
         </MainLayout>
     );
 };

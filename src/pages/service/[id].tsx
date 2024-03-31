@@ -7,9 +7,11 @@ import { NewsItem } from "@/components/news";
 import { Trans } from "@/components/common";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
+import { LoadingOverlay } from "@mantine/core";
 const ServiceDetail = () => {
     const [news, setNews] = useState<News[]>([]);
     const [service, setService] = useState<Service>();
+    const [services, setServices] = useState<Service[]>();
     const router = useRouter();
     const fetchData = () => {
         instance
@@ -34,12 +36,29 @@ const ServiceDetail = () => {
     };
 
     useEffect(() => {
+        instance
+            .get("/services", {
+                params: {
+                    perPage: 3,
+                }
+            })
+            .then((response) => {
+                setServices(response.data || []);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, [])
+
+
+    useEffect(() => {
         fetchData();
     }, [news.length]);
 
     return (
         <MainLayout>
             <Banner title={service?.name} />
+            <Services services={services!} />
             <div className="flex flex-col lg:flex-row xl:px-60 mt-10 items-center">
                 {service && (
                     <>
@@ -58,21 +77,6 @@ const ServiceDetail = () => {
                         </div>
                     </>
                 )}
-            </div>
-            <div className="container m-auto px-4 mb-20">
-                <h1 className="font-bold text-primary text-3xl text-center py-20">
-                    <Trans text="services.detail.related" />
-                </h1>
-                <div className="grid grid-cols-12 gap-8 mb-10 w-full">
-                    {news.length > 0 &&
-                        news.map((item) => (
-                            <NewsItem
-                                key={item.id}
-                                news={item}
-                                className="col-span-12 sm:col-span-6 lg:col-span-4"
-                            />
-                        ))}
-                </div>
             </div>
             <WhyUs />
 

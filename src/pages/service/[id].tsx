@@ -58,7 +58,7 @@ const ServiceDetail = () => {
     return (
         <MainLayout>
             <Banner title={service?.name} />
-            <Services services={services!} />
+            {services && <Services services={services} />}
             <div className="flex flex-col lg:flex-row xl:px-60 mt-10 items-center">
                 {service && (
                     <>

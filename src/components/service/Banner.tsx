@@ -12,7 +12,7 @@ const Banner = (props: BannerProps) => {
       <div className="bg-[url('/home/home-banner.webp')] bg-no-repeat bg-center bg-cover grid grid-cols-12">
         <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-primary/50 flex items-center justify-center py-40 px-4 lg:px-20 transition-all">
           <div className="text-secondary">
-            <h1 className="text-7xl font-bold mb-12">
+            <h1 className="text-7xl font-bold mb-12 min-h-[200px]">
               {
                 props.title ?? <Trans text="services.banner.title" />
               }

@@ -1,21 +1,23 @@
-import React, { use, useState } from "react";
+import React, { use, useCallback, useMemo, useState } from "react";
 import type { Service } from "@/types";
 import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 interface ServicesProps {
   services: Service[];
 }
 
 const Services = ({ services }: ServicesProps) => {
-  const [selectedService, setSelectedService] = useState(services[0]);
-  const handleSelect = (service: Service) => {
-    setSelectedService(service);
-  };
+  const router = useRouter()
+  const params = useParams()
 
-  useEffect(() => {
-    setSelectedService(services[0]);
-  }, [services]);
+  const selectedService = useMemo(() => services.filter(s => s.id.toString() == params.id)[0], [services, params])
+
+  console.log(params)
+  const handleSelect = useCallback((service: Service) => {
+    router.push(`/service/${service.id}`)
+  }, [router]);
 
   return (
     <div className="py-20 bg-[#f4f5f9]">
@@ -24,7 +26,7 @@ const Services = ({ services }: ServicesProps) => {
           services.map((service, index) => {
             return (
               <div
-                key={service.id}
+                key={index}
                 className={`${selectedService === service
                   ? "bg-primary text-secondary-dark scale-110"
                   : "bg-[#fff]"
@@ -37,7 +39,7 @@ const Services = ({ services }: ServicesProps) => {
             );
           })}
       </div>
-      <div className="flex flex-col lg:flex-row xl:px-60">
+      <div className="flex flex-col lg:flex-row xl:px-60 lg:min-h-[500px]">
         {selectedService && (
           <>
             <div className="lg:w-1/2 px-10 pb-20">

@@ -1,33 +1,26 @@
 import { Carousel } from "@mantine/carousel";
 import { useTranslation } from "react-i18next";
 import classes from "@/styles/testimonial.module.css"
-const Testimonials = () => {
+const Testimonials = (props: { author: string, content: string, image: string }) => {
   const { t } = useTranslation();
 
   const data = [
     {
       id: 1,
-      content: t("about.testimonials.content1"),
-      author: t("about.testimonials.author1"),
+      content: props.content,
+      author: props.author,
     },
-    {
-      id: 2,
-      content: t("about.testimonials.content2"),
-      author: t("about.testimonials.author2"),
-    },
+
   ];
 
-  if (data.length <= 4) {
-    data.push(...data, ...data)
-  }
-
   return (
-    <div className=" bg-[url('/about/testimonials/bg.webp')] bg-cover bg-no-repeat flex justify-center items-center mb-20 overflow-hidden">
+    <div className={`bg-cover bg-no-repeat flex justify-center items-center mb-20 overflow-hidden`} style={{
+      backgroundImage: `url(${props.image})`,
+    }}>
       <Carousel
         classNames={classes}
         withIndicators
         height="100%"
-        loop
         className="bg-[#7493BC]/60"
       >
         {data.map((item, index) => (
@@ -38,7 +31,7 @@ const Testimonials = () => {
                 alt="quotation"
                 className="w-10 h-10 md:w-12 md:h-12 my-10"
               />
-              <p className="text-lg md:text-xl">{item.content}</p>
+              <p className="text-lg md:text-xl p text-justify p-1">{item.content}</p>
               <div className="border md:w-60 md:my-8"></div>
               <div className="text-2xl py-10">{item.author}</div>
             </div>

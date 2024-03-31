@@ -9,12 +9,8 @@ const ContentDeco = () => {
   </>
 }
 
-const Content = () => {
-  const articles = useMemo(() => [
-    <Trans text="about.article.article1" />,
-    <Trans text="about.article.article2" />,
-    <Trans text="about.article.article3" />,
-  ], [])
+const Content = (props: { title: string, content: string[] }) => {
+  const articles = useMemo(() => [props.title, ...props.content], [props])
   return (
     <div className="w-full flex flex-col lg:flex-row justify-center overflow-hidden">
       <div className="box-content gap-[30px] lg:pl-[160px] lg:pr-[135px] lg:pb-[107px] lg:pt-[60px] flex flex-col-reverse bg-[#EFEFEF] lg:bg-opacity-0 lg:flex-row justify-between lg:w-[1222px] font-normal relative">
@@ -41,15 +37,14 @@ const Content = () => {
   )
 }
 
-const Article = () => {
+const Article = (props: { title: string; content: string[]; articleName: string }) => {
   return (
     <div id="article" className="py-20 relative w-full">
-      <TabBar />
       <h1 className="md:py-20 py-10 md:text-4xl text-3xl font-bold text-center">
-        <Trans text="about.article.title" />
+        {props.articleName}
       </h1>
 
-      <Content />
+      <Content title={props.title} content={props.content} />
 
     </div>
   );

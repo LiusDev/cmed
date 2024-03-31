@@ -3,21 +3,8 @@ import { Button, Trans } from "../common";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
-const Vision = () => {
+const Vision = ({data, ...props}: { data: { title: string; content: string; image: string }[] }) => {
   const { t } = useTranslation();
-  const data = [
-    {
-      title: t("about.vision.title1"),
-      content: t("about.vision.content1"),
-      image: "/about/vision/image.webp",
-    },
-    {
-      title: t("about.vision.title2"),
-      content: t("about.vision.content2"),
-      image: "/about/vision/image2.webp",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleChangeSlide = () => {

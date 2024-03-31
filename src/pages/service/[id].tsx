@@ -39,7 +39,7 @@ const ServiceDetail = () => {
         instance
             .get("/services", {
                 params: {
-                    perPage: 3,
+                    perPage: 4,
                 }
             })
             .then((response) => {

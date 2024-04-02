@@ -35,7 +35,6 @@ const ContactInfo = () => {
         }
 
         <h1 className="pb-8 mt-20 mb-20 text-center border-b border-tertiary/50 text-2xl md:text-4xl uppercase">
-            <Trans text="contact.blabla" />
         </h1>
     </div>
 }

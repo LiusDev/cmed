@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <>
       <CallFloatingButton phone={companyPhone} />
-      <ChatZaloFloatingButton userId={""} className="bottom-[45px]" />
+      <ChatZaloFloatingButton userId={"0898099886"} className="bottom-[45px]" />
       <footer className="bg-tertiary flex items-center justify-center text-secondary py-10 lg:py-20">
         <div className="w-full container px-4 grid grid-cols-12">
           <div className="col-span-12 lg:col-span-8 flex flex-col">

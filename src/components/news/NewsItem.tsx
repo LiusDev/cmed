@@ -28,9 +28,6 @@ const NewsItem = ({ news, className = "" }: NewsItemProps) => {
           {news.title}
         </h4>
       </Link>
-      <p className="text-sm text-tertiary-light">
-        {formatDate(news.createdAt, " - ")}
-      </p>
     </article>
   );
 };

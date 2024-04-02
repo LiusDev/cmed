@@ -36,10 +36,6 @@ const NewsList = ({ news, className = "" }: NewsProps) => {
                                     {news[0].title}
                                 </h4>
                             </Link>
-
-                            <p className="text-sm text-tertiary-light">
-                                {formatDate(news[0].createdAt, " - ")}
-                            </p>
                         </div>
                     </article>
                     {news.map((newsItem, index) => (

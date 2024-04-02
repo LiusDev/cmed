@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdMenu, MdOutlineArrowBack } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
@@ -63,6 +63,20 @@ const HamburgerMenu = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
+
+  const nav = useMemo(() => headerNav.map((item) => (
+    <li key={item.i18nTitle}>
+      <Link
+        href={item.href}
+        className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
+          } hover:text-primary transition-all capitalize font-semibold text-lg`}
+      >
+        {t(item.i18nTitle)}
+      </Link>
+    </li>
+  )), [router.asPath])
+
+
   return (
     <>
       <button
@@ -89,17 +103,7 @@ const HamburgerMenu = () => {
           </button>
         </div>
         <ul className="flex flex-col gap-3 mb-10">
-          {headerNav.map((item) => (
-            <li key={item.i18nTitle}>
-              <Link
-                href={item.href}
-                className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
-                  } hover:text-primary transition-all capitalize font-semibold text-lg`}
-              >
-                {t(item.i18nTitle)}
-              </Link>
-            </li>
-          ))}
+          {nav}
         </ul>
         <SwitchLanguage className="justify-start" />
       </aside>
@@ -119,23 +123,63 @@ const Logo = () => {
   );
 };
 
+const HoverLink = (props: { title: string, href: string, path: string }) => {
+  const { t } = useTranslation();
+  const [hover, setHover] = useState(false)
+  return (
+    <Link
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      href={props.href}
+      className={` ${props.path === props.href ? "text-primary" : "text-tertiary"
+        } hover:text-primary transition-all uppercase font-semibold relative`}
+    >
+      {t(props.title)}
+      {props.href == "/service" && <HoverMenu open={hover} />}
+    </Link>
+  )
+}
+
+
+
+const HoverItem = (props: { title: string; href: string }) => {
+  return <Link href={props.href}>
+    <li className="hover:text-[red]"><p>{props.title}</p></li></Link>
+}
+
+const HoverMenu = (props: { open: boolean }) => {
+  return (
+    <div className="absolute top-full left-0 rounded min-w-full w-auto" style={{ display: props.open ? "unset" : "none" }}>
+      <div className="relative min-w-full w-fit pt-[10px]">
+        <ul className="w-max flex flex-col gap-[10px]">
+          <HoverItem title="Bệnh viện" href="/service/benh-vien" />
+          <HoverItem title="Viện dưỡng lão" href="/service/vien-duong-lao" />
+          <HoverItem title="Phòng khám đa khoa" href="/service/phong-kham-da-khoa" />
+          <HoverItem title="Phòng khám chuyển khoa" href="/service/phong-kham-chuyen-khoa" />
+        </ul>
+        <div className="bg-secondary w-full h-full top-0 left-[-15px] -z-10 absolute  box-content p-[15px] rounded"></div>
+      </div>
+    </div>
+  )
+}
+
 const NavItem = () => {
   const { t } = useTranslation();
   const router = useRouter();
-
+  const nav = useMemo(() => headerNav.map((item, index) => item.href == "/service" ? <HoverLink href={item.href} title={item.i18nTitle} path={router.asPath} key={index} /> : (
+    <li key={index}>
+      <Link
+        href={item.href}
+        className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
+          } hover:text-primary transition-all uppercase font-semibold relative`}
+      >
+        {t(item.i18nTitle)}
+      </Link>
+    </li>
+  )), [router.asPath])
   return (
     <ul className="hidden lg:flex items-center justify-center gap-12">
-      {headerNav.map((item) => (
-        <li key={item.i18nTitle}>
-          <Link
-            href={item.href}
-            className={` ${router.asPath === item.href ? "text-primary" : "text-tertiary"
-              } hover:text-primary transition-all uppercase font-semibold`}
-          >
-            {t(item.i18nTitle)}
-          </Link>
-        </li>
-      ))}
+      {nav}
     </ul>
   );
 };

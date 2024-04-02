@@ -1,7 +1,7 @@
 import { Carousel, CarouselSlide, Embla } from "@mantine/carousel";
 import { Button, Trans } from "../common";
 import { doGet } from "../../utils";
-import { Banner } from "../../types";
+import { Banner as BannerType } from "../../types";
 import Autoplay from "embla-carousel-autoplay";
 import { ForwardedRef, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
@@ -12,7 +12,7 @@ type SliderRef = {
   previous: () => void
 }
 
-const Slider = forwardRef(({ banners }: { banners?: Banner[] }, ref: ForwardedRef<SliderRef>) => {
+const Slider = forwardRef(({ banners }: { banners?: BannerType[] }, ref: ForwardedRef<SliderRef>) => {
   const autoplay = useRef(Autoplay({ delay: 4000 }))
 
   const [emble, setEmble] = useState<Embla | null>(null)
@@ -65,7 +65,7 @@ const Buttons = (props: { onNext: () => void, onPrevious: () => void }) => {
   </div>
 }
 
-const Banner = ({ banners }: { banners: Banner[] }) => {
+const Banner = ({ banners }: { banners: BannerType[] }) => {
   const sliderRef = useRef<SliderRef>(null)
   const onNext = useCallback(() => {
     sliderRef.current?.next()

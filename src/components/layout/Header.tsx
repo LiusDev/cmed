@@ -127,16 +127,18 @@ const HoverLink = (props: { title: string, href: string, path: string }) => {
   const { t } = useTranslation();
   const [hover, setHover] = useState(false)
   return (
-    <Link
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      href={props.href}
-      className={` ${props.path === props.href ? "text-primary" : "text-tertiary"
-        } hover:text-primary transition-all uppercase font-semibold relative`}
-    >
-      {t(props.title)}
+    <div className="w-fit h-fit relative" onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}>
+      <Link
+
+        href={props.href}
+        className={` ${props.path === props.href ? "text-primary" : "text-tertiary"
+          } hover:text-primary transition-all uppercase font-semibold relative`}
+      >
+        {t(props.title)}
+      </Link>
       {props.href == "/service" && <HoverMenu open={hover} />}
-    </Link>
+    </div>
   )
 }
 

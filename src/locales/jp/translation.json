@@ -202,13 +202,16 @@
         "address": "住所",
         "blabla": "あなたの成功に貢献できるようにしましょう！",
         "title": "お問い合わせ",
-        "description": "あなたの成功ストーリーに貢献しましょう",
+        "description": "あなたの成功ストーリーに貢献しましょう!",
         "form": {
             "userType": {
                 "label": "あなたは",
                 "options": {
                     "personal": "個人",
-                    "hospital": "病院"
+                    "hospital": "病院",
+                    "multispecialtyClinic": "多科目クリニック",
+                    "specialtyClinic": "専門クリニック",
+                    "other": "その他"
                 }
             },
             "name": "お名前",

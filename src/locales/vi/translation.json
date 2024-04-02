@@ -224,13 +224,16 @@
         "address" : "địa chỉ",
         "blabla": "Hãy để chúng tôi góp phần vào thành công của bạn!",
         "title": "Liên hệ với chúng tôi",
-        "description": "Hãy để chúng tôi góp phần vào câu chuyện thành công của bạn",
+        "description": "Hãy để chúng tôi góp phần vào câu chuyện thành công của bạn!",
         "form": {
             "userType": {
                 "label": "Bạn là",
                 "options": {
                     "personal": "Cá nhân",
-                    "hospital": "Bệnh viện"
+                    "hospital": "Bệnh viện",
+                    "multispecialtyClinic": "Phòng khám đa khoa",
+                    "specialtyClinic": "Phòng khám chuyên khoa",
+                    "other": "Khác"
                 }
             },
             "name": "Họ và tên",

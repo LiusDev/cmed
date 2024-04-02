@@ -224,13 +224,16 @@
         "address": "Address",
         "blabla": "Let us contribute to your success!",
         "title": "Contact Us",
-        "description": "Let us contribute to your success story",
+        "description": "Let us contribute to your success story!",
         "form": {
             "userType": {
                 "label": "You are",
                 "options": {
                     "personal": "Individual",
-                    "hospital": "Hospital"
+                    "hospital": "Hospital",
+                    "other": "Other",
+                    "specialtyClinic": "Specialty Clinic",
+                    "multispecialtyClinic": "Multi-Specialty Clinic"
                 }
             },
             "name": "Full Name",

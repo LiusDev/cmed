@@ -4,6 +4,7 @@ import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import FeaturedImage from "./FeaturedImage";
 interface ServicesProps {
   services: Service[];
 }
@@ -42,11 +43,7 @@ const Services = ({ services }: ServicesProps) => {
       <div className="flex flex-col lg:flex-row xl:px-60 lg:min-h-[500px]">
         {selectedService && (
           <>
-            <div className="lg:w-1/2 px-10 pb-20">
-              <div>
-                <img src={selectedService.featuredImage} alt="image" />
-              </div>
-            </div>
+            <FeaturedImage featuredImage={selectedService.featuredImage} featuredImage2={selectedService.featuredImage2} />
 
             <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
               <h2 className="text-3xl font-bold text-primary">

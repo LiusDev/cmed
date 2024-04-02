@@ -12,7 +12,7 @@ const ContentDeco = () => {
 const Content = (props: { title: string, content: string[] }) => {
   const articles = useMemo(() => [props.title, ...props.content], [props])
   return (
-    <div className="w-full flex flex-col lg:flex-row justify-center overflow-hidden">
+    <div className="w-full flex flex-col lg:flex-row justify-center overflow-hidden lg:pt-[102px]">
       <div className="box-content gap-[30px] lg:pl-[160px] lg:pr-[135px] lg:pb-[107px] lg:pt-[60px] flex flex-col-reverse bg-[#EFEFEF] lg:bg-opacity-0 lg:flex-row justify-between lg:w-[1222px] font-normal relative">
         <ContentDeco />
         <div className="2xl:w-[570px] flex-1">
@@ -39,8 +39,8 @@ const Content = (props: { title: string, content: string[] }) => {
 
 const Article = (props: { title: string; content: string[]; articleName: string }) => {
   return (
-    <div id="article" className="py-20 relative w-full">
-      <h1 className="md:py-20 py-10 md:text-4xl text-3xl font-bold text-center">
+    <div id="article" className="py-20 pt-[69px] relative w-full">
+      <h1 className="md:text-4xl text-3xl font-bold text-center">
         {props.articleName}
       </h1>
 

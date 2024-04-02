@@ -6,7 +6,7 @@ const TabBar = (props: { article: string; vision: string; staff: string }) => {
     setIsChosen(tabID);
   };
   return (
-    <div id="article" className="py-20 relative w-full">
+    <div id="article" className="py-20 pb-0 relative w-full">
       <div className="lg:gap-[129px] mx-auto border-b-[0.01px] border-solid border-[#ccc] md:flex justify-center hidden">
         <Link href={"#article"}>
           <div

@@ -93,11 +93,11 @@ const ContactForm = ({
                     className="border-b border-tertiary outline-none pb-1"
                     {...form.getInputProps("customerType")}
                 >
-                    <option selected value="cá nhân">cá nhân</option>
-                    <option value="phòng khám đa khoa">phòng khám đa khoa</option>
-                    <option value="phòng khám chuyên khoa">phòng khám chuyên khoa</option>
-                    <option value="bệnh viện">bệnh viện</option>
-                    <option value="khác">khác</option>
+                    <option selected value="cá nhân"><Trans text="contact.form.userType.options.personal" /></option>
+                    <option value="phòng khám đa khoa"><Trans text="contact.form.userType.options.multispecialtyClinic" /></option>
+                    <option value="phòng khám chuyên khoa"><Trans text="contact.form.userType.options.specialtyClinic" /></option>
+                    <option value="bệnh viện"><Trans text="contact.form.userType.options.hospital" /></option>
+                    <option value="khác"><Trans text="contact.form.userType.options.other" /></option>
                 </select>
             </div>
             <div className="flex flex-col gap-2 col-span-2 md:col-span-1">

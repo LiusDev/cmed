@@ -28,7 +28,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
             <Carousel.Slide key={index}>
               <div className="group px-8 bg-secondary w-full h-full flex flex-col items-center relative cursor-pointer transition-all">
                 <div className="absolute w-full h-full hover:hidden group-hover:opacity-0 transition-all">
-                  <img src={customer.image} className="w-full h-full object-cover content-center" />
+                  <img src={customer.image} title="slide" className="w-full h-full object-cover content-center" />
                 </div>
                 <div className="absolute w-full h-full bg-primary opacity-80 group-hover:-translate-y-[60%] group-hover:opacity-0 transition-all flex justify-center items-center">
                   <img src={customer.icon} alt="icon" className="w-1/2" />
@@ -36,7 +36,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 <img
                   src={customer.logo}
                   alt={customer.name}
-                  className="object-cover object-center mb-8 mt-12 h-32"
+                  className="object-contain mb-8 mt-12 h-32"
                 />
                 <h3 className="text-center text-2xl font-medium mb-8 mx-10">
                   {customer.name}

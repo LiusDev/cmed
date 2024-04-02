@@ -36,7 +36,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
                 <img
                   src={customer.logo}
                   alt={customer.name}
-                  className="object-cover object-center mb-8 mt-12 h-32"
+                  className="object-contain mb-8 mt-12 h-32"
                 />
                 <h3 className="text-center text-2xl font-medium mb-8 mx-10">
                   {customer.name}

@@ -24,7 +24,6 @@ const NewsItem = ({ news, className = "" }: NewsItemProps) => {
         {news.category.name}
       </div>
       <h1 className="uppercase text-lg font-bold">{news.title}</h1>
-      <div>{formatDate(news.createdAt, " - ")}</div>
     </article>
   );
 };

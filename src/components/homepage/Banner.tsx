@@ -95,7 +95,7 @@ const Banner = ({ banners }: { banners: Banner[] }) => {
               </Button>
             </div>
           </div>
-          B</div>
+        </div>
       </div>
     </section>
   );

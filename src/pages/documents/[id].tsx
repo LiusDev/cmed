@@ -17,6 +17,7 @@ const Viewer = dynamic(() => import("@/components/documents/Viewer"), { ssr: fal
 import "./style.module.css"
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
+import PdfViewer from "../../components/pdfViewer/PdfViewer"
 interface NewsDetailProps {
     document: Document
     relatedDocuments: Document[]
@@ -88,7 +89,7 @@ const DocumentsDetail = ({
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">
                         {/* <object data={document.document} type="application/pdf" width="100%" height="800px"></object> */}
-                        <Viewer file={document.document} />
+                        <PdfViewer url={document.document} />
                     </div>
                     <div className="ml-5">
                         <h3 className="text-md md:text-xl uppercase my-10 text-center">

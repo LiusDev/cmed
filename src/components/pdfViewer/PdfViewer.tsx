@@ -8,19 +8,25 @@ import {
     toolbarPlugin,
 } from "@react-pdf-viewer/toolbar"
 
-const PdfViewer = ({ url }: { url: string }) => {
+const PdfViewer = ({ url }: { url: string, download: () => void }) => {
     const toolBarPluginInstance = toolbarPlugin()
     const { renderDefaultToolbar, Toolbar } = toolBarPluginInstance
     const transform: TransformToolbarSlot = (slot: ToolbarSlot) => ({
         ...slot,
         Download: () => <></>,
+        Open: () => <></>,
+        SwitchTheme: () => <></>,
+        EnterFullScreen: () => <></>,
+        Print: () => <></>,
     })
 
     return (
         <div className="">
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.10.111/build/pdf.worker.min.js">
-                <Toolbar>{renderDefaultToolbar(transform)}</Toolbar>
-                <Viewer fileUrl={url} plugins={[toolBarPluginInstance]} />
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+                <div className="h-[calc(100vh-150px)]">
+                    <Toolbar>{renderDefaultToolbar(transform)}</Toolbar>
+                    <Viewer enableSmoothScroll fileUrl={url} plugins={[toolBarPluginInstance]} />
+                </div>
             </Worker>
         </div>
     )

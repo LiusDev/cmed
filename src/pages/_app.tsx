@@ -10,6 +10,9 @@ import { MantineProvider, createTheme } from "@mantine/core"
 import { ModalsProvider } from "@mantine/modals"
 import { Notifications } from "@mantine/notifications"
 
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
 const theme = createTheme({})
 
 export default function App({ Component, pageProps }: AppProps) {

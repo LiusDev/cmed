@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import type { Customer } from '@/types';
 import { Trans } from '@/components/common';
 import { instance } from '@/utils';
-import Link from 'next/link';
 interface article {
   id: number;
   title: string;
@@ -97,7 +96,7 @@ const ServicePage = () => {
         <div className='relative mx-auto hidden h-[550px] w-full bg-[url("/service/article/model-2.webp")] bg-contain bg-center bg-no-repeat md:h-[500px] md:bg-[url("/service/article/model-1.webp")] lg:mt-20 lg:block lg:h-[800px] xl:h-[1000px]'>
           {articles.map((articleItem, index) => (
             <div 
-              key={articleItem.id}
+              key={index}
               className={` absolute z-10 h-60 w-1/2 lg:h-80  ${articleItem.positionHover}`}
               onMouseEnter={handleMouseEnter(articleItem)}
               onMouseLeave={handleMouseLeave}

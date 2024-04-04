@@ -33,12 +33,13 @@ const Article: React.FC<ArticleProps> = ({
       </div>
 
       <div className='mt-12 space-y-5 px-5 pt-20 text-center'>
-        <h2 className='text-xl font-bold text-primary'>
+        <Link href={link}><h2 className='text-xl font-bold text-primary'>
           <Trans text={title} />
-        </h2>
-        <p className='text-sm px-5 text-justify'>
-          <Trans text={content} />
-        </p>
+        </h2></Link>
+        <Link href={link}>
+          <p className='text-sm px-5 text-justify'>
+            <Trans text={content} />
+          </p></Link>
       </div>
 
       <Link href={link}>
@@ -56,7 +57,7 @@ const Article: React.FC<ArticleProps> = ({
         className='mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary text-center text-xl text-secondary lg:hidden'
       >
         <IoMdCloseCircleOutline />
-        </div>
+      </div>
     </div>
 
   );

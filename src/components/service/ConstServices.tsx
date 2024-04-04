@@ -2,25 +2,38 @@ import React, { useCallback, useMemo } from "react";
 import type { Service } from "@/types";
 import { Trans } from "../common";
 import parse from "html-react-parser";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import FeaturedImage from "./FeaturedImage";
 interface ServicesProps {
   services: Service[];
 }
 
-const Services = ({ services }: ServicesProps) => {
+const config = {
+  1: "benh-vien",
+  2: "vien-duong-lao",
+  3: "phong-kham-da-khoa",
+  4: "phong-kham-chuyen-khoa"
+}
+
+const ConstServices = ({ services }: ServicesProps) => {
   const router = useRouter()
   const params = useParams()
+  const pathName = usePathname()
 
-  const selectedService = useMemo(() => services.filter(s => s.id.toString() == params.id)[0], [services, params])
+  const selectedService = useMemo(() => {
+    const index = Object.keys(config).map(Number).filter(
+      i => config[i as keyof typeof config] === pathName.split("/")[2]
+    )[0]
+    return services[index - 1];
+  }, [services, params, pathName])
 
   console.log(params)
   const handleSelect = useCallback((service: Service) => {
-    router.push(`/service/${service.id}`)
+    router.push(`/service/${config[service.id as keyof typeof config]}`)
   }, [router]);
 
   return (
-    <div className="py-20 bg-[#f4f5f9]">
+    <div className="py-20 bg-[#f4f5f9] relative z-20">
       <div className="h-40 md:w-3/5 w-full bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
         {services.length > 0 &&
           services.map((service, index) => {
@@ -46,7 +59,7 @@ const Services = ({ services }: ServicesProps) => {
 
             <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
               <h2 className="text-3xl font-bold text-primary">
-                <Trans text="services.detail.services.title" />
+                {selectedService.name}
               </h2>
               <div className="">{parse(selectedService.content)}</div>
             </div>
@@ -57,4 +70,4 @@ const Services = ({ services }: ServicesProps) => {
   );
 };
 
-export default Services;
+export default ConstServices;

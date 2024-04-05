@@ -218,10 +218,10 @@
         }
     },
     "contact": {
-        "company": "Company",
-        "hotline": "Hotline number",
-        "email": "Email",
-        "address": "Address",
+        "company": "Company:",
+        "hotline": "Hotline number:",
+        "email": "Email:",
+        "address": "Address:",
         "blabla": "Let us contribute to your success!",
         "title": "Contact Us",
         "description": "Let us contribute to your success story!",

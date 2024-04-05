@@ -8,7 +8,7 @@ import {
     toolbarPlugin,
 } from "@react-pdf-viewer/toolbar"
 
-const PdfViewer = ({ url }: { url: string, download: () => void }) => {
+const PdfViewer = ({ url }: { url: string }) => {
     const toolBarPluginInstance = toolbarPlugin()
     const { renderDefaultToolbar, Toolbar } = toolBarPluginInstance
     const transform: TransformToolbarSlot = (slot: ToolbarSlot) => ({

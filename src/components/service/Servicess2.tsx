@@ -26,14 +26,14 @@ const Services2 = ({ services }: ServicesProps) => {
     setSelectedService(services[0]);
   }, [services]);
 
-  const title = useMemo(() => services.sort((a,b)=>a.index - b.index).map((service, index) => {
+  const title = useMemo(() => services.sort((a, b) => a.index - b.index).map((service, index) => {
+    const className = useMemo(() => `${selectedService === service
+      ? "bg-primary text-secondary-dark scale-110"
+      : "bg-[#fff]"
+      } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`, [selectedService, service])
     return (
       <div
-        key={index}
-        className={`${selectedService === service
-          ? "bg-primary text-secondary-dark scale-110"
-          : "bg-[#fff]"
-          } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`}
+        className={className}
         onClick={() => handleSelect(service)}
       >
         <img src={service.logo} className="w-10 h-10 mb-2" alt="icon" />

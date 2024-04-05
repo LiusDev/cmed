@@ -165,6 +165,15 @@ export type About = {
   }[]
 }
 
+export type Service2Content = {
+  title: string
+  content: string
+  featuredImage: string;
+  featuredImage2: string;
+  index: number
+  logo: string
+}
+
 export type Service2 = {
   id: number;
 
@@ -180,14 +189,7 @@ export type Service2 = {
 
   showInHome: boolean
 
-  content: {
-    title: string
-    content: string
-    featuredImage: string;
-    featuredImage2: string;
-    index: number
-    logo: string
-  }[];
+  content: Service2Content[];
 
   category: {
     id: number

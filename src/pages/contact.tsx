@@ -16,7 +16,7 @@ const ContactInfo = () => {
             const newData: { [key: string]: string } = {}
             newData[t("contact.company")] = metadata.companyName
             newData[t("contact.hotline")] = metadata.companyPhone
-            newData[t("contact.email")] = metadata.companyPhone
+            newData[t("contact.email")] = metadata.companyEmail
             newData[t("contact.address")] = metadata.companyAddress
             setData(newData)
         })

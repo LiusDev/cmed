@@ -73,9 +73,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const config = {
     4: "benh-vien",
-    3: "vien-duong-lao",
-    2: "phong-kham-da-khoa",
-    1: "phong-kham-chuyen-khoa"
+    1: "vien-duong-lao",
+    3: "phong-kham-da-khoa",
+    2: "phong-kham-chuyen-khoa"
 }
 
 export default ServiceDetail;

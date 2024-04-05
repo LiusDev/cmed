@@ -9,10 +9,10 @@ interface ServicesProps {
 }
 
 const config = {
-  1: "benh-vien",
-  2: "vien-duong-lao",
+  4: "benh-vien",
+  1: "vien-duong-lao",
   3: "phong-kham-da-khoa",
-  4: "phong-kham-chuyen-khoa"
+  2: "phong-kham-chuyen-khoa"
 }
 
 const ConstServices = ({ services }: ServicesProps) => {

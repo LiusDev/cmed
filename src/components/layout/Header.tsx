@@ -93,7 +93,7 @@ const HamburgerMenu = () => {
         <div className="flex items-center justify-between mb-10">
           <Link href="/">
             <img
-              src="logo.webp"
+              src="/logo.webp"
               alt="Logo"
               className="h-[36px] max-w-full align-middle object-cover"
             />

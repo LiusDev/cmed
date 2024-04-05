@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from "react";
-import type { HomeService } from "@/types";
+import type { Service2 } from "@/types";
 import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useEffect } from "react";
 import FeaturedImage from "./FeaturedImage";
 interface ServicesProps {
-  services: HomeService["content"];
+  services: Service2["content"];
 }
 
-const Services = ({ services }: ServicesProps) => {
+const Services2 = ({ services }: ServicesProps) => {
   const [selectedService, setSelectedService] = useState(services[0]);
 
   const handleSelect = (service: {
@@ -17,6 +17,7 @@ const Services = ({ services }: ServicesProps) => {
     featuredImage: string;
     featuredImage2: string;
     logo: string
+    index: number
   }) => {
     setSelectedService(service);
   };
@@ -25,7 +26,7 @@ const Services = ({ services }: ServicesProps) => {
     setSelectedService(services[0]);
   }, [services]);
 
-  const title = useMemo(() => services.map((service, index) => {
+  const title = useMemo(() => services.sort((a,b)=>a.index - b.index).map((service, index) => {
     return (
       <div
         key={index}
@@ -46,14 +47,14 @@ const Services = ({ services }: ServicesProps) => {
 
     <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
       <h2 className="text-3xl font-bold text-primary text-justify">
-        <Trans text="services.detail.services.title" />
+        {selectedService.title}
       </h2>
       <div className="text-justify">{parse(selectedService.content)}</div>
     </div>
   </>, [selectedService])
 
   return (
-    <div className="py-20 bg-[#f4f5f9]">
+    <div className="py-20 bg-[#f4f5f9] z-30 relative">
       <div className="h-40 md:w-3/5 w-full bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
         {title}
       </div>
@@ -64,4 +65,4 @@ const Services = ({ services }: ServicesProps) => {
   );
 };
 
-export default Services;
+export default Services2;

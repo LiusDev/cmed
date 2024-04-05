@@ -20,7 +20,7 @@ const Services = ({ services }: ServicesProps) => {
   }, [router]);
 
   return (
-    <div className="py-20 bg-[#f4f5f9]">
+    <div className="py-20 bg-[#f4f5f9] z-30 relative">
       <div className="h-40 md:w-3/5 w-full bg-[#fff] shadow-custom mx-auto -translate-y-40 flex">
         {services.length > 0 &&
           services.map((service, index) => {

@@ -12,8 +12,8 @@ const Banner = (props: BannerProps) => {
     <section className="mt-16">
       <div className="bg-[url('/home/home-banner.webp')] bg-no-repeat bg-center bg-cover min-h-[800px] overflow-hidden">
         <div className="container w-screen mx-auto px-4 text-secondary">
-          <div id="main" className="flex flex-col w-fit relative">
-            <div className="absolute bg-[#7493BCB2]/50 w-screen h-screen right-0 top-0 z-10" />
+          <div id="main" className="flex flex-col w-fit lg:relative">
+            <div className="absolute bg-[#7493BCB2]/50 w-full h-full lg:w-screen lg:h-screen right-0 top-0 z-10" />
             <h1 className="text-[100px] leading-[136.2px] font-bold mb-12 min-h-[200px] pt-[187px] pr-[105px] z-20  block">
               {
                 props.title ?? <Trans text="services.banner.title" />

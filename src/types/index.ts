@@ -165,7 +165,7 @@ export type About = {
   }[]
 }
 
-export type HomeService = {
+export type Service2 = {
   id: number;
 
   createdAt: Date;
@@ -185,6 +185,7 @@ export type HomeService = {
     content: string
     featuredImage: string;
     featuredImage2: string;
+    index: number
     logo: string
   }[];
 

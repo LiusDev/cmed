@@ -1,20 +1,21 @@
 import { MainLayout } from "@/components/layout";
 import { instance } from "@/utils";
 import { Banner, Services, WhyUs } from "@/components/service";
-import type { Service } from "@/types";
+import type { Service, Service2 } from "@/types";
 import type { GetServerSidePropsContext } from "next";
 import News from "@/components/service/News";
 import ConstServices from "../../components/service/ConstServices";
+import Services2 from "../../components/service/Servicess2";
 
 const ServiceDetail = (props: {
     isNumber: boolean
-    service: Service;
-    services: Service[];
+    service: Service | Service2;
+    services: Service[] | Service2["content"];
 }) => {
     return (
         <MainLayout>
             <Banner title={props.service.name} description={props.service.description} />
-            {props.isNumber ? <Services services={props.services} /> : <ConstServices services={props.services} />}
+            {props.isNumber ? <Services services={props.services as any} /> : <Services2 services={props.services as any} />}
             <News />
             <WhyUs />
         </MainLayout>
@@ -48,9 +49,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         }
     }
 
-    const [services] = await Promise.all([
+    const index = Object.entries(config).find(([key, value]) => value === serviceId)![0]
+
+    const [service] = await Promise.all([
         instance
-            .get<Service[]>("/constservices", {
+            .get<Service2>(`/service2/${index}`, {
                 params: {
                     sortBy: "index",
                     order: "asc"
@@ -58,22 +61,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             }).then(r => r.data)
     ])
 
-    const index = Object.keys(config).map(Number).filter(
-        i => config[i as keyof typeof config] ===  context.query.id
-      )[0]
+
 
     return {
         props: {
-            service: services.find(i=>i.id == index), services, isNumber: false
+            service: service,
+            services: service.content
         }
     }
 }
 
 const config = {
-    1: "benh-vien",
-    2: "vien-duong-lao",
-    3: "phong-kham-da-khoa",
-    4: "phong-kham-chuyen-khoa"
-  }
+    4: "benh-vien",
+    3: "vien-duong-lao",
+    2: "phong-kham-da-khoa",
+    1: "phong-kham-chuyen-khoa"
+}
 
 export default ServiceDetail;

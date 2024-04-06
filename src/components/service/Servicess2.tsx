@@ -27,12 +27,13 @@ const Services2 = ({ services }: ServicesProps) => {
   }, [services]);
 
   const title = useMemo(() => services.sort((a, b) => a.index - b.index).map((service, index) => {
-    const className = useMemo(() => `${selectedService === service
+    const className = `${selectedService === service
       ? "bg-primary text-secondary-dark scale-110"
       : "bg-[#fff]"
-      } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`, [selectedService, service])
+      } w-full flex flex-col justify-center items-center cursor-pointer text-base font-medium transition-all`
     return (
       <div
+        key={index}
         className={className}
         onClick={() => handleSelect(service)}
       >

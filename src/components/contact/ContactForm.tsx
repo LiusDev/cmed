@@ -153,7 +153,7 @@ const ContactForm = ({
                 </div>
             )}
             <Button
-                className="col-span-2"
+                className="col-span-2 font-bold"
                 variant="outline"
                 onClick={handleSubmit}
             >

@@ -157,7 +157,7 @@ const HoverMenu = (props: { open: boolean }) => {
           <HoverItem title="Bệnh viện" href="/service/benh-vien" />
           <HoverItem title="Viện dưỡng lão" href="/service/vien-duong-lao" />
           <HoverItem title="Phòng khám đa khoa" href="/service/phong-kham-da-khoa" />
-          <HoverItem title="Phòng khám chuyển khoa" href="/service/phong-kham-chuyen-khoa" />
+          <HoverItem title="Phòng khám chuyên khoa" href="/service/phong-kham-chuyen-khoa" />
         </ul>
         <div className="bg-secondary w-full h-full top-0 left-[-15px] -z-10 absolute  box-content p-[15px] rounded"></div>
       </div>

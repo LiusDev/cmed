@@ -11,7 +11,7 @@ const About = ({ className }: AboutProps) => {
       <div className="relative lg:grid lg:grid-cols-12">
         <div className="flex flex-col xl:col-span-6 lg:col-span-8 z-10 lg:min-h-[400px]">
           <div className="lg:h-1/2 relative px-5">
-            <h2 className="lg:absolute xl:w-1/2 lg:w-2/3 right-12 top-10 capitalize text-4xl lg:text-5xl leading-normal lg:border-b-2 border-tertiary pb-4 font-semibold text-center lg:text-left">
+            <h2 className="lg:absolute xl:w-1/2 lg:w-2/3 left-1/2 -translate-x-1/2 top-10 capitalize text-4xl lg:text-5xl leading-normal lg:border-b-2 border-tertiary pb-4 font-semibold text-center lg:text-left">
               <Trans text="home.about.title" />
             </h2>
           </div>

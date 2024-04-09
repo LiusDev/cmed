@@ -29,7 +29,15 @@ const DocumentsDetail = ({
     relatedDocuments,
     otherDocuments,
 }: NewsDetailProps) => {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation();
+    const currentLang = useMemo(() => {
+        switch (i18n.language) {
+            case "vi": return ""
+            default: return i18n.language.toUpperCase()
+        }
+    }, [i18n.language])
+
+
 
     const breadCrumbsItems = useMemo(() => [
         {
@@ -65,7 +73,7 @@ const DocumentsDetail = ({
             <div className="container m-auto px-4 my-20">
                 <BreadCr items={breadCrumbsItems} />
                 <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
-                    {document.name}
+                    {document[`name${currentLang}` as keyof Document] as string}
                 </h1>
                 <button
                     className="text-sm mb-2 bg-primary-light hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition duration-300 text-[#fff]"
@@ -84,7 +92,7 @@ const DocumentsDetail = ({
                         <FiBookOpen className="inline-block" /> {document.download} trang
                     </p>
                 </div>
-                <div className="pb-10">{parse(document.description)}</div>
+                <div className="pb-10">{parse(document[`description${currentLang}` as keyof Document] as string)}</div>
 
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">

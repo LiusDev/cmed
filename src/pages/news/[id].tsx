@@ -10,7 +10,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const NewsDetail = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      case "vi": return ""
+      default: return i18n.language.toUpperCase()
+    }
+  }, [i18n.language])
   const [relatedNews, setRelatedNews] = useState<News[]>([]);
   const [news, setNews] = useState<News>();
   const router = useRouter();
@@ -57,15 +63,15 @@ const NewsDetail = () => {
       <div className="container m-auto px-4 mt-28">
         <BreadCr items={breadCrumbsItems} />
         <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
-          {news.title}
+          {news[`title${currentLang}` as keyof News] as string}
         </h1>
         <img
           src={news.featuredImage}
-          alt={news.title}
+          alt={news[`title${currentLang}` as keyof News] as string}
           className="w-full object-cover object-center aspect-21/9 mb-8"
         />
         <div className="pb-20 mb-20 border-b border-tertiary/20">
-          {parse(news.content)}
+          {parse(news[`content${currentLang}` as keyof News] as string)}
         </div>
         <h2 className="text-xl md:text-3xl uppercase mb-10">
           <Trans text="news.detail.related" />

@@ -4,8 +4,17 @@ import { MdArrowForwardIos } from "react-icons/md";
 import type { Service } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
+import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 const Card = ({ service }: { service: Service }) => {
+  const { i18n } = useTranslation();
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      case "vi": return ""
+      default: return i18n.language.toUpperCase()
+    }
+  }, [i18n.language])
   return (
     <article className="flex flex-col gap-4 h-full xl:px-10 md:px-3">
       <Link
@@ -19,9 +28,9 @@ const Card = ({ service }: { service: Service }) => {
         />
       </Link>
       <Link href={`/service/${service.id}`}>
-        <h3 className="text-xl font-semibold">{service.name}</h3>
+        <h3 className="text-xl font-semibold">{service[`name${currentLang}` as keyof typeof service]}</h3>
       </Link>
-      <p className="line-clamp-2 mb-2 text-lg">{service.description}</p>
+      <p className="line-clamp-2 mb-2 text-lg">{service[`description${currentLang}` as keyof typeof service]}</p>
       <Button href={`/service/${service.id}`} variant="outline" className="w-fit">
         <Trans text="common.viewMore" />
       </Button>

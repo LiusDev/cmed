@@ -1,26 +1,33 @@
 import { Trans } from "@/components/common"
 import { MainLayout } from "@/components/layout"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import ContactForm from "@/components/contact/ContactForm"
 import { doGet } from "../utils"
 import { Metadata } from "../types"
 import { useTranslation } from "react-i18next"
 
 const ContactInfo = () => {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const [data, setData] = useState<{ [key: string]: string }>()
+    const lang = useMemo(() => {
+        switch (i18n.language) {
+            case "vi": return ""
+            default: return i18n.language
+        }
+    }, [i18n.language]).toUpperCase()
+
 
     useEffect(() => {
         doGet("/metadata").then(res => {
             const metadata: Metadata = res.data
             const newData: { [key: string]: string } = {}
-            newData[t("contact.company")] = metadata.companyName
-            newData[t("contact.hotline")] = metadata.companyPhone
-            newData[t("contact.email")] = metadata.companyEmail
-            newData[t("contact.address")] = metadata.companyAddress
+            newData[t(`contact.company`)] = metadata[`companyName${lang}` as keyof Metadata] as string
+            newData[t(`contact.hotline`)] = metadata[`companyPhone${lang}` as keyof Metadata] as string
+            newData[t(`contact.email`)] = metadata[`companyEmail${lang}` as keyof Metadata] as string
+            newData[t(`contact.address`)] = metadata[`companyAddress${lang}` as keyof Metadata] as string
             setData(newData)
         })
-    }, [])
+    }, [i18n.language])
 
     return <div className="mb-8 text-lg md:text-2xl">
         {

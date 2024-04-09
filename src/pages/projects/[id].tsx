@@ -9,6 +9,8 @@ import { instance } from '@/utils';
 import parse from 'html-react-parser';
 import { Trans } from '@/components/common';
 import { GetServerSidePropsContext } from 'next';
+import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 
 type ProjectDetailProps = {
   project: Project;
@@ -16,9 +18,16 @@ type ProjectDetailProps = {
 }
 
 const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      case "vi": return ""
+      default: return i18n.language.toUpperCase()
+    }
+  }, [i18n.language])
   return (
     <MainLayout>
-      <ProjectDetailBanner project={project} />
+      <ProjectDetailBanner lang={currentLang} project={project} />
 
       <div className='container m-auto mt-28 px-4'>
         <div className='mb-20 border-b border-tertiary/20'>
@@ -31,7 +40,7 @@ const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
                 <span className='text-primary'>1.</span>{' '}
                 <Trans text='project.detail.title' />
               </h1>
-              <div>{parse(project.content)}</div>
+              <div>{parse(project[`content${currentLang}` as keyof typeof project] as string)}</div>
             </div>
           </div>
 

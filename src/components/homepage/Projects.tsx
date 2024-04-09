@@ -1,9 +1,10 @@
 import { Project } from "@/types";
 import { Button, Trans } from "../common";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ProjectProps {
   projects: Project[];
@@ -12,7 +13,13 @@ interface ProjectProps {
 
 const Projects = ({ projects, className = "" }: ProjectProps) => {
   const [currentProject, setCurrentProject] = useState<Project>(projects[0]);
-
+  const { i18n } = useTranslation();
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      case "vi": return ""
+      default: return i18n.language.toUpperCase()
+    }
+  }, [i18n.language])
   const handleChangeProject = useCallback((direction: "next" | "prev") => {
     const currentIndex = projects.findIndex(
       (project) => project.id === currentProject.id
@@ -50,10 +57,10 @@ const Projects = ({ projects, className = "" }: ProjectProps) => {
               <Trans text="home.project.title" />
             </h2>
             <h3 className="text-2xl font-medium capitalize mb-6 md:mb-8">
-              {currentProject.name}
+              {currentProject[`name${currentLang}` as keyof Project] as string}
             </h3>
             <p className="mb-8 md:mb-10 line-clamp-4 max-lg:min-h-[150px]">
-              {currentProject.description}
+              {currentProject[`description${currentLang}` as keyof Project] as string}
             </p>
             <Button
               variant="outline"

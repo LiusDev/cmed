@@ -6,15 +6,24 @@ import type { GetServerSidePropsContext } from "next";
 import News from "@/components/service/News";
 import ConstServices from "../../components/service/ConstServices";
 import Services2 from "../../components/service/Servicess2";
+import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 const ServiceDetail = (props: {
     isNumber: boolean
     service: Service | Service2;
     services: Service[] | Service2["content"];
 }) => {
+    const { i18n } = useTranslation();
+    const currentLang = useMemo(() => {
+        switch (i18n.language) {
+            case "vi": return ""
+            default: return i18n.language.toUpperCase()
+        }
+    }, [i18n.language])
     return (
         <MainLayout>
-            <Banner title={props.service.name} description={props.service.description} />
+            <Banner title={props.service[`name${currentLang}` as keyof typeof props.service] as string} description={props.service[`description${currentLang}` as keyof typeof props.service] as string} />
             {props.isNumber ? <Services services={props.services as any} /> : <Services2 services={props.services as any} />}
             <News />
             <WhyUs />

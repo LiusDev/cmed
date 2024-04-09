@@ -15,7 +15,7 @@ const About = ({ className }: AboutProps) => {
               <Trans text="home.about.title" />
             </h2>
           </div>
-          <div className="bg-secondary-dark lg:h-3/5 flex justify-center items-center p-10 lg:p-20 lg:text-base xl:text-xl text-sm ">
+          <div className="bg-secondary-dark lg:h-3/5 flex justify-center items-center p-10 lg:p-20 lg:text-base xl:text-xl text-justify text-sm ">
             <Trans text="home.about.description" />
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { useRouter } from "next/router"
 import { Button, Trans } from "../common"
-import { useCallback, useState, type ChangeEventHandler } from "react"
+import { useCallback, useState, type ChangeEventHandler, type FC } from "react"
+import { useTranslation } from "react-i18next"
 
-const Banner = () => {
+const Banner : FC = () => {
     const router = useRouter()
     const [keyword, setKeyword] = useState("")
 
@@ -12,6 +13,7 @@ const Banner = () => {
 
     const handleSearchInput = useCallback<ChangeEventHandler<HTMLInputElement>>(e => { setKeyword(e.target.value) }, [])
 
+    const {t} = useTranslation()
 
     return (
         <section className="mt-16">
@@ -20,7 +22,7 @@ const Banner = () => {
                     <input
                         type="text"
                         className="w-full max-w-[800px] h-12 bg-white px-8 outline-none"
-                        placeholder="Tìm kiếm vị trí tuyển dụng"
+                        placeholder={t("recruitment.search.placeholder")}
                         value={keyword}
                         onChange={handleSearchInput}
                     />

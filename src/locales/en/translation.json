@@ -22,8 +22,8 @@
         "contact": "Contact",
         "hospital": "Hospital",
         "nursingHome": "Nursing home",
-        "specializedClinic" : "Specialized clinic",
-        "practiceClinic" : "General practice clinic"
+        "specializedClinic": "Specialized clinic",
+        "practiceClinic": "General practice clinic"
     },
     "footer": {
         "link": {
@@ -253,7 +253,11 @@
         }
     },
     "recruitment": {
+        "exTime" : "Expiration Date",
         "title": "Recruitment News",
-        "noData": "No data available"
+        "noData": "No data available",
+        "search": {
+            "placeholder": "Search job positions"
+        }
     }
 }

@@ -44,7 +44,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="lg:px-6">
-                <Link href="contact">
+                <Link href="/contact">
                   <Trans text="footer.link.contact" />
                 </Link>
               </li>

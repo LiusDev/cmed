@@ -21,9 +21,9 @@
         "news": "ニュース",
         "contact": "お問い合わせ",
         "hospital": "病院",
-        "nursingHome" : "介護施設",
-        "specializedClinic" : "専門診療所 ",
-        "practiceClinic" : "多目的診療所"
+        "nursingHome": "介護施設",
+        "specializedClinic": "専門診療所 ",
+        "practiceClinic": "多目的診療所"
     },
     "footer": {
         "link": {
@@ -231,7 +231,11 @@
         }
     },
     "recruitment": {
+        "exTime" : "有効期限",
         "title": "採用情報",
-        "noData": "データがありません"
+        "noData": "データがありません",
+        "search": {
+            "placeholder": "採用ポジションを検索"
+        }
     }
 }

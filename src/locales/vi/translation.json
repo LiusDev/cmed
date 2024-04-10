@@ -20,10 +20,10 @@
         "document": "Tài liệu",
         "news": "Tin tức",
         "contact": "Liên hệ",
-        "hospital" : "Bệnh viện",
-        "nursingHome" : "Viện dưỡng lão",
-        "specializedClinic" : "Phòng khám chuyên khoa",
-        "practiceClinic" : "Phòng khám đa khoa"
+        "hospital": "Bệnh viện",
+        "nursingHome": "Viện dưỡng lão",
+        "specializedClinic": "Phòng khám chuyên khoa",
+        "practiceClinic": "Phòng khám đa khoa"
     },
     "footer": {
         "link": {
@@ -219,7 +219,7 @@
         }
     },
     "news": {
-        "all" : "Tất cả",
+        "all": "Tất cả",
         "title": "Tin tức sự kiện",
         "detail": {
             "related": "TIN TỨC TUYỂN DỤNG KHÁC"
@@ -253,7 +253,11 @@
         }
     },
     "recruitment": {
+        "exTime" : "Ngày hết hạn",
         "title": "Tin tức tuyển dụng",
-        "noData": "Không có dữ liệu"
+        "noData": "Không có dữ liệu",
+        "search": {
+            "placeholder": "Tìm kiếm vị trí tuyển dụng"
+        }
     }
 }

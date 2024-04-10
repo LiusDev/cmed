@@ -150,14 +150,15 @@ const HoverItem = (props: { title: string; href: string }) => {
 }
 
 const HoverMenu = (props: { open: boolean }) => {
+  const { t } = useTranslation();
   return (
     <div className="absolute top-full left-0 rounded min-w-full w-auto" style={{ display: props.open ? "unset" : "none" }}>
       <div className="relative min-w-full w-fit pt-[10px]">
         <ul className="w-max flex flex-col gap-[10px]">
-          <HoverItem title="Bệnh viện" href="/service/benh-vien" />
-          <HoverItem title="Viện dưỡng lão" href="/service/vien-duong-lao" />
-          <HoverItem title="Phòng khám đa khoa" href="/service/phong-kham-da-khoa" />
-          <HoverItem title="Phòng khám chuyên khoa" href="/service/phong-kham-chuyen-khoa" />
+          <HoverItem title={t("header.hospital")} href="/service/benh-vien" />
+          <HoverItem title={t("header.nursingHome")} href="/service/vien-duong-lao" />
+          <HoverItem title={t("header.nursingHome")} href="/service/phong-kham-da-khoa" />
+          <HoverItem title={t("header.specializedClinic")} href="/service/phong-kham-chuyen-khoa" />
         </ul>
         <div className="bg-secondary w-full h-full top-0 left-[-15px] -z-10 absolute  box-content p-[15px] rounded"></div>
       </div>

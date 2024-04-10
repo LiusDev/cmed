@@ -3,14 +3,14 @@ import { twMerge } from "tailwind-merge";
 import { Trans } from "../common";
 import { Carousel } from "@mantine/carousel";
 import { useTranslation } from "react-i18next";
-import { useMemo } from "react";
+import { memo, useMemo, type FC } from "react";
 
 interface CustomersProps {
   customers: Customer[];
   className?: string;
 }
 
-const Customers = ({ customers, className = "" }: CustomersProps) => {
+const Customers : FC<CustomersProps> = ({ customers, className = "" }) => {
   const { i18n } = useTranslation();
   const currentLang = useMemo(() => {
     switch (i18n.language) {
@@ -19,30 +19,7 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
     }
   }, [i18n.language])
 
-  const items = useMemo(() => customers.map((customer, index) => (
-    <Carousel.Slide key={index}>
-      <div className="group px-8 bg-secondary w-full h-full flex flex-col items-center relative cursor-pointer transition-all">
-        <div className="absolute w-full h-full hover:hidden group-hover:opacity-0 transition-all">
-          <img src={customer.image} title="slide" className="w-full h-full object-cover content-center" />
-        </div>
-        <div className="absolute w-full h-full bg-primary opacity-80 group-hover:-translate-y-[60%] group-hover:opacity-0 transition-all flex justify-center items-center">
-          <img src={customer.icon} alt="icon" className="w-1/2" />
-        </div>
-        <img
-          src={customer.logo}
-          alt={customer.name}
-          className="object-contain mb-8 mt-12 h-32"
-        />
-        <h3 className="text-center text-2xl font-medium mb-8 mx-10">
-          {customer[`name${currentLang}` as keyof Customer] as string}
-        </h3>
-
-        <p className="text-center text-base mb-12">
-          {customer[`description${currentLang}` as keyof Customer] as string}
-        </p>
-      </div>
-    </Carousel.Slide>
-  )), [customers, currentLang])
+  const items = useMemo(() => customers.map((customer, index) => <CustomerItem customer={customer} key={index} />), [customers, currentLang])
 
   return (
     <section className={twMerge(`mt-20 bg-secondary-dark ${className}`)}>
@@ -64,5 +41,33 @@ const Customers = ({ customers, className = "" }: CustomersProps) => {
     </section>
   );
 };
+
+const CustomerItem = memo<{
+  customer: Customer;
+  lang: string
+}>(({ customer, lang }) => {
+  return <Carousel.Slide>
+    <div className="group px-8 bg-secondary w-full h-full flex flex-col items-center relative cursor-pointer transition-all">
+      <div className="absolute w-full h-full hover:hidden group-hover:opacity-0 transition-all">
+        <img src={customer.image} title="slide" className="w-full h-full object-cover content-center" />
+      </div>
+      <div className="absolute w-full h-full bg-primary opacity-80 group-hover:-translate-y-[60%] group-hover:opacity-0 transition-all flex justify-center items-center">
+        <img src={customer.icon} alt="icon" className="w-1/2" />
+      </div>
+      <img
+        src={customer.logo}
+        alt={customer.name}
+        className="object-contain mb-8 mt-12 h-32"
+      />
+      <h3 className="text-center text-2xl font-medium mb-8 mx-10">
+        {customer[`name${lang}` as keyof Customer] as string}
+      </h3>
+
+      <p className="text-center text-base mb-12">
+        {customer[`description${lang}` as keyof Customer] as string}
+      </p>
+    </div>
+  </Carousel.Slide>
+})
 
 export default Customers;

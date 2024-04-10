@@ -1,17 +1,21 @@
 import { Partner } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
-import { Trans } from "../common";
-import { useRef } from "react";
+import { Trans } from "@/components/common";
+import { memo, useMemo, useRef, type FC } from "react";
 import Autoplay from 'embla-carousel-autoplay';
+import useLang from "@/hooks/useLang";
 
 interface PartnerProps {
   partners: Partner[];
   className?: string;
 }
 
-const Partners = ({ partners, className = "" }: PartnerProps) => {
+const Partners: FC<PartnerProps> = ({ partners, className = "" }) => {
   const autoplay = useRef(Autoplay({ delay: 4000 }))
+  const { currentLanguage } = useLang()
+  const items = useMemo(() => partners.map((partner, index) => <PartnerItem partner={partner} lang={currentLanguage} key={index} />), [partners])
+
   return (
     <section className={twMerge(`my-20 ${className}`)}>
       <div className="container m-auto w-full">
@@ -30,21 +34,23 @@ const Partners = ({ partners, className = "" }: PartnerProps) => {
           onMouseEnter={autoplay.current.stop}
           onMouseLeave={autoplay.current.reset}
         >
-          {partners.map((partner, index) => (
-            <Carousel.Slide key={index}>
-              <div className="w-full h-full flex items-center justify-start">
-                <img
-                  src={partner.image}
-                  alt={partner.name}
-                  className="w-full object-contain h-full "
-                />
-              </div>
-            </Carousel.Slide>
-          ))}
+          {items}
         </Carousel>
       </div>
     </section>
   );
 };
+
+const PartnerItem = memo<{ partner: Partner; lang: string }>(({ partner, lang }) => {
+  return <Carousel.Slide>
+    <div className="w-full h-full flex items-center justify-start">
+      <img
+        src={partner.image}
+        alt={partner[`name${lang}` as keyof typeof partner] as string}
+        className="w-full object-contain h-full "
+      />
+    </div>
+  </Carousel.Slide>
+})
 
 export default Partners;

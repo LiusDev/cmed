@@ -3,7 +3,7 @@ import { Button, Trans } from "../common";
 import { doGet } from "../../utils";
 import { Banner as BannerType } from "../../types";
 import Autoplay from "embla-carousel-autoplay";
-import { ForwardedRef, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { ForwardedRef, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState, type FC } from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 
@@ -65,7 +65,9 @@ const Buttons = (props: { onNext: () => void, onPrevious: () => void }) => {
   </div>
 }
 
-const Banner = ({ banners }: { banners: BannerType[] }) => {
+type BannerProps = { banners: BannerType[] }
+
+const Banner: FC<BannerProps> = ({ banners }) => {
   const sliderRef = useRef<SliderRef>(null)
   const onNext = useCallback(() => {
     sliderRef.current?.next()

@@ -5,7 +5,7 @@ import type { Service } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
 import { useTranslation } from "react-i18next";
-import { useMemo } from "react";
+import { useMemo, type FC } from "react";
 
 const Card = ({ service }: { service: Service }) => {
   const { i18n } = useTranslation();
@@ -43,7 +43,14 @@ interface ServiceProps {
   className?: string;
 }
 
-const Services = ({ services, className = "" }: ServiceProps) => {
+const Services: FC<ServiceProps> = ({ services, className = "" }) => {
+
+  const items = useMemo(() => services.map((Item, index) => (
+    <Carousel.Slide key={index}>
+      <Card service={Item} />
+    </Carousel.Slide>
+  )), [services])
+
   return (
     <section className={twMerge(`mt-10 mb-20 ${className}`)}>
       <div className="container px-4 m-auto">
@@ -68,12 +75,7 @@ const Services = ({ services, className = "" }: ServiceProps) => {
           className="px-3 lg:px-10"
           controlsOffset={"none"}
         >
-          {services &&
-            services.map((Item, index) => (
-              <Carousel.Slide key={index}>
-                <Card service={Item} />
-              </Carousel.Slide>
-            ))}
+          {items}
         </Carousel>
       </div>
     </section>

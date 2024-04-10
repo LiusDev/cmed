@@ -1,10 +1,10 @@
 import { twMerge } from "tailwind-merge";
 import { Carousel } from "@mantine/carousel";
-import { Trans } from "../common";
+import { Trans } from "@/components/common";
 import type { Staff } from "@/types";
 import parse from "html-react-parser";
-import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useMemo, type FC } from "react";
+import useLang from "@/hooks/useLang";
 interface PersonnelProps {
   staffs: Staff[];
   className?: string;
@@ -13,37 +13,10 @@ interface PersonnelProps {
 const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
   staffs.length <= 4 && (staffs = [...staffs, ...staffs]);
 
-  const [t, i18n] = useTranslation();
-  const currentLang = useMemo((
-  ) => {
-    switch (i18n.language) {
-      default: return "";
-      case "en": return "EN";
-      case "jp": return "JP";
-    }
-  }, [i18n.language])
+  const { currentLanguage } = useLang()
 
 
-  const items = useMemo(() => staffs.map((staff, index) => (
-    <Carousel.Slide key={index}>
-      <div className="h-full w-full mt-5 flex flex-col">
-        <img
-          src={staff.featuredImage}
-          alt={staff[`name${currentLang}` as keyof Staff] as string}
-          className="h-96 object-cover object-top"
-        />
-        <div className="w-full  text-center relative">
-          <div className="text-xl font-medium pt-5 mx-auto">{staff[`name${currentLang}` as keyof Staff] as string}</div>
-          <div className="text-base italic py-3 mx-auto">
-            {staff[`position${currentLang}` as keyof Staff]}
-          </div>
-          <div className="text-sm space-y-3 mx-3 text-justify max-md:leading-relaxed">
-            {parse(staff[`description${currentLang}` as keyof Staff] as string)}
-          </div>
-        </div>
-      </div>
-    </Carousel.Slide>
-  )), [staffs, currentLang])
+  const items = useMemo(() => staffs.map((staff, index) => <PersonnelItem key={index} lang={currentLanguage} staff={staff} />), [staffs, currentLanguage])
 
 
   return (
@@ -74,5 +47,25 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
     </section>
   );
 };
+
+
+const PersonnelItem: FC<{ staff: Staff; lang: string }> = ({ staff, lang }) => <Carousel.Slide>
+  <div className="h-full w-full mt-5 flex flex-col">
+    <img
+      src={staff.featuredImage}
+      alt={staff[`name${lang}` as keyof Staff] as string}
+      className="h-96 object-cover object-top"
+    />
+    <div className="w-full  text-center relative">
+      <div className="text-xl font-medium pt-5 mx-auto">{staff[`name${lang}` as keyof Staff] as string}</div>
+      <div className="text-base italic py-3 mx-auto">
+        {staff[`position${lang}` as keyof Staff]}
+      </div>
+      <div className="text-sm space-y-3 mx-3 text-justify max-md:leading-relaxed">
+        {parse(staff[`description${lang}` as keyof Staff] as string)}
+      </div>
+    </div>
+  </div>
+</Carousel.Slide>
 
 export default Personnel;

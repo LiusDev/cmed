@@ -1,7 +1,8 @@
 "use client"
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { DocumentProps, Document, pdfjs, Page } from 'react-pdf';
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
+
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 	'pdfjs-dist/build/pdf.worker.min.js',
 	import.meta.url,
@@ -23,19 +24,21 @@ export default (props: DocumentProps) => {
 		}
 	}, []);
 
+	const pages = useMemo(() => Array.from(new Array(numPages), (_, index) => (
+		<Page className={"bg-primary"} width={containerWidth ? Math.min(containerWidth, maxWidth) : maxWidth} key={index} pageNumber={index + 1} renderAnnotationLayer={false} renderTextLayer={false} />
+	)), [numPages, containerWidth])
+
+	const handleSuccess = useCallback<NonNullable<DocumentProps["onLoadSuccess"]>>((pdf) => {
+		setNumPages(pdf.numPages)
+	}, [])
+
 	useResizeObserver(containerRef, resizeObserverOptions, onResize);
 
 	return <div className="Example__container">
 		<div className="Example__container__load">
 			<div className="Example__container__document" ref={setContainerRef}>
-				<Document {...props} className={"w-full h-screen overflow-scroll bg-tertiary"} onLoadSuccess={pdf => {
-					setNumPages(pdf.numPages)
-				}} options={{}}>
-					{
-						Array.from(new Array(numPages), (el, index) => (
-							<Page className={"bg-primary"} width={containerWidth ? Math.min(containerWidth, maxWidth) : maxWidth} key={index} pageNumber={index + 1} renderAnnotationLayer={false} renderTextLayer={false} />
-						))
-					}
+				<Document {...props} className={"w-full h-screen overflow-scroll bg-tertiary"} onLoadSuccess={handleSuccess} options={{}}>
+					{pages}
 				</Document>
 			</div>
 		</div>

@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useCallback, useState, type ChangeEvent, type FC } from "react";
 import { Button, Trans } from "@/components/common";
 
-const Banner = () => {
+const Banner: FC = () => {
   const router = useRouter();
   const [keyword, setKeyword] = useState("");
-
-  const handleSearch = () => {
+  const handleSearchInput = useCallback((e: ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value), [])
+  const handleSearchButton = () => {
     router.push(`/documents?name=${keyword}`);
   };
+  
   return (
     <section className="mt-16">
       <div className="bg-[url('/home/home-banner.webp')] bg-no-repeat bg-center bg-cover aspect-4/3 md:aspect-21/9 lg:aspect-4/1 flex justify-center items-end">
@@ -18,9 +19,9 @@ const Banner = () => {
             className="w-full max-w-[800px] h-12 bg-white px-8 outline-none"
             placeholder="Search"
             value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={handleSearchInput}
           />
-          <Button className="h-12" onClick={handleSearch}>
+          <Button className="h-12" onClick={handleSearchButton}>
             <Trans text="common.search" />
           </Button>
         </div>

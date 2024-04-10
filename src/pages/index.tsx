@@ -1,21 +1,21 @@
 import {
+  About,
   Banner,
   Customers,
   Partners,
   Projects,
   Services,
 } from "@/components/homepage";
-import About from "@/components/homepage/About";
 import { MainLayout } from "@/components/layout";
 import type { Customer, Partner, Project, Service } from "@/types";
 import { doGet, instance } from "@/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FC } from "react";
 const duplicateData = (data: any[]) => {
   data.length <= 4 && (data = [...data, ...data]);
   return data;
 }
 
-const Home = ({ banners }: { banners: any }) => {
+const Home: FC<{ banners: any }> = ({ banners }) => {
   const [services, setServices] = useState<Service[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);

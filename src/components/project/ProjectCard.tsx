@@ -5,9 +5,10 @@ interface ProjectCardProps {
   project: Project;
   className?: string;
   index: number
+  lang: string
 }
 
-const ProjectCard = ({ project, className = "", index }: ProjectCardProps) => {
+const ProjectCard = ({ project, lang, className = "", index }: ProjectCardProps) => {
   const router = useRouter();
   return (
     <article
@@ -22,11 +23,11 @@ const ProjectCard = ({ project, className = "", index }: ProjectCardProps) => {
           <div className="flex flex-row items-center">
             <span className="font-semibold text-[32px] line-clamp-1 text-[white]">{index + 1}.</span>
             <p className="border-b border-secondary text-secondary">
-              {project.name}
+              {project[`name${lang}` as keyof typeof project]}
             </p>
           </div>
           <h4 className="text-secondary text-lg font-medium line-clamp-2">
-            {project.description}
+            {project[`description${lang}` as keyof typeof project]}
           </h4>
         </div>
       </div>

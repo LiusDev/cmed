@@ -1,9 +1,10 @@
 import { Project } from "@/types";
 import { Trans } from "../common";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { instance } from "@/utils";
 import ProjectCard from "./ProjectCard";
+import { useTranslation } from "react-i18next";
 
 interface OtherProjectProps {
   projects: Project[];
@@ -14,19 +15,32 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
   const router = useRouter();
   const { name, page } = router.query;
 
+  const { i18n } = useTranslation()
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      default: return ""
+      case "en": return "EN"
+      case "jp": return "JP"
+    }
+  }, [i18n.language])
+
   const [data, setData] = useState<Project[]>(projects);
 
-  const handleGetItems = async () => {
+  const handleGetItems = useCallback(async () => {
     const { data: fetchProjects } = await instance.get(
       `/projects?perPage=${pageSize}&page=${page || 1}${name ? `&name=${name}` : ""
       }`
     );
     setData(fetchProjects);
-  };
+  }, [pageSize, page, name]);
 
   useEffect(() => {
     handleGetItems();
   }, [page, name]);
+
+  const items = useMemo(()=> data.map((project, index) => (
+    <ProjectCard lang={currentLang} key={project.id} project={project} index={index} />
+  )), [data, currentLang])
 
   if (!data || data.length === 0) return <></>;
 
@@ -36,9 +50,7 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
         <Trans text="project.detail.other" />
       </h3>
       <div className="grid grid-cols-6 gap-8">
-        {data.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+        {items}
       </div>
     </section>
   );

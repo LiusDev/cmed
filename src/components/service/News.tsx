@@ -4,7 +4,7 @@ import { News as NewsType } from "../../types";
 import { instance } from "../../utils";
 import NewsItem from "./NewsItem";
 
-export default function () {
+export default function ({ currentLang }: { currentLang: string }) {
 	const [news, setNews] = useState<NewsType[]>([])
 	useEffect(() => {
 		instance
@@ -18,11 +18,12 @@ export default function () {
 	}, [])
 	const elements = useMemo(() => news.map((item) => (
 		<NewsItem
+			lang={currentLang}
 			key={item.id}
 			news={item}
 			className="col-span-12 sm:col-span-6 lg:col-span-4"
 		/>
-	)), [news])
+	)), [news, currentLang])
 
 	return <div className="container m-auto px-4 mb-20">
 		<h1 className="font-bold text-primary text-3xl text-center py-20">

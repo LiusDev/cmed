@@ -4,6 +4,7 @@ import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useEffect } from "react";
 import FeaturedImage from "./FeaturedImage";
+import { useTranslation } from "react-i18next";
 interface ServicesProps {
   services: Service2["content"];
 }
@@ -26,6 +27,15 @@ const Services2 = ({ services }: ServicesProps) => {
     setSelectedService(services[0]);
   }, [services]);
 
+  const { i18n } = useTranslation()
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      default: return ""
+      case "en": return "EN"
+      case "jp": return "JP"
+    }
+  }, [i18n.language])
+
   const title = useMemo(() => services.sort((a, b) => a.index - b.index).map((service, index) => {
     const className = `${selectedService === service
       ? "bg-primary text-secondary-dark scale-110"
@@ -38,7 +48,7 @@ const Services2 = ({ services }: ServicesProps) => {
         onClick={() => handleSelect(service)}
       >
         <img src={service.logo} className="w-10 h-10 mb-2" alt="icon" />
-        {service.title}
+        {service[`title${currentLang}` as keyof typeof service]}
       </div>
     );
   }), [selectedService, services])
@@ -48,9 +58,9 @@ const Services2 = ({ services }: ServicesProps) => {
 
     <div className="flex flex-col justify-center lg:w-1/2 px-10 space-y-10">
       <h2 className="text-3xl font-bold text-primary text-justify">
-        {selectedService.title}
+        {selectedService[`title${currentLang}` as keyof typeof selectedService]}
       </h2>
-      <div className="text-justify">{parse(selectedService.content)}</div>
+      <div className="text-justify">{parse(selectedService[`content${currentLang}` as keyof typeof selectedService] as string)}</div>
     </div>
   </>, [selectedService])
 

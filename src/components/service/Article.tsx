@@ -1,6 +1,6 @@
 import { Button, Trans } from '../common';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
-import { useState } from 'react';
+import { useState, type FC } from 'react';
 import Link from 'next/link';
 interface ArticleProps {
   title: string;
@@ -12,7 +12,7 @@ interface ArticleProps {
   positionArticle?: string;
 }
 
-const Article: React.FC<ArticleProps> = ({
+const Article: FC<ArticleProps> = ({
   title,
   content,
   image,

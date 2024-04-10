@@ -1,27 +1,21 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, type FC } from "react";
 import type { Service } from "@/types";
 import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useParams, useRouter } from "next/navigation";
 import FeaturedImage from "./FeaturedImage";
-import { useTranslation } from "react-i18next";
+import useLang from "@/hooks/useLang";
 interface ServicesProps {
   services: Service[];
 }
 
-const Services = ({ services }: ServicesProps) => {
+const Services: FC<ServicesProps> = ({ services }) => {
   const router = useRouter()
   const params = useParams()
 
   const selectedService = useMemo(() => services.filter(s => s.id.toString() == params.id)[0], [services, params])
 
-  const { i18n } = useTranslation();
-  const currentLang = useMemo(() => {
-    switch (i18n.language) {
-      case "vi": return ""
-      default: return i18n.language.toUpperCase()
-    }
-  }, [i18n.language])
+  const { currentLanguage } = useLang()
 
   const handleSelect = useCallback((service: Service) => {
     router.push(`/service/${service.id}`)
@@ -42,7 +36,7 @@ const Services = ({ services }: ServicesProps) => {
                 onClick={() => handleSelect(service)}
               >
                 <img src={service.logo} className="w-10 h-10 mb-2" alt="icon" />
-                {service[`name${currentLang}` as keyof typeof selectedService] as string}
+                {service[`name${currentLanguage}` as keyof typeof selectedService] as string}
               </div>
             );
           })}
@@ -56,7 +50,7 @@ const Services = ({ services }: ServicesProps) => {
               <h2 className="text-3xl font-bold text-primary">
                 <Trans text="services.detail.services.title" />
               </h2>
-              <div className="">{parse(selectedService[`content${currentLang}` as keyof typeof selectedService] as string)}</div>
+              <div className="">{parse(selectedService[`content${currentLanguage}` as keyof typeof selectedService] as string)}</div>
             </div>
           </>
         )}

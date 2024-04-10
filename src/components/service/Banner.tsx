@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { Button, Trans } from "../common";
 
 
@@ -7,7 +8,7 @@ interface BannerProps {
   hiddenButton?: true
 }
 
-const Banner = (props: BannerProps) => {
+const Banner: FC<BannerProps> = (props) => {
   return (
     <section className="mt-16">
       <div className="bg-[url('/home/home-banner.webp')] bg-no-repeat bg-center bg-cover min-h-[800px] overflow-hidden">

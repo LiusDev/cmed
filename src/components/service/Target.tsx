@@ -1,4 +1,4 @@
-import { Trans } from "../common";
+import { Trans } from "@/components/common";
 
 const Target = () => {
   return (

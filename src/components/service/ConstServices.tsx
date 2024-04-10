@@ -1,6 +1,5 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, type FC } from "react";
 import type { Service } from "@/types";
-import { Trans } from "../common";
 import parse from "html-react-parser";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import FeaturedImage from "./FeaturedImage";
@@ -15,7 +14,7 @@ const config = {
   2: "phong-kham-chuyen-khoa"
 }
 
-const ConstServices = ({ services }: ServicesProps) => {
+const ConstServices: FC<ServicesProps> = ({ services }) => {
   const router = useRouter()
   const params = useParams()
   const pathName = usePathname()

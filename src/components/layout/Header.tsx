@@ -178,7 +178,7 @@ const NavItem = () => {
         {t(item.i18nTitle)}
       </Link>
     </li>
-  )), [router.asPath])
+  )), [router.asPath, t])
   return (
     <ul className="hidden lg:flex items-center justify-center gap-12">
       {nav}

@@ -14,11 +14,11 @@ const Personnel = ({ staffs, className = "" }: PersonnelProps) => {
   return (
     <section id="staff" className={twMerge(`my-20 min-h-[800px] ${className}`)}>
       <div className="relative container flex flex-col items-center justify-center w-full mx-auto">
-        <div className="absolute bg-primary w-full h-[500px] translate-y-40"></div>
-        <h2 className="relative text-center text-5xl font-semibold mt-10 text-secondary-dark drop-shadow pt-20">
+        <div className="absolute bg-primary w-full h-[500px] lg:translate-y-40 top-0"></div>
+        <h2 className="relative text-center text-4xl lg:text-5xl font-semibold mt-10 text-secondary-dark drop-shadow lg:pt-20">
           <Trans text="about.personnel.title" />
         </h2>
-        <p className="relative text-center text-lg lg:w-1/4 md:w-1/3 w-1/2 mt-3 mb-3 text-secondary-dark drop-shadow">
+        <p className="relative text-center text-lg lg:w-1/4 md:w-1/3 w-3/4 mt-3 mb-3 text-justify text-secondary-dark drop-shadow">
           <Trans text="about.personnel.description" />
         </p>
       </div>

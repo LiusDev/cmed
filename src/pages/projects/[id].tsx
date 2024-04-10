@@ -55,14 +55,13 @@ const ProjectDetail = ({ project, otherProjects }: ProjectDetailProps) => {
           <span className='text-primary'>3.</span>{' '}
           <Trans text='project.detail.other' />
         </h2>
-        <div className='mb-10 grid grid-cols-12 gap-8'>
+        <div className='mb-10 grid lg:grid-cols-4 gap-8'>
           {otherProjects.length > 0 &&
             otherProjects.map((item, index) => (
               <ProjectCard
                 key={item.id}
                 index={index}
                 project={item}
-                className='col-span-12 sm:col-span-6 lg:col-span-4'
               />
             ))}
         </div>

@@ -1,5 +1,6 @@
 import { Project } from "@/types";
 import { useRouter } from "next/router";
+import type { FC } from "react";
 
 interface ProjectCardProps {
   project: Project;
@@ -8,7 +9,7 @@ interface ProjectCardProps {
   lang: string
 }
 
-const ProjectCard = ({ project, lang, className = "", index }: ProjectCardProps) => {
+const ProjectCard: FC<ProjectCardProps> = ({ project, lang, className = "", index }) => {
   const router = useRouter();
   return (
     <article

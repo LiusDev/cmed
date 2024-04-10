@@ -1,9 +1,10 @@
 import { Carousel } from "@mantine/carousel";
 import type { Project } from "@/types";
 import { useMediaQuery } from "@mantine/hooks";
+import { useMemo, type FC } from "react";
 
-const ProjectDetailCarousel = ({ project }: { project: Project }) => {
-  const slides = project.images.map((image, index) => (
+const ProjectDetailCarousel: FC<{ project: Project }> = ({ project }) => {
+  const slides = useMemo(() => project.images.map((image, index) => (
     <Carousel.Slide key={index} className="w-1/2">
       <img
         src={image}
@@ -11,7 +12,7 @@ const ProjectDetailCarousel = ({ project }: { project: Project }) => {
         className="w-full h-full object-cover object-center"
       />
     </Carousel.Slide>
-  ));
+  )), [project])
   const isTabletOrMobile = useMediaQuery("(max-width: 768px)", false)
   return (
     <Carousel

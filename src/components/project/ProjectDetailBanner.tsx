@@ -1,6 +1,7 @@
 import { Project } from "@/types";
+import type { FC } from "react";
 
-const ProjectDetailBanner = ({ project, lang }: { project: Project, lang: string }) => {
+const ProjectDetailBanner: FC<{ project: Project, lang: string }> = ({ project, lang }) => {
   return (
     <section className="mt-16" style={{
       backgroundImage: `url(${project.featuredImage})`,

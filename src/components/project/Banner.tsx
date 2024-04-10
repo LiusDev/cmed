@@ -1,8 +1,8 @@
 import { useRouter } from "next/router"
 import { Button, Trans } from "../common"
-import { useState } from "react"
+import { useState, type FC } from "react"
 
-const Banner = () => {
+const Banner : FC = () => {
     const router = useRouter()
     const [name, setName] = useState("")
 

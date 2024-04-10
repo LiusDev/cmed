@@ -1,7 +1,7 @@
 import { Project } from "@/types";
 import { Trans } from "../common";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type FC } from "react";
 import { instance } from "@/utils";
 import ProjectCard from "./ProjectCard";
 import { useTranslation } from "react-i18next";
@@ -11,7 +11,7 @@ interface OtherProjectProps {
   pageSize: number;
 }
 
-const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
+const OtherProject: FC<OtherProjectProps> = ({ projects, pageSize }) => {
   const router = useRouter();
   const { name, page } = router.query;
 
@@ -38,7 +38,7 @@ const OtherProject = ({ projects, pageSize }: OtherProjectProps) => {
     handleGetItems();
   }, [page, name]);
 
-  const items = useMemo(()=> data.map((project, index) => (
+  const items = useMemo(() => data.map((project, index) => (
     <ProjectCard lang={currentLang} key={project.id} project={project} index={index} />
   )), [data, currentLang])
 

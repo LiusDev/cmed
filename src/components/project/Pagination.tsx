@@ -1,16 +1,15 @@
 import { useRouter } from "next/router"
 import { Pagination as MantinePage } from "@mantine/core"
 import { doGet } from "@/utils"
-import { useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 
 interface PaginationProps {
     pageSize: number
 }
 
-const Pagination = ({ pageSize }: PaginationProps) => {
+const Pagination = memo<PaginationProps>(({ pageSize }) => {
     const router = useRouter()
     const { name, page } = router.query
-
     const [totalProjects, setTotalProjects] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -22,24 +21,23 @@ const Pagination = ({ pageSize }: PaginationProps) => {
         })
     }, [page, name])
 
-    const handlePageChange = (page: number) => {
+    const handlePageChange = useCallback((page: number) => {
         router.push(`/projects?${name && `name=${name}&`}page=${page}`)
-    }
+    }, [name, router])
+    
+    const totalPages = useMemo(() => Math.ceil(totalProjects / pageSize), [totalProjects, pageSize])
 
-    const getTotalPages = (items: number) => {
-        return Math.ceil(items / pageSize)
-    }
     return (
         <div className="flex w-full items-center justify-center mb-16">
             <MantinePage
                 value={currentPage}
-                total={getTotalPages(totalProjects)}
-                onChange={(page) => handlePageChange(page)}
+                total={totalPages}
+                onChange={handlePageChange}
                 color="blue"
                 radius="xl"
             />
         </div>
     )
-}
+})
 
 export default Pagination

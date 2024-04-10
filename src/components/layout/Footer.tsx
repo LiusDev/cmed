@@ -6,6 +6,7 @@ import { Trans } from "../common";
 import { useEffect, useMemo, useState } from "react";
 import CallFloatingButton from "../floatingButtons/CallFloatingButton";
 import ChatZaloFloatingButton from "../floatingButtons/ChatZaloFloatingButton";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const [metadata, setMetada] = useState<Metadata>()
@@ -15,6 +16,14 @@ const Footer = () => {
     })
   }, [])
   const companyPhone = useMemo(() => metadata?.companyPhone || "0898 099 886", [metadata])
+
+  const { i18n } = useTranslation();
+  const currentLang = useMemo(() => {
+    switch (i18n.language) {
+      case "vi": return ""
+      default: return i18n.language.toUpperCase()
+    }
+  }, [i18n.language])
 
   return (
     <>
@@ -55,12 +64,10 @@ const Footer = () => {
               </Link>
               <div>
                 <h5 className="uppercase mb-4 lg:mb-6">
-                  {metadata?.companyName ||
-                    "CÔNG TY CỔ PHẦN TƯ VẤN VẬN HÀNH VÀ KINH DOANH Y TẾ CMED"}
+                  {metadata?.[`companyName${currentLang}` as keyof typeof metadata]}
                 </h5>
                 <p className="text-sm font-light">
-                  {metadata?.companyAddress ||
-                    "Tầng 12, Tòa nhà Diamond Flower, Số 48 Đường Lê Văn Lương, Phường Nhân Chính, Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam"}
+                  {metadata?.[`companyAddress${currentLang}` as keyof typeof metadata]}
                 </p>
               </div>
             </div>

@@ -2,7 +2,7 @@ import { CreateContactDto } from "@/types"
 import { doPost } from "@/utils"
 import { useForm } from "@mantine/form"
 import { notifications } from "@mantine/notifications"
-import React from "react"
+import React, { useCallback, type FC } from "react"
 import { Button, Trans } from "../common"
 import { MdArrowForward } from "react-icons/md"
 import { twMerge } from "tailwind-merge"
@@ -14,11 +14,11 @@ interface ContactFromProps {
     className?: string
 }
 
-const ContactForm = ({
+const ContactForm: FC<ContactFromProps> = ({
     showContent = true,
     submitFunction = () => { },
     className = "",
-}: ContactFromProps) => {
+}) => {
     const form = useForm({
         initialValues: {
             name: "",
@@ -43,7 +43,7 @@ const ContactForm = ({
         },
     })
 
-    const handleSubmit = async () => {
+    const handleSubmit = useCallback(async () => {
         form.validate()
 
         if (!form.isValid()) {
@@ -75,7 +75,7 @@ const ContactForm = ({
             form.reset()
             modals.closeAll()
         }
-    }
+    }, [form, notifications, doPost, submitFunction, modals])
 
     return (
         <div
@@ -94,7 +94,7 @@ const ContactForm = ({
                     className="border-b border-tertiary outline-none pb-1"
                     {...form.getInputProps("customerType")}
                 >
-                    <option  value="cá nhân"><Trans text="contact.form.userType.options.personal" /></option>
+                    <option value="cá nhân"><Trans text="contact.form.userType.options.personal" /></option>
                     <option value="phòng khám đa khoa"><Trans text="contact.form.userType.options.multispecialtyClinic" /></option>
                     <option value="phòng khám chuyên khoa"><Trans text="contact.form.userType.options.specialtyClinic" /></option>
                     <option value="bệnh viện"><Trans text="contact.form.userType.options.hospital" /></option>

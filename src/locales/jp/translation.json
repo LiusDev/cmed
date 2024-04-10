@@ -19,7 +19,11 @@
         "service": "サービス",
         "document": "文書",
         "news": "ニュース",
-        "contact": "お問い合わせ"
+        "contact": "お問い合わせ",
+        "hospital": "病院",
+        "nursingHome" : "介護施設",
+        "specializedClinic" : "専門診療所 ",
+        "practiceClinic" : "多目的診療所"
     },
     "footer": {
         "link": {
@@ -141,6 +145,9 @@
         }
     },
     "documents": {
+        "categoriesnav": {
+            "all": "全て"
+        },
         "title": "ドキュメント",
         "detail": {
             "related": "関連ドキュメント"
@@ -190,6 +197,7 @@
         }
     },
     "news": {
+        "all": "全て",
         "title": "ニュースイベント",
         "detail": {
             "related": "他の採用情報"

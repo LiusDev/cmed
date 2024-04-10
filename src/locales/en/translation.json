@@ -19,7 +19,11 @@
         "service": "Services",
         "document": "Documents",
         "news": "News",
-        "contact": "Contact"
+        "contact": "Contact",
+        "hospital": "Hospital",
+        "nursingHome": "Nursing home",
+        "specializedClinic" : "Specialized clinic",
+        "practiceClinic" : "General practice clinic"
     },
     "footer": {
         "link": {
@@ -141,6 +145,9 @@
         }
     },
     "documents": {
+        "categoriesnav": {
+            "all": "All"
+        },
         "title": "Documents",
         "detail": {
             "related": "Related Documents"
@@ -212,6 +219,7 @@
         }
     },
     "news": {
+        "all": "All",
         "title": "Event News",
         "detail": {
             "related": "Other Recruitment News"

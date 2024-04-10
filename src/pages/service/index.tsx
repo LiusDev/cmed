@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import type { Customer } from '@/types';
 import { Trans } from '@/components/common';
 import { instance } from '@/utils';
+import { useTranslation } from 'react-i18next';
 interface article {
   id: number;
   title: string;
@@ -60,7 +61,7 @@ const ServicePage = () => {
   }, [])
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [article, setArticle] = useState<article[]>([]);
-
+  const [t, i18n] = useTranslation();
   const handleMouseEnter = (article: article) => () => {
     setArticle([article]);
   };
@@ -82,7 +83,7 @@ const ServicePage = () => {
   }, []);
   return (
     <MainLayout title="Dịch vụ">
-      <Banner hiddenButton description="Bằng cách tận dụng kinh nghiệm và khả năng của mình, chúng tôi sẽ thực hiện hóa sự phát triển bền vững của “Thành phố y tế hiện đại”. " />
+      <Banner hiddenButton description={t("services.banner.description")} />
       <div className='relative mb-20'>
         <div className='mx-auto w-2/3 space-y-2 py-10 text-center font-bold md:mb-12 md:w-[500px] lg:mb-0'>
           <h2 className='text-xl text-[#ff0000] md:text-2xl'>

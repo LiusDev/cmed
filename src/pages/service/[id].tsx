@@ -25,7 +25,7 @@ const ServiceDetail = (props: {
         <MainLayout>
             <Banner title={props.service[`name${currentLang}` as keyof typeof props.service] as string} description={props.service[`description${currentLang}` as keyof typeof props.service] as string} />
             {props.isNumber ? <Services services={props.services as any} /> : <Services2 services={props.services as any} />}
-            <News />
+            <News currentLang={currentLang} />
             <WhyUs />
         </MainLayout>
     );

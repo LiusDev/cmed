@@ -157,7 +157,7 @@ const HoverMenu = (props: { open: boolean }) => {
         <ul className="w-max flex flex-col gap-[10px]">
           <HoverItem title={t("header.hospital")} href="/service/benh-vien" />
           <HoverItem title={t("header.nursingHome")} href="/service/vien-duong-lao" />
-          <HoverItem title={t("header.nursingHome")} href="/service/phong-kham-da-khoa" />
+          <HoverItem title={t("header.practiceClinic")} href="/service/phong-kham-da-khoa" />
           <HoverItem title={t("header.specializedClinic")} href="/service/phong-kham-chuyen-khoa" />
         </ul>
         <div className="bg-secondary w-full h-full top-0 left-[-15px] -z-10 absolute  box-content p-[15px] rounded"></div>

@@ -51,7 +51,7 @@ const Services2 = ({ services }: ServicesProps) => {
         {service[`title${currentLang}` as keyof typeof service]}
       </div>
     );
-  }), [selectedService, services])
+  }), [selectedService, services, currentLang])
 
   const content = useMemo(() => <>
     <FeaturedImage featuredImage={selectedService.featuredImage} featuredImage2={selectedService.featuredImage2} />
@@ -62,7 +62,7 @@ const Services2 = ({ services }: ServicesProps) => {
       </h2>
       <div className="text-justify">{parse(selectedService[`content${currentLang}` as keyof typeof selectedService] as string)}</div>
     </div>
-  </>, [selectedService])
+  </>, [selectedService, currentLang])
 
   return (
     <div className="py-20 bg-[#f4f5f9] z-30 relative">

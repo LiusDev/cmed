@@ -52,7 +52,7 @@ const Services2: FC<ServicesProps> = ({ services }) => {
       <h2 className="text-3xl font-bold text-primary text-justify">
         {selectedService[`title${currentLanguage}` as keyof typeof selectedService]}
       </h2>
-      <div className="text-justify">{parse(selectedService[`content${currentLanguage}` as keyof typeof selectedService] as string)}</div>
+      <div className="text-justify">{parse((selectedService[`content${currentLanguage}` as keyof typeof selectedService] as string) ?? "")}</div>
     </div>
   </>, [selectedService, currentLanguage])
 

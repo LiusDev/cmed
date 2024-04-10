@@ -1,8 +1,7 @@
 import { MainLayout } from "@/components/layout";
-import { CategoriesNav, NewsList, Pagination, Title } from "@/components/news";
+import { NewsList, Pagination, Title } from "@/components/news";
 import type { Category, News } from "@/types";
 import { instance } from "@/utils";
-import { InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 

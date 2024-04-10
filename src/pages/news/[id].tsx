@@ -1,22 +1,16 @@
 import { BreadCr, Trans } from "@/components/common";
 import { MainLayout } from "@/components/layout";
 import { News } from "@/types";
-import { formatDate, instance } from "@/utils";
+import { instance } from "@/utils";
 import parse from "html-react-parser";
 import React, { use, useCallback, useMemo } from "react";
-import { useTranslation } from "react-i18next";
 import { NewsItem } from "@/components/news";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import useLang from "@/hooks/useLang";
 
 const NewsDetail = () => {
-  const { t, i18n } = useTranslation();
-  const currentLang = useMemo(() => {
-    switch (i18n.language) {
-      case "vi": return ""
-      default: return i18n.language.toUpperCase()
-    }
-  }, [i18n.language])
+  const { t, currentLanguage } = useLang()
   const [relatedNews, setRelatedNews] = useState<News[]>([]);
   const [news, setNews] = useState<News>();
   const router = useRouter();
@@ -63,15 +57,15 @@ const NewsDetail = () => {
       <div className="container m-auto px-4 mt-28">
         <BreadCr items={breadCrumbsItems} />
         <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
-          {news[`title${currentLang}` as keyof News] as string}
+          {news[`title${currentLanguage}` as keyof News] as string}
         </h1>
         <img
           src={news.featuredImage}
-          alt={news[`title${currentLang}` as keyof News] as string}
+          alt={news[`title${currentLanguage}` as keyof News] as string}
           className="w-full object-cover object-center aspect-21/9 mb-8"
         />
         <div className="pb-20 mb-20 border-b border-tertiary/20">
-          {parse(news[`content${currentLang}` as keyof News] as string)}
+          {parse(news[`content${currentLanguage}` as keyof News] as string)}
         </div>
         <h2 className="text-xl md:text-3xl uppercase mb-10">
           <Trans text="news.detail.related" />
@@ -80,6 +74,7 @@ const NewsDetail = () => {
           {relatedNews.length > 0 &&
             relatedNews.map((item) => (
               <NewsItem
+                lang={currentLanguage}
                 key={item.id}
                 news={item}
                 className="col-span-12 sm:col-span-6 lg:col-span-4"

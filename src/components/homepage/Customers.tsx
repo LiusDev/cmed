@@ -2,24 +2,18 @@ import { Customer } from "@/types";
 import { twMerge } from "tailwind-merge";
 import { Trans } from "../common";
 import { Carousel } from "@mantine/carousel";
-import { useTranslation } from "react-i18next";
 import { memo, useMemo, type FC } from "react";
+import useLang from "@/hooks/useLang";
 
 interface CustomersProps {
   customers: Customer[];
   className?: string;
 }
 
-const Customers : FC<CustomersProps> = ({ customers, className = "" }) => {
-  const { i18n } = useTranslation();
-  const currentLang = useMemo(() => {
-    switch (i18n.language) {
-      case "vi": return ""
-      default: return i18n.language.toUpperCase()
-    }
-  }, [i18n.language])
+const Customers: FC<CustomersProps> = ({ customers, className = "" }) => {
+  const { currentLanguage } = useLang()
 
-  const items = useMemo(() => customers.map((customer, index) => <CustomerItem customer={customer} key={index} />), [customers, currentLang])
+  const items = useMemo(() => customers.map((customer, index) => <CustomerItem lang={currentLanguage} customer={customer} key={index} />), [customers, currentLanguage])
 
   return (
     <section className={twMerge(`mt-20 bg-secondary-dark ${className}`)}>

@@ -8,9 +8,9 @@ import { MainLayout } from "@/components/layout";
 import type { Category, Document } from "@/types";
 import { instance } from "@/utils";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FC } from "react";
 
-const DocumentPage = () => {
+const DocumentPage: FC = () => {
   const [data, setData] = useState<Document[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const router = useRouter();

@@ -24,7 +24,7 @@ const CategoriesNav = memo<CategoriesNavProps>(({ categories }) => {
           href="/documents"
           className={` font-medium ${!c && "text-primary font-semibold"}`}
         >
-          {t("document.categoriesnav.all")}
+          {t("documents.categoriesnav.all")}
         </Link>
       </li>
       {items}

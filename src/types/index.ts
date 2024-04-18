@@ -26,7 +26,11 @@ export interface Document {
     createdAt: string
     modifiedAt: string
     name: string
+    nameJP: string
+    nameEN: string
     description: string
+    descriptionJP: string
+    descriptionEN: string
     featuredImage: string
     document: string
     view: number

@@ -1,6 +1,6 @@
 import { BreadCr, Trans } from "@/components/common"
 import { MainLayout } from "@/components/layout"
-import { Document } from "@/types"
+import { Category, Document } from "@/types"
 import { formatDate, instance } from "@/utils"
 import { GetServerSidePropsContext } from "next"
 import parse from "html-react-parser"
@@ -11,8 +11,8 @@ import { modals } from "@mantine/modals"
 import ContactForm from "@/components/contact/ContactForm"
 import { FiBookOpen, FiDownload, FiEye } from "react-icons/fi"
 import "./style.module.css"
-import 'react-pdf/dist/Page/AnnotationLayer.css';
-import 'react-pdf/dist/Page/TextLayer.css';
+import "react-pdf/dist/Page/AnnotationLayer.css"
+import "react-pdf/dist/Page/TextLayer.css"
 import PdfViewer from "@/components/pdfViewer/PdfViewer"
 import useLang from "@/hooks/useLang"
 interface NewsDetailProps {
@@ -28,16 +28,18 @@ const DocumentsDetail: FC<NewsDetailProps> = ({
 }) => {
     const { t, currentLanguage } = useLang()
 
-    const breadCrumbsItems = useMemo(() => [
+    const breadCrumbsItems = [
         {
             name: t("documents.title"),
             link: "/documents",
         },
         {
-            name: document.category.name,
+            name: document?.category[
+                `name${currentLanguage}` as keyof Category
+            ] as string,
             link: `/documents?c=${document.category.id}`,
         },
-    ], [document, t])
+    ]
 
     const downloadFile = useCallback(() => {
         instance.get(`/documents/${document.id}?download=1`).then(() => {
@@ -45,29 +47,39 @@ const DocumentsDetail: FC<NewsDetailProps> = ({
         })
     }, [document.document])
 
-    const handleDownload = useCallback(() =>
-        modals.open({
-            size: "xl",
-            title: t("common.downloadDocumentForm"),
-            children: (
-                <ContactForm
-                    showContent={false}
-                    submitFunction={downloadFile}
-                />
-            ),
-        }), [downloadFile])
+    const handleDownload = useCallback(
+        () =>
+            modals.open({
+                size: "xl",
+                title: t("common.downloadDocumentForm"),
+                children: (
+                    <ContactForm
+                        showContent={false}
+                        submitFunction={downloadFile}
+                    />
+                ),
+            }),
+        [downloadFile]
+    )
 
     return (
         <MainLayout>
             <div className="container m-auto px-4 my-20">
                 <BreadCr items={breadCrumbsItems} />
                 <h1 className="text-2xl md:text-4xl font-bold uppercase mb-4">
-                    {document[`name${currentLanguage}` as keyof Document] as string}
+                    {
+                        document[
+                            `name${currentLanguage}` as keyof Document
+                        ] as string
+                    }
                 </h1>
                 <button
                     type="button"
                     className="text-sm mb-2 bg-primary-light hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition duration-300 text-[#fff]"
-                    onClick={handleDownload}>Download</button>
+                    onClick={handleDownload}
+                >
+                    Download
+                </button>
                 <div className="flex flex-row gap-3">
                     <p className="text-sm mb-2">
                         {formatDate(document.createdAt, " - ")}
@@ -76,10 +88,17 @@ const DocumentsDetail: FC<NewsDetailProps> = ({
                         <FiEye className="inline-block" /> {document.view}
                     </p>
                     <p className="text-sm mb-2">
-                        <FiDownload className="inline-block" /> {document.download}
+                        <FiDownload className="inline-block" />{" "}
+                        {document.download}
                     </p>
                 </div>
-                <div className="pb-10">{parse((document[`description${currentLanguage}` as keyof Document] as string) ?? "")}</div>
+                <div className="pb-10">
+                    {parse(
+                        (document[
+                            `description${currentLanguage}` as keyof Document
+                        ] as string) ?? ""
+                    )}
+                </div>
 
                 <div className="lg:grid flex flex-col grid-cols-4">
                     <div className="lg:col-span-3 w-full">
@@ -93,7 +112,10 @@ const DocumentsDetail: FC<NewsDetailProps> = ({
                         <div className="bg-primary/10 p-4 flex flex-col gap-4">
                             {relatedDocuments.length > 0 &&
                                 relatedDocuments.map((item) => (
-                                    <div className="p-3 bg-secondary" key={item.id}>
+                                    <div
+                                        className="p-3 bg-secondary"
+                                        key={item.id}
+                                    >
                                         <Link href={`/documents/${item.id}`}>
                                             <h4 className="line-clamp-2 font-semibold mb-2">
                                                 {item.name}

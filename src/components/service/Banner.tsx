@@ -16,7 +16,7 @@ const Banner: FC<BannerProps> = ({ title, description }) => {
                         <h1 className="text-7xl font-bold mb-12">
                             {title ?? <Trans text="services.banner.title" />}
                         </h1>
-                        <p className="mb-12 text-lg font-light">
+                        <p className="mb-12 text-lg font-light text-justify">
                             {!description ? (
                                 <></>
                             ) : (

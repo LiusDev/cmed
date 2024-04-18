@@ -1,5 +1,7 @@
+import useLang from "@/hooks/useLang"
+import { useForceUpdate } from "@mantine/hooks"
 import Link from "next/link"
-import React from "react"
+import React, { useEffect } from "react"
 import { MdArrowForwardIos, MdOutlineHome } from "react-icons/md"
 import { twMerge } from "tailwind-merge"
 

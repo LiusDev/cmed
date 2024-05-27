@@ -25,7 +25,7 @@ const Vision = ({data, ...props}: { data: { title: string; content: string; imag
             <h2 className="text-4xl font-semibold capitalize mb-8 md:mb-10 text-primary-dark">
               {content.title}
             </h2>
-            <p className="mb-8 md:mb-10" dangerouslySetInnerHTML={{_html: content.content}}/>
+            <p className="mb-8 md:mb-10" dangerouslySetInnerHTML={{__html: content.content}}/>
           </div>
           <div className="absolute bottom-0 right-0 flex md:translate-x-1/2">
             <Button

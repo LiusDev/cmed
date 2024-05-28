@@ -25,9 +25,7 @@ const Content = (props: { title: string, content: string[] }) => {
         <div className="2xl:w-[512px] pt-[40px] flex-1">
           {
             articles.map((a, i) => <>
-              <p className={`px-3 lg:px-0 text-justify ${i == 0 ? "text-[24px] line-clamp-[32.69px]" : "text-[17px] line-clamp-[23.15px] text-[black]"}`} key={i}>
-                {a}
-              </p>
+              <p className={`px-3 lg:px-0 text-justify ${i == 0 ? "text-[24px] line-clamp-[32.69px]" : "text-[17px] line-clamp-[23.15px] text-[black]"}`} key={i} dangerouslySetInnerHTML={{__html: a}}/>
               {i + 1 != articles.length && <div key={i} className="border-[1px] w-[109px] border-[#FFBE88] my-[25px]"></div>}
             </>)
           }

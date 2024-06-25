@@ -26,7 +26,6 @@ const ConstServices: FC<ServicesProps> = ({ services }) => {
     return services[index - 1];
   }, [services, params, pathName])
 
-  console.log(params)
   const handleSelect = useCallback((service: Service) => {
     router.push(`/service/${config[service.id as keyof typeof config]}`)
   }, [router]);
